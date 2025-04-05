@@ -1,0 +1,195 @@
+  .container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Черный прозрачный оверлей */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0); /* Начинаем с прозрачности */
+    animation: fadeOverlay 4s ease-in-out forwards;
+  }
+  
+  /* Блок с текстом */
+  .typewriter {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .typewriter h1 {
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFD700;
+    text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
+    margin: 200px auto 20px auto;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 4s steps(28, end) forwards;
+  }
+  
+  .typewriter h3 {
+    font-weight: 700;
+    font-size: 30px;
+    color: #FFD700;
+text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
+    margin: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    opacity: 0;
+    animation: fadeIn 0s 2s forwards, typing 4s steps(34, end) forwards 2s;
+  }
+
+  .button {
+    /* opacity: 0; */
+    position: absolute;
+    margin-top: 50px;
+    left: 50%;
+    width: 300px;
+    transform: translateX(-50%);
+    z-index: 3;
+    background: gold;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: opacity 1.5s ease-in-out, box-shadow 0.5s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .button.show {
+    opacity: 1;
+  }
+
+  /* Свечение при наведении */
+.button:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); /* Золотое свечение */
+  transform: translateX(-50%) scale(1.05); /* Легкое увеличение */
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+  width: 40%;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 165, 0, 0.3);
+  border: 1px solid #ffd700;
+  max-width: 90%;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.tab.active {
+  border-bottom: 2px solid #333;
+  font-weight: 700;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #191970;
+  box-shadow: 0 0 5px rgba(8, 6, 66, 0.7);
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form button {
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #191970;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form button:hover {
+  background-color: #555;
+}
+  
+  /* Затемнение оверлея */
+  @keyframes fadeOverlay {
+    0% { background: rgba(0, 0, 0, 0); }
+    100% { background: rgba(21, 21, 21, 0.8); } /* Затемняем до черного */
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
