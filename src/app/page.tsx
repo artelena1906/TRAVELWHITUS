@@ -3,16 +3,21 @@
 import { useEffect, useState } from "react";
 import styles from "./MainPageStart.module.css";
 import AuthForm from "../components/AuthForm";
+import { useRouter } from "next/navigation"; // Хук для навигации
 
 export default function Home() {
   const [showText, setShowText] = useState<boolean>(false);
   const [showButton, setShowButton] = useState<boolean>(false);
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const router = useRouter(); // Переместите сюда вызов хука
 
   useEffect(() => {
     const textTimer = setTimeout(() => {
       setShowText(true);
-    }, 3000); // Текст через 3 секунди
+    }, 3000); // Текст через 3 секунды
 
     const buttonTimer = setTimeout(() => {
       setShowButton(true);
@@ -27,6 +32,38 @@ export default function Home() {
   const handleOpenForm = (): void => setIsFormOpen(true);
   const handleCloseForm = (): void => setIsFormOpen(false);
 
+  const handleLogin = async (email: string, password: string): Promise<void> => {
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        setIsLoggedIn(true);
+        localStorage.setItem("token", data.token);
+        handleCloseForm();
+
+        // Переход на страницу /MainPage
+        router.push("/MainPage"); // Используйте router.push() после успешного логина
+      } else {
+        setErrorMessage(data.message);
+      }
+    } catch (error) {
+      setErrorMessage("Что-то пошло не так, попробуйте снова.");
+    }
+  };
+
+  const handleLogout = (): void => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+  };
+
   return (
     <div className={styles.container}>
       <video autoPlay loop muted playsInline className={styles.video}>
@@ -38,16 +75,27 @@ export default function Home() {
       {showText && (
         <div className={styles.content}>
           <div className={styles.typewriter}>
-            <h1>Коло обраних: подорожі для своїх</h1>
-            <h3>Приватний світ: лише для членів клубу за запрошенням</h3>
+            <h1>Все про подорожі</h1>
+            <h3>Приватний світ: лише для членів клубу</h3>
           </div>
           {showButton && (
-            <button
-              className={`${styles.button} ${styles.show}`}
-              onClick={handleOpenForm}
-            >
-              Вхід
-            </button>
+            <>
+              {isLoggedIn ? (
+                <button
+                  className={`${styles.button} ${styles.show}`}
+                  onClick={handleLogout}
+                >
+                  Вихід
+                </button>
+              ) : (
+                <button
+                  className={`${styles.button} ${styles.show}`}
+                  onClick={handleOpenForm}
+                >
+                  Вхід
+                </button>
+              )}
+            </>
           )}
         </div>
       )}
@@ -58,7 +106,7 @@ export default function Home() {
             <button className={styles.closeButton} onClick={handleCloseForm}>
               ×
             </button>
-            <AuthForm />
+            <AuthForm onLogin={handleLogin} errorMessage={errorMessage} />
           </div>
         </div>
       )}

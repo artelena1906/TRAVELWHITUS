@@ -1,0 +1,13 @@
+{
+    "bodyData": {
+        "user": [
+            {
+                "name": "Олена",
+                "surname": "Артем'єва",
+                "phone": "+380 66 433 86 46",
+                "email": "artelena@ukr.net",
+                "password": "123456"
+            }
+        ]
+    }
+}
