@@ -1,17 +1,24 @@
 import { NextResponse } from "next/server";
 
+type User = {
+  email: string;
+  password: string;
+  name: string;
+};
+
 export async function POST(req: Request) {
   const { email, password } = await req.json();
 
   try {
-    // Загружаем users.json из public
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/users.json`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/users.json`
+    );
     const json = await res.json();
 
-    const users = json.bodyData.user;
+    const users: User[] = json.bodyData.user;
 
     const foundUser = users.find(
-      (u: any) => u.email === email && u.password === password
+      (u) => u.email === email && u.password === password
     );
 
     if (foundUser) {
@@ -25,7 +32,8 @@ export async function POST(req: Request) {
       { message: "Невірний e-mail або пароль" },
       { status: 401 }
     );
-  } catch (error) {
+  } catch (_error) {
+    // `_error` с подчёркиванием не вызывает ошибку eslint
     return NextResponse.json(
       { message: "Помилка при зчитуванні даних" },
       { status: 500 }
