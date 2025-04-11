@@ -75,8 +75,8 @@ export default function Home() {
       {showText && (
         <div className={styles.content}>
           <div className={styles.typewriter}>
-            <h1>Все про подорожі</h1>
-            <h3>Приватний світ: лише для членів клубу</h3>
+            <h1>Мрії, що оживають у мандрах</h1>
+            <h3>Авторські подорожі з душею та драйвом</h3>
           </div>
           {showButton && (
             <>
