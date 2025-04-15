@@ -66,7 +66,7 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
       } else {
         setMessage(data.message);
       }
-    } catch (err) {
+    } catch {
       setMessage("Щось пішло не так");
     }
   };
