@@ -54,7 +54,7 @@ export default function Home() {
       } else {
         setErrorMessage(data.message);
       }
-    } catch (error) {
+    } catch {
       setErrorMessage("Что-то пошло не так, попробуйте снова.");
     }
   };

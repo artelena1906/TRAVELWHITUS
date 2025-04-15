@@ -32,7 +32,13 @@ export async function POST(req: Request) {
       { message: "Невірний e-mail або пароль" },
       { status: 401 }
     );
-  } catch (_error) {
+  } catch {
+    return NextResponse.json(
+      { message: "Помилка при зчитуванні даних" },
+      { status: 500 }
+    );
+  }
+  {
     // `_error` с подчёркиванием не вызывает ошибку eslint
     return NextResponse.json(
       { message: "Помилка при зчитуванні даних" },

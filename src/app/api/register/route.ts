@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 // Тимчасовий масив у пам’яті (зникає при перезапуску Vercel)
-let users: { email: string; password: string; name: string; surname: string; phone: string; inviteCode: string }[] = [];
+const users: { email: string; password: string; name: string; surname: string; phone: string; inviteCode: string }[] = [];
 
 export async function POST(request: Request) {
   const { name, surname, phone, password, inviteCode } = await request.json();
