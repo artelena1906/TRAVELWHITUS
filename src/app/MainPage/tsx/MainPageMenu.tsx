@@ -137,7 +137,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../css/MainPage.module.css";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Добавляем useRouter для перенаправления
+// import { useRouter } from "next/navigation"; // Добавляем useRouter для перенаправления
 
 export default function MainPageMenu() {
   interface MenuItem {
@@ -164,15 +164,15 @@ export default function MainPageMenu() {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<string | null>(null);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [userName, setUserName] = useState<string | null>(null); // Имя из localStorage
+  // const [userName, setUserName] = useState<string | null>(null); // Имя из localStorage
   const menuRef = useRef<HTMLDivElement>(null);
-  const router = useRouter(); // Для перенаправления при выходе
+  // const router = useRouter(); // Для перенаправления при выходе
 
   // Загружаем имя из localStorage при монтировании компонента
-  useEffect(() => {
-    const storedName = localStorage.getItem("name");
-    setUserName(storedName || "Гість"); // Если имени нет, используем "Гість"
-  }, []);
+  // useEffect(() => {
+  //   const storedName = localStorage.getItem("name");
+  //   setUserName(storedName || "Гість"); // Если имени нет, используем "Гість"
+  // }, []);
 
   // Загрузка данных меню из JSON
   useEffect(() => {
@@ -228,11 +228,11 @@ export default function MainPageMenu() {
   };
 
   // Обработчик выхода
-  const handleLogout = () => {
-    localStorage.removeItem("token"); // Удаляем токен
-    localStorage.removeItem("name"); // Удаляем имя
-    router.push("/"); // Перенаправляем на страницу входа
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token"); 
+  //   localStorage.removeItem("name"); 
+  //   router.push("/"); 
+  // };
 
   return (
     <div className={styles.headerContainer}>
@@ -285,12 +285,12 @@ export default function MainPageMenu() {
           ) : null
         )}
       </div>
-      <div className={styles.userSection}>
+      {/* <div className={styles.userSection}>
         <span>Привіт, {userName}</span>
         <button className={styles.logoutLink} onClick={handleLogout}>
           <span className={styles.logoutIcon}>☞</span>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

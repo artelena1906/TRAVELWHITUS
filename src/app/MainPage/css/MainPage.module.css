@@ -8,18 +8,25 @@
 }
 
 /*Стили для MainPageLogo*/
-.logoContainer {
+/* .logoContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+} */
+
+.spacer {
+  flex: 1; /* Занимает пространство слева для центрирования логотипа */
+}
+
+.logoContainer {
+  flex: 0 1 auto; /* Логотип занимает только необходимое пространство */
+  text-align: center;
 }
 
 .logo {
-    width: 500px;
-    min-width: 100px;
-    height: 70px;
-    margin: 20px;
+  max-width: 100%;
+  height: auto;
 }
 
 /**********Стили для MainPageMenu*****************/
@@ -204,7 +211,7 @@
     align-items: center;
     width: 100%;
     background: white;
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
   }
   
   .searchIcon {
@@ -313,15 +320,18 @@
   }
   
   .userSection {
+    flex: 1; /* Занимает пространство справа */
     display: flex;
-    align-items: center;
-    padding-right: 1rem; /* Отступ справа */
+    flex-direction: column; /* Приветствие и кнопка расположены вертикально */
+    align-items: flex-end; /* Выравнивание по правому краю */
+    gap: 8px;
+    margin-right: 2rem;
   }
   
   .userSection span {
     color: #171717;
-    font-size: 1rem;
-    margin-right: 1rem;
+    font-size: 1.2rem;
+    /* margin-right: 2rem; */
   }
   
   .logoutLink {
@@ -335,6 +345,21 @@
   .logoutIcon {
     margin-left: 0.5rem;
     font-size: 2.2rem;
+  }
+
+  .logoutButton {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
+  .logoutButton:hover {
+    background: #d32f2f;
   }
   
   @keyframes slideIn {
