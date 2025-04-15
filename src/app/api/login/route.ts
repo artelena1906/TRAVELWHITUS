@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     }
 
     // Выполняем fetch
-    const res = await fetch("https://travelclub-psi.vercel.app/users.json", {
+    const res = await fetch("https://travelclub-psi.vercel.app/Users.json", {
       cache: "no-store", // Отключаем кэширование
     });
     console.log("Fetch status:", res.status, res.statusText);
