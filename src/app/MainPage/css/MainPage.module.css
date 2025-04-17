@@ -1,26 +1,50 @@
 /* Общие Стили для главной страницы */
 .container {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
-/*Стили для MainPageLogo*/
-/* .logoContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-} */
+.fixedHeader {
+  position: fixed; /* Фиксируем вверху */
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 100; /* Выше карусели (z-index: 10 для текста и точек) */
+}
+
+.mainContent {
+  padding-top: 130px; /* Отступ для карусели (учитываем высоту меню ~60-80px + margin карусели) */
+  flex-grow: 1; /* Контент занимает оставшееся пространство */
+}
+
+.hr{
+  height: 2px;
+  background-color: gold;
+  margin: 20px;
+}
+
+/******** Стили для MainPageLogo *******/
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: white;
+}
 
 .spacer {
-  flex: 1; /* Занимает пространство слева для центрирования логотипа */
+  flex: 1;
 }
 
 .logoContainer {
-  flex: 0 1 auto; /* Логотип занимает только необходимое пространство */
+  flex: 0 1 auto;
   text-align: center;
 }
 
@@ -29,423 +53,255 @@
   height: auto;
 }
 
-/**********Стили для MainPageMenu*****************/
-/* .menuContainer {
-    position: relative;
-    width: 100%;
-  }
-  
-  .menu {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem 0;
-    background: white;
-  }
-  
-  .menuItem {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .menubtn {
-    text-decoration: none;
-    color: #171717;
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-  
-  .triangle {
-    display: inline-block;
+.userSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-right: 2rem;
+}
+
+.userSection span {
+  color: #171717;
+  font-size: 1.2rem;
+}
+
+.logoutButton {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.logoutButton:hover {
+  background: #d32f2f;
+}
+
+
+/*******СТИЛИ ДЛЯ MainPageMenu****************/
+.menuContainer {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+}
+
+.menuItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menubtn {
+  text-decoration: none;
+  color: #171717;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.triangle {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #171717;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.triangleHover {
+  transform: rotate(270deg);
+}
+
+.thinGoldLine {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: gold;
+  animation: slideIn 0.5s ease forwards;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: calc(-50vw + 50%);
+  width: 100vw;
+  /* margin-left: calc(-50% + 50vw); */
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  height: 0;
+  overflow: hidden;
+  animation: slideDown 1s ease-in-out forwards;
+}
+
+.thickGoldLine {
+  height: 5px;
+  background: gold;
+  animation: fillGold 1.5s ease forwards;
+  width: 100%;
+}
+
+.dropdown ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  padding: 1rem 0;
+  margin: 0;
+  width: 100%;
+  height: 200px;
+  overflow-y: auto;
+  background: white;
+}
+
+.dropdown li {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: #171717;
+  font-size: 1rem;
+}
+
+.logoutLink {
+  text-decoration: none;
+  color: #171717;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.logoutIcon {
+  margin-left: 0.5rem;
+  font-size: 2.2rem;
+}
+
+
+
+@keyframes slideIn {
+  0% {
     width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #171717;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
   }
-  
-  .triangleHover {
-    transform: rotate(270deg);
-  }
-  
-  .thinGoldLine {
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: gold;
-    animation: slideIn 0.5s ease forwards;
-  }
-  
-  .dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100vw;
-    margin-left: calc(-50% + 50vw);
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    height: 0;
-    overflow: hidden;
-    animation: slideDown 1s ease-in-out forwards;
-  }
-  
-  .thickGoldLine {
-    height: 5px;
-    background: gold;
-    animation: fillGold 0.5s ease forwards;
-    width: 100%;
-  }
-  
-  .dropdown ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    list-style: none;
-    padding: 1rem 0;
-    margin: 0;
-    width: 100%;
-    height: 200px;
-    overflow-y: auto;
-    background: white;
-  }
-  
-  .dropdown li {
-    padding: 0.5rem 1rem;
-  }
-  
-  .dropdown a {
-    text-decoration: none;
-    color: #171717;
-    font-size: 1rem;
-  }
-  
-  .h {
-    border: 0;
-    height: 1px;
-    background: #171717;
-  }
-  
-  @keyframes slideIn {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
-  }
-  
-  @keyframes fillGold {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
-  }
-  
-  @keyframes slideDown {
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 250px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .menu {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .menubtn {
-      font-size: 1rem;
-    }
-    .dropdown ul {
-      height: 150px;
-    }
-    @keyframes slideDown {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 185px;
-      }
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .menubtn {
-      font-size: 0.9rem;
-    }
-    .dropdown ul {
-      height: 120px;
-    }
-    .dropdown li {
-      padding: 0.3rem 0.5rem;
-    }
-    @keyframes slideDown {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 145px;
-      }
-    }
-  } */
 
-
-  .headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  100% {
     width: 100%;
-    background: white;
-    /* padding: 1rem 0; */
   }
-  
-  .searchIcon {
-    font-size: 1.5rem;
-    padding-left: 1rem; /* Отступ слева */
+}
+
+@keyframes fillGold {
+  0% {
+    width: 0;
   }
-  
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
   .menuContainer {
-    position: relative;
-    width: 60%; /* Меню занимает 70% ширины */
-    margin: 0 auto; /* Центрируем */
-  }
-  
-  .menu {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: white;
-  }
-  
-  .menuItem {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .menubtn {
-    text-decoration: none;
-    color: #171717;
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-  
-  .triangle {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #171717;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-  }
-  
-  .triangleHover {
-    transform: rotate(90deg);
-  }
-  
-  .thinGoldLine {
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: gold;
-    animation: slideIn 0.5s ease forwards;
-  }
-  
-  .dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100vw; /* Выпадающее меню на всю ширину экрана */
-    margin-left: calc(-50% + 50vw); /* Центрируем относительно .menuContainer */
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    height: 0;
-    overflow: hidden;
-    animation: slideDown 1s ease-in-out forwards;
-  }
-  
-  .thickGoldLine {
-    height: 5px;
-    background: gold;
-    animation: fillGold 0.5s ease forwards;
-    width: 100%;
-  }
-  
-  .dropdown ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    list-style: none;
-    padding: 1rem 0;
-    margin: 0;
-    width: 100%;
-    height: 200px;
-    overflow-y: auto;
-    background: white;
-  }
-  
-  .dropdown li {
-    padding: 0.5rem 1rem;
-  }
-  
-  .dropdown a {
-    text-decoration: none;
-    color: #171717;
-    font-size: 1rem;
-  }
-  
-  .userSection {
-    flex: 1; /* Занимает пространство справа */
-    display: flex;
-    flex-direction: column; /* Приветствие и кнопка расположены вертикально */
-    align-items: flex-end; /* Выравнивание по правому краю */
-    gap: 8px;
-    margin-right: 2rem;
-  }
-  
-  .userSection span {
-    color: #171717;
-    font-size: 1.2rem;
-    /* margin-right: 2rem; */
-  }
-  
-  .logoutLink {
-    text-decoration: none;
-    color: #171717;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .logoutIcon {
-    margin-left: 0.5rem;
-    font-size: 2.2rem;
+    width: 80%;
+    /* Увеличиваем ширину для планшетов */
   }
 
-  .logoutButton {
-    background: #f44336;
-    color: white;
-    border: none;
-    padding: 5px 18px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-right: 10px;
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  
-  .logoutButton:hover {
-    background: #d32f2f;
+
+  .menubtn {
+    font-size: 1rem;
   }
-  
-  @keyframes slideIn {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
+
+  .dropdown ul {
+    height: 150px;
   }
-  
-  @keyframes fillGold {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
-  }
-  
+
   @keyframes slideDown {
     0% {
       height: 0;
     }
+
     100% {
-      height: 250px;
+      height: 185px;
     }
   }
-  
-  @media (max-width: 768px) {
-    .menuContainer {
-      width: 80%; /* Увеличиваем ширину для планшетов */
+
+  .userSection span,
+  .logoutLink {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuContainer {
+    width: 90%;
+    /* Еще больше для мобильных */
+  }
+
+  .menubtn {
+    font-size: 0.9rem;
+  }
+
+  .dropdown ul {
+    height: 120px;
+  }
+
+  .dropdown li {
+    padding: 0.3rem 0.5rem;
+  }
+
+  @keyframes slideDown {
+    0% {
+      height: 0;
     }
-    .menu {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .menubtn {
-      font-size: 1rem;
-    }
-    .dropdown ul {
-      height: 150px;
-    }
-    @keyframes slideDown {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 185px;
-      }
-    }
-    .userSection span,
-    .logoutLink {
-      font-size: 0.9rem;
+
+    100% {
+      height: 145px;
     }
   }
-  
-  @media (max-width: 480px) {
-    .menuContainer {
-      width: 90%; /* Еще больше для мобильных */
-    }
-    .menubtn {
-      font-size: 0.9rem;
-    }
-    .dropdown ul {
-      height: 120px;
-    }
-    .dropdown li {
-      padding: 0.3rem 0.5rem;
-    }
-    @keyframes slideDown {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 145px;
-      }
-    }
-    .searchIcon {
-      font-size: 1.2rem;
-    }
-    .userSection span,
-    .logoutLink {
-      font-size: 0.8rem;
-    }
-    .logoutIcon {
-      font-size: 1rem;
-    }
+
+  .searchIcon {
+    font-size: 1.2rem;
   }
+
+  .userSection span,
+  .logoutLink {
+    font-size: 0.8rem;
+  }
+
+  .logoutIcon {
+    font-size: 1rem;
+  }
+}

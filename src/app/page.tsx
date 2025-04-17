@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import styles from "./MainPageStart.module.css";
 import AuthForm from "../components/AuthForm";

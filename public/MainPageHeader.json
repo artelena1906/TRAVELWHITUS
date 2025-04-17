@@ -1,111 +1,5 @@
 {
   "bodyData": {
-    "photo": [
-      {
-        "img": "/img/karusel/1.jpg",
-        "alt": "img1"
-      },
-      {
-        "img": "/img/karusel/2.jpg",
-        "alt": "img2"
-      },
-      {
-        "img": "/img/karusel/3.jpg",
-        "alt": "img3"
-      },
-      {
-        "img": "/img/karusel/4.jpg",
-        "alt": "img4"
-      },
-      {
-        "img": "/img/karusel/5.jpg",
-        "alt": "img5"
-      },
-      {
-        "img": "/img/karusel/6.jpg",
-        "alt": "img6"
-      },
-      {
-        "img": "/img/karusel/7.jpg",
-        "alt": "img7"
-      },
-      {
-        "img": "/img/karusel/8.jpg",
-        "alt": "img8"
-      },
-      {
-        "img": "/img/karusel/9.jpg",
-        "alt": "img9"
-      },
-      {
-        "img": "/img/karusel/10.jpg",
-        "alt": "img10"
-      },
-      {
-        "img": "/img/karusel/11.jpg",
-        "alt": "img11"
-      },
-      {
-        "img": "/img/karusel/12.jpg",
-        "alt": "img12"
-      },
-      {
-        "img": "/img/karusel/13.jpg",
-        "alt": "img13"
-      },
-      {
-        "img": "/img/karusel/14.jpg",
-        "alt": "img14"
-      },
-      {
-        "img": "/img/karusel/15.jpg",
-        "alt": "img15"
-      },
-      {
-        "img": "/img/karusel/16.jpg",
-        "alt": "img16"
-      },
-      {
-        "img": "/img/karusel/17.jpg",
-        "alt": "img17"
-      },
-      {
-        "img": "/img/karusel/18.jpg",
-        "alt": "img18"
-      },
-      {
-        "img": "/img/karusel/19.jpg",
-        "alt": "img19"
-      },
-      {
-        "img": "/img/karusel/20.jpg",
-        "alt": "img20"
-      },
-      {
-        "img": "/img/karusel/21.jpg",
-        "alt": "img20"
-      },
-      {
-        "img": "/img/karusel/22.jpg",
-        "alt": "img20"
-      },
-      {
-        "img": "/img/karusel/23.jpg",
-        "alt": "img20"
-      },
-      {
-        "img": "/img/karusel/24.jpg",
-        "alt": "img20"
-      },
-      {
-        "img": "/img/karusel/25.jpg",
-        "alt": "img20"
-      },
-      {
-        "img": "/img/karusel/26.jpg",
-        "alt": "img20"
-      }
-    ],
     "country": [
       {
         "id": 1,
@@ -1080,6 +974,7 @@
     "tours": [
       {
         "id": 1,
+        "urlvideo": "/img/Amalfi.mp4",
         "date": "18.05.2025",
         "country": "Італія",
         "name": "Амальфітанське узбережжя: від Неаполя до Сорренто",
@@ -1090,6 +985,7 @@
       },
       {
         "id": 2,
+        "urlvideo": "/img/Irland.mp4",
         "date": "27.09.2025",
         "country": "Ірландія",
         "name": "Ірландія мрій: від Дубліна до диких країв",
@@ -1345,6 +1241,7 @@
       },
       {
         "id": 3,
+        "urlvideo": "/img/Madeira.mp4",
         "date": "24.09.2026",
         "country": "Португалія",
         "name": "За дверима туманів: Мадейра",

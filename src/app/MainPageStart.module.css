@@ -47,7 +47,7 @@
     overflow: hidden;
     white-space: nowrap;
     width: 0;
-    animation: typing 4s steps(28, end) forwards;
+    animation: typing 4s steps(45, end) forwards;
   }
   
   .typewriter h3 {
@@ -60,7 +60,7 @@ text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
     white-space: nowrap;
     width: 0;
     opacity: 0;
-    animation: fadeIn 0s 2s forwards, typing 4s steps(34, end) forwards 2s;
+    animation: fadeIn 0s 5s forwards, typing 6s steps(45, end) forwards 4s;
   }
 
   .button {
