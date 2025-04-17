@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "../css/MainPageSectionBlog.module.css";
-import Link from "next/link";
-import Image from "next/image";
 
 export default function MainPageSectionBlog() {
     return (
