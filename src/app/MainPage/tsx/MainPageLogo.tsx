@@ -31,7 +31,7 @@ export default function MainPageLogo() {
     <div className={styles.headerContainer}>
       <div className={styles.spacer}></div> {/* Пустой блок для баланса слева */}
       <div className={styles.logoContainer}>
-        <Link prefetch={true} href="/">
+        <Link prefetch={true} href="./MainPage">
           <Image
             src="/img/logo2.png"
             alt="Логотип"

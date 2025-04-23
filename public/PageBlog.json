@@ -1,0 +1,213 @@
+{
+    "bodyData": {
+        "title": "Блог",
+        "description": [
+            {
+                "text": "Подорожі – це не просто маршрути на карті. Це історії, які ми привозимо з собою, аромати, що залишаються в пам’яті, і смаки, що пробуджують спогади."
+            },
+            {
+                "text": "Цей блог – про відкриття, що змінюють нас назавжди."
+            },
+            {
+                "text": "Тут ми говоримо про вино, яке зберігає історію виноградників, про їжу, яка розкриває душу народу, про культуру, що надихає досліджувати світ глибше, та про цікаві місця, які відкривають нам нові горизонти."
+            }
+        ],
+        "blog": [
+            {
+                "id": 1,
+                "name": "culture",
+                "title": "Відкриття нових кольорів",
+                "description": "Кольори – це мова...",
+                "urlphoto": "/img/Blog/Culture/culture1.jpg",
+                "date": "2025-03-26"
+            },
+            {
+                "id": 2,
+                "name": "culture",
+                "title": "Відкриття нових кольорів",
+                "description": "Кольори – це мова...",
+                "urlphoto": "/img/Blog/Culture/culture2.jpg",
+                "date": "2025-03-25"
+            },
+            {
+                "id": 3,
+                "name": "culture",
+                "title": "Відкриття нових кольорів",
+                "description": "Кольори – це мова...",
+               "urlphoto": "/img/Blog/Culture/culture3.jpg",
+                "date": "2025-03-24"
+            },
+            {
+                "id": 4,
+                "name": "culture",
+                "title": "Відкриття нових кольорів",
+                "description": "Кольори – це мова...",
+                "urlphoto": "/img/Blog/Culture/culture4.jpg",
+                "date": "2025-03-23"
+            },
+            {
+                "id": 5,
+                "name": "culture",
+                "title": "Відкриття нових кольорів",
+                "description": "Кольори – це мова...",
+                "urlphoto": "/img/Blog/Culture/culture5.jpg",
+                "date": "2025-03-22"
+            },
+            {
+                "id": 6,
+                "name": "culture",
+                "title": "Відкриття нових кольорів",
+                "description": "Кольори – це мова...",
+                "urlphoto": "/img/Blog/Culture/culture6.jpg",
+                "date": "2025-03-21"
+            },
+
+            {
+                "id": 7,
+                "name": "places",
+                "title": "Цікаві місця світу",
+                "description": "Місця – це історії...",
+                "urlphoto": "/img/Blog/Places/places1.jpg",
+                "date": "2025-03-26"
+            },
+            {
+                "id": 8,
+                "name": "places",
+                "title": "Цікаві місця світу",
+                "description": "Місця – це історії...",
+                "urlphoto": "/img/Blog/Places/places2.jpg",
+                "date": "2025-03-25"
+            },
+            {
+                "id": 9,
+                "name": "places",
+                "title": "Цікаві місця світу",
+                "description": "Місця – це історії...",
+                "urlphoto": "/img/Blog/Places/places3.jpg",
+                "date": "2025-03-24"
+            },
+            {
+                "id": 10,
+                "name": "places",
+                "title": "Цікаві місця світу",
+                "description": "Місця – це історії...",
+                "urlphoto": "/img/Blog/Places/places4.jpg",
+                "date": "2025-03-23"
+            },
+            {
+                "id": 11,
+                "name": "places",
+                "title": "Цікаві місця світу",
+                "description": "Місця – це історії...",
+                "urlphoto": "/img/Blog/Places/places5.jpg",
+                "date": "2025-03-22"
+            },
+            {
+                "id": 12,
+                "name": "places",
+                "title": "Цікаві місця світу",
+                "description": "Місця – це історії...",
+                "urlphoto": "/img/Blog/Places/places6.jpg",
+                "date": "2025-03-21"
+            },
+
+            {
+                "id": 13,
+                "name": "food",
+                "title": "Відкриття нових ароматів",
+                "description": "Аромати – це мова...",
+                "urlphoto": "/img/Blog/Food/food1.jpg",
+                "date": "2025-03-26"
+            },
+            {
+                "id": 14,
+                "name": "food",
+                "title": "Відкриття нових ароматів",
+                "description": "Аромати – це мова...",
+                "urlphoto": "/img/Blog/Food/food2.jpg",
+                "date": "2025-03-26"
+            },
+            {
+                "id": 15,
+                "name": "food",
+                "title": "Відкриття нових ароматів",
+                "description": "Аромати – це мова...",
+               "urlphoto": "/img/Blog/Food/food3.jpg",
+                "date": "2025-03-25"
+            },
+            {
+                "id": 16,
+                "name": "food",
+                "title": "Відкриття нових ароматів",
+                "description": "Аромати – це мова...",
+                "urlphoto": "/img/Blog/Food/food4.jpg",
+                "date": "2025-03-24"
+            },
+            {
+                "id": 17,
+                "name": "food",
+                "title": "Відкриття нових ароматів",
+                "description": "Аромати – це мова...",
+                "urlphoto": "/img/Blog/Food/food5.jpg",
+                "date": "2025-03-23"
+            },
+            {
+                "id": 18,
+                "name": "food",
+                "title": "Відкриття нових ароматів",
+                "description": "Аромати – це мова...",
+                "urlphoto": "/img/Blog/Food/food6.jpg",
+                "date": "2025-03-22"
+            },
+
+            {
+                "id": 19,
+                "name": "wine",
+                "title": "Відкриття нових смаків",
+                "description": "Смаки – це мова...",
+                "urlphoto": "/img/Blog/Wine/wine1.jpg",
+                "date": "2025-03-26"
+            },
+            {
+                "id": 20,
+                "name": "wine",
+                "title": "Відкриття нових смаків",
+                "description": "Смаки – це мова...",
+                "urlphoto": "/img/Blog/Wine/wine2.jpg",
+                "date": "2025-03-26"
+            },
+            {
+                "id": 21,
+                "name": "wine",
+                "title": "Відкриття нових смаків",
+                "description": "Смаки – це мова...",
+               "urlphoto": "/img/Blog/Wine/wine3.jpg",
+                "date": "2025-03-25"
+            },
+            {
+                "id": 22,
+                "name": "wine",
+                "title": "Відкриття нових смаків",
+                "description": "Смаки – це мова...",
+                "urlphoto": "/img/Blog/Wine/wine4.jpg",
+                "date": "2025-03-24"
+            },
+            {
+                "id": 23,
+                "name": "wine",
+                "title": "Відкриття нових смаків",
+                "description": "Смаки – це мова...",
+                "urlphoto": "/img/Blog/Wine/wine5.jpg",
+                "date": "2025-03-23"
+            },
+            {
+                "id": 24,
+                "name": "wine",
+                "title": "Вино та його історія",
+                "description": "Вино – це мистецтво...",
+                "urlphoto": "/img/Blog/Wine/wine6.jpg",
+                "date": "2025-03-20"
+            }            
+        ]
+    }
+}

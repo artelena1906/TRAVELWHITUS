@@ -49,7 +49,7 @@ export default function Home() {
         handleCloseForm();
 
         // Переход на страницу /MainPage
-        router.push("/MainPage"); // Используйте router.push() после успешного логина
+        router.push("/MainPage"); 
       } else {
         setErrorMessage(data.message);
       }

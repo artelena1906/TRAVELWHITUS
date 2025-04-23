@@ -1,0 +1,96 @@
+/* Контейнер для картинки та опису */
+
+
+.aboutus {
+    margin: 40px 40px 20px 40px;
+}
+
+/* Стилі для зображення */
+.img {
+    float: left; 
+    max-width: 500px;
+    height: auto;
+    margin: 0 30px 30px 0; 
+    border-radius: 12px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); 
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    text-Align: center;
+    font-family: "Playwrite India", sans-serif;
+    color: #556B2F;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Стилі для опису */
+.description {
+    text-align: justify;
+    font-size: 16px;
+    /* margin-bottom: 10px; */
+}
+
+/* Стилі для нижнього тексту */
+.text {
+    text-align: justify;
+    font-size: 17px;
+}
+
+/* Додаткові стилі для контейнера */
+.containeraboutus {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 770px) {
+    .containeraboutus {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .aboutus {
+        margin: 20px 20px 20px 20px;
+    }
+
+    .img {
+        float: none; /* Убираем обтекание */
+        display: block; /* Делаем изображение блочным элементом */
+        margin: 0 auto 20px auto; /* Центрируем изображение и добавляем отступ снизу */
+        max-width: 100%; /* Убедимся, что изображение не выходит за контейнер */
+    }
+
+    .description {
+        font-size: 15px;
+        margin: 0 15px 0 15px;
+     }
+
+    .text {
+        font-size: 15px;
+        margin: 0 15px 0 15px;
+    }
+
+    .section h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .description {
+        font-size: 14px;
+        margin: 0 10px 0 10px;
+     }
+
+    .text {
+        font-size: 14px;
+        margin: 0 10px 0 10px;
+    }
+}

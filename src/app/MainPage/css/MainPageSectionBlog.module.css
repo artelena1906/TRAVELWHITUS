@@ -1,39 +1,170 @@
-.containerBlog{
+/* MainPage/css/MainPageSectionBlog.module.css */
+.containerBlog {
   display: flex;
-    flex-direction: column;
-  margin: 40px 50px 0 50px;
+  flex-direction: column;
+  /* padding: 20px; */
+  margin: 50px 20px 0 20px;
+  text-align: center;
+  /* background: rgba(237, 228, 211, 0.1) */
 }
 
-.containerBlogTitle{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+.containerBlogTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
 }
 
-.hr{
-    height: 2px;
-    background-color: gold;
-    margin: 0;
+.containerBlogTitle h1 {
+  margin-left: 20px;
+  font-size: 3.0rem;
+  white-space: nowrap;
+  color: #171717;
+  margin: 0;
+}
+
+.buttonBlog {
+  /* background: #FFC1A6;  */
+  color: #171717;
+  border: #FFC1A6 3px solid;
+  padding: 5px 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  /* margin-left: 20px; */
+  transition: background 0.2s ease;
+}
+
+.buttonBlog:hover {
+  background: #FF8C69; /* Тёплый оранжево-персиковый */
+}
+
+.linkBlog {
+  text-decoration: none;
+}
+
+.hr {
+  border: 0;
+  border-top: 3px solid #FFC1A6;
+  margin: 0;
+}
+
+.postsContainer {
+  display: flex;
+  overflow-x: auto; /* Горизонтальный скролл */
+  gap: 10px; /* Отступ между постами */
+  padding: 40px 0;
+  scrollbar-width: thin; /* Тонкий скролл для Firefox */
+  scrollbar-color: #FF9966 #f5f5f5; /* Цвет скролла */
+}
+
+.postsContainer::-webkit-scrollbar {
+  height: 8px; /* Высота скролла для Chrome/Safari */
+}
+
+.postsContainer::-webkit-scrollbar-track {
+  background: #f5f5f5; /* Фон трека */
+}
+
+.postsContainer::-webkit-scrollbar-thumb {
+  background: #FF9966; /* Яркий оранжево-персиковый скролл */
+  border-radius: 4px;
+}
+
+.postsContainer::-webkit-scrollbar-thumb:hover {
+  background: #FF8C69; /* Тёплый оранжево-персиковый при наведении */
+}
+
+.postItem {
+  display: flex;
+  align-items: center;
+  min-width: 300px; /* Минимальная ширина поста */
+  max-width: 300px; /* Максимальная ширина поста */
+  background: #fff; /* Белый фон для карточки */
+  border-radius: 12px;
+  padding: 10px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.postItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.postImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 15px;
+}
+
+.postContent {
+  flex: 1;
+  text-align: left;
+}
+
+.postTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #171717;
+  line-height: 1.4;
+}
+
+.postDescription {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Ограничение на 3 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .containerBlogTitle {
+    flex-wrap: nowrap;
   }
 
-  .containerBlog h1{
-    font-size: 2.5rem;
-    margin: 0 0 10px 20px;
+  .containerBlogTitle h1 {
+    font-size: 1.5rem;
   }
 
-  .buttonBlog{
-   
-    border: gold solid 2px;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin-right: 20px;
-    cursor: pointer;
-    border-radius: 25px;
+  .buttonBlog {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin-left: 10px;
   }
-  
+
+  .postItem {
+    min-width: 300px; /* Меньшая ширина для планшетов */
+  }
+}
+
+@media (max-width: 480px) {
+  .containerBlogTitle h1 {
+    font-size: 1.2rem;
+  }
+
+  .buttonBlog {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    margin-left: 8px;
+  }
+
+  .postItem {
+    min-width: 250px; /* Ещё меньше для мобильных */
+  }
+
+  .postTitle {
+    font-size: 1rem;
+  }
+
+  .postDescription {
+    font-size: 0.8rem;
+  }
+}

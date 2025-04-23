@@ -5,6 +5,7 @@
   background-color: white;
   margin: 0;
   padding: 0;
+  background: rgba(245, 245, 220, 0.15)
 }
 
 .fixedHeader {
@@ -13,21 +14,22 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: 80px;
   display: flex;
   align-items: center;
   z-index: 100; /* Выше карусели (z-index: 10 для текста и точек) */
 }
 
+.mainContent.noPadding {
+  padding-top: 0; /* Без отступа на стартовой странице */
+  min-height: 100vh; /* Полная высота */
+}
+
 .mainContent {
-  padding-top: 130px; /* Отступ для карусели (учитываем высоту меню ~60-80px + margin карусели) */
+  padding-top: 140px; /* Отступ для карусели (учитываем высоту меню ~60-80px + margin карусели) */
   flex-grow: 1; /* Контент занимает оставшееся пространство */
 }
 
-.hr{
-  height: 2px;
-  background-color: gold;
-  margin: 20px;
-}
 
 /******** Стили для MainPageLogo *******/
 
@@ -135,7 +137,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: gold;
+  background: #FFC1A6;
   animation: slideIn 0.5s ease forwards;
 }
 
@@ -155,7 +157,7 @@
 
 .thickGoldLine {
   height: 5px;
-  background: gold;
+  background: #FFC1A6;
   animation: fillGold 1.5s ease forwards;
   width: 100%;
 }
