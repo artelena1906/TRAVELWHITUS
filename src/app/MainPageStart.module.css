@@ -12,10 +12,11 @@
   }
   
   .video {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     object-fit: cover;
     position: absolute;
+    object-position: center; /* Центрирование видео */
     top: 0;
     left: 0;
   }
@@ -40,7 +41,7 @@
   
   .typewriter h1 {
     font-weight: 700;
-    font-size: 40px;
+    font-size: 2.5rem;
     color: #FFD700;
     text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
     margin: 200px auto 20px auto;
@@ -52,7 +53,7 @@
   
   .typewriter h3 {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 1.5rem;
     color: #FFD700;
 text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
     margin: auto;
@@ -73,7 +74,7 @@ text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
     z-index: 3;
     background: gold;
     color: black;
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
     padding: 10px 20px;
     border: none;
@@ -205,5 +206,60 @@ text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
   
   @keyframes fadeIn {
     to { opacity: 1; }
+  }
+
+  @media (max-width: 750px) {
+    .typewriter h1 {
+      font-size: 1.8rem;
+      margin: 150px auto 20px auto;
+    }
+  
+    .typewriter h3 {
+      font-size: 1.2rem;
+    }
+  
+    .button {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      width: 200px;
+    }
+
+    .tabs {
+      margin: 0 20px;
+    }
+
+    .form input {
+      font-size: 12px;
+    }
+    
+    .form button {
+      font-size: 12px;
+    }
+  
+    .video {
+      width: 100vw;
+      height: 100vh; /* Сохраняем полную высоту */
+      object-fit: cover; /* Заполнение без искажений */
+    }
+  }
+  
+  @media (max-width: 550px) {
+    .typewriter h1 {
+      font-size: 1.2rem;
+    }
+  
+    .typewriter h3 {
+      font-size: 1.0rem;
+    }
+  
+    .button {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+  
+    .modalContent {
+      width: 95%;
+      padding: 15px;
+    }
   }
   
