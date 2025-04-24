@@ -54,7 +54,7 @@ export default function BookingForm({ tourTitle, onClose }: BookingFormProps) {
         <h2> Тур: {tourTitle}</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
-            <label htmlFor="name">Ім'я:</label> 
+            <label htmlFor="name">Ім&apos;я:</label> 
             <input
               id="name"
               type="text"
