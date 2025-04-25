@@ -4,6 +4,7 @@ import React from "react";
 import MainPageLogo from "./MainPage/tsx/MainPageLogo";
 import MainPageMenu from "./MainPage/tsx/MainPageMenu";
 import styles from "./MainPage/css/MainPage.module.css";
+import MainPageFooter from "./MainPage/tsx/MainPageFooter";
 import { usePathname } from "next/navigation";
 
 export default function RootLayout({
@@ -30,6 +31,9 @@ export default function RootLayout({
           >
             {children}
           </main>
+            <div className={styles.footerContent}>
+            <MainPageFooter />
+            </div>
         </div>
       </body>
     </html>

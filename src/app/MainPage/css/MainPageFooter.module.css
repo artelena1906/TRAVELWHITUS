@@ -1,0 +1,208 @@
+/* MainPage/css/MainPageFooter.module.css */
+.containerFooter {
+  display: flex;
+  justify-content: space-between; /* Логотип слева, соцсети справа */
+  align-items: center; /* Центрирование по вертикали */
+  background-color: black;
+  width: 100%;
+  height: 250px;
+  margin: 50px 0 0 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center; /* Логотип по центру футера */
+}
+
+.logo {
+  padding: 20px;
+  display: block;
+}
+
+.logoImage {
+  margin: 0; /* Убраны лишние отступы */
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.socialContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-right: 30px;
+}
+
+.up {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.down {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.card1 {
+  width: 70px;
+  height: 70px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 90px 5px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instagram {
+  margin: 0; /* Центрирование SVG */
+  fill: #cc39a4;
+}
+
+.card2 {
+  width: 70px;
+  height: 70px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 90px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facebook {
+  margin: 0;
+  fill: #1877f2;
+}
+
+.card3 {
+  width: 70px;
+  height: 70px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 5px 5px 90px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp {
+  margin: 0;
+  fill: #00ff00;
+}
+
+.card4 {
+  width: 70px;
+  height: 70px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 5px 90px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.telegram {
+  margin: 0;
+  stroke: #0088cc; /* Синий Telegram */
+}
+
+.card1:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #cc39a4;
+}
+
+.card1:hover .instagram {
+  fill: white;
+}
+
+.card2:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #1877f2;
+}
+
+.card2:hover .facebook {
+  fill: white;
+}
+
+.card3:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #00ff00;
+}
+
+.card3:hover .whatsapp {
+  fill: white;
+}
+
+.card4:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #0d3b52; /* Синий Telegram */
+}
+
+.card4:hover .telegram {
+    fill: white; /* Белый самолётик при ховере */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .containerFooter {
+    flex-direction: column; /* Логотип и соцсети вертикально */
+    height: auto; /* Высота по содержимому */
+    padding: 20px;
+  }
+
+  .logoContainer {
+    margin-bottom: 20px;
+  }
+
+  .logoImage {
+    max-width: 120px;
+    max-height: 120px;
+  }
+
+  .card1, .card2, .card3, .card4 {
+    width: 70px;
+    height: 70px;
+  }
+
+  .instagram, .facebook, .whatsapp, .telegram {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImage {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .card1, .card2, .card3, .card4 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .instagram, .facebook, .whatsapp, .telegram {
+    width: 20px;
+    height: 20px;
+  }
+}

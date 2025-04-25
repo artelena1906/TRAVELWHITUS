@@ -2,17 +2,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../css/MainPage.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function MainPageMenu() {
   interface MenuItem {
     href: string;
     text: string;
-    subItems?: { href: string; text: string }[];
+    subItems?: { href: string; text: string; img?: string }[];
   }
 
   interface Country {
     id: number;
     name: string;
+    img: string;
   }
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>([
@@ -42,6 +44,7 @@ export default function MainPageMenu() {
         const countries = data.bodyData.country.map((country: Country) => ({
           href: `/PageCountryIndividual/${country.id}`,
           text: country.name,
+          img: country.img,
         }));
         console.log("Сформированные страны:", countries);
         setMenuItems((prevItems) =>
@@ -123,10 +126,21 @@ export default function MainPageMenu() {
           item.subItems && isDropdownOpen === item.text ? (
             <div key={index} className={styles.dropdown}>
               <div className={styles.thickGoldLine}></div>
-              <ul>
+              <ul className={styles.subMenu}>
                 {item.subItems.map((subItem, subIndex) => (
-                  <li key={subIndex}>
-                    <Link href={subItem.href}>{subItem.text}</Link>
+                  <li key={subIndex} className={styles.subMenuItem}>
+                    <Link href={subItem.href} className={styles.subMenuLink}>
+                      {subItem.img && (
+                        <Image
+                          src={subItem.img}
+                          alt={subItem.text}
+                          width={50}
+                          height={50}
+                          className={styles.countryImage}
+                        />
+                      )}
+                      <span>{subItem.text}</span>
+                    </Link>
                   </li>
                 ))}
               </ul>
