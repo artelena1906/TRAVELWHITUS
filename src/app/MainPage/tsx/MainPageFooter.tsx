@@ -35,7 +35,7 @@ export default function MainPageFooter() {
       <div className={styles.logoContainer}>
         <Link href="/MainPage" className={styles.logo}>
           <Image
-            src="/img/logoSova1.png"
+            src="/img/logosova1.png"
             alt="Логотип"
             width={200}
             height={200}
