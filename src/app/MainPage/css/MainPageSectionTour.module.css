@@ -1,0 +1,156 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.toursContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.tourCard {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.tourCard:hover {
+  transform: scale(1.05) translateZ(10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tourMedia {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.tourImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tourInfo {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tourName {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.tourCities {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.tourDetails {
+  display: flex;
+ flex-direction: column;
+  margin-top: auto;
+}
+
+.tourDate,
+.tourDays {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.tourPrice {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #FF9966;
+  text-align: end;
+}
+
+@media (max-width: 768px) {
+  .containerFooter {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .toursContainer {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .tourCard {
+    border-radius: 8px;
+  }
+
+  .tourMedia {
+    height: 150px;
+  }
+
+  .tourName {
+    font-size: 16px;
+  }
+
+  .tourCities,
+  .tourDate,
+  .tourDays {
+    font-size: 13px;
+  }
+
+  .tourPrice {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .containerFooter {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .toursContainer {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .tourMedia {
+    height: 120px;
+  }
+
+  .tourName {
+    font-size: 14px;
+  }
+
+  .tourCities,
+  .tourDate,
+  .tourDays {
+    font-size: 12px;
+  }
+
+  .tourPrice {
+    font-size: 13px;
+  }
+}
