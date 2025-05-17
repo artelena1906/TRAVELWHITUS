@@ -52,6 +52,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import styles from "../css/MainPageHeader.module.css";
+import Image from "next/image"; // исправлено impotr -> import
 
 interface WithUs {
   title: string;
@@ -101,11 +102,23 @@ export default function WhyWithUs() {
 
   return (
     <div className={styles.containerWhyWithUs}>
-      <h3 className={styles.title}>Чому саме з нами?</h3>
+      <h2 className={styles.title}>Чому саме з нами?</h2>
       <div className={styles.whyWithUsContainer}>
         {withus.length > 0 ? (
           withus.map((item, index) => (
             <div className={styles.whyWithUsItem} key={index}>
+              {item.urlimage && (
+                <div className={styles.imageWrapper}>
+                  <Image
+                    src={item.urlimage}
+                    alt={'image'}
+                    width={100}
+                    height={100}
+                    className={styles.withusImage}
+                  />
+                </div>
+
+              )}
               <h4 className={styles.whyWithUsTitle}>{item.title}</h4>
             </div>
           ))

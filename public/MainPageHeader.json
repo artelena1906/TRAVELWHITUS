@@ -1471,23 +1471,19 @@
         "withus": [
           {
             "title": "Ми не просто подорожуємо – ми проживаємо кожен момент",
-            "urlimage": "/img/withus.jpg"
+            "urlimage": "/img/image1.png"
           },
           {
             "title": "Ми подорожуємо маленькими групами, щоб кожен міг бути дослідником.",
-            "urlimage": "/img/withus.jpg"
+            "urlimage": "/img/image2.png"
           },
           {
             "title": "Немає жорстких планів – є свобода змінювати маршрут заради магічного моменту.",
-           "urlimage": "/img/withus.jpg"
+           "urlimage": "/img/image2.png"
           },
           {
-            "title": "Емоції, які залишаються назавжди",
-           "urlimage": "/img/withus.jpg"
-          },
-          {
-            "title": "Смак подорожі – це теж частина відкриттів.",
-            "urlimage": "/img/withus.jpg"
+            "title": "Завжди динамічна захоплююча програма, а не сидимо в одному готелі",
+           "urlimage": "/img/image2.png"
           }
         ]
       }
