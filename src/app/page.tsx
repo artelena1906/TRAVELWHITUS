@@ -11,7 +11,7 @@ export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const router = useRouter(); // Переместите сюда вызов хука
+  const router = useRouter(); 
 
   useEffect(() => {
     const textTimer = setTimeout(() => {
@@ -20,7 +20,7 @@ export default function Home() {
 
     const buttonTimer = setTimeout(() => {
       setShowButton(true);
-    }, 9500); // Кнопка через 9.5 секунд
+    }, 12500); // Кнопка через 9.5 секунд
 
     return () => {
       clearTimeout(textTimer);

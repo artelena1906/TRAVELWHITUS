@@ -84,7 +84,7 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
           className={`${styles.tab} ${activeTab === "register" ? styles.active : ""}`}
           onClick={() => setActiveTab("register")}
         >
-          Стати членом клубу
+          Зареєструватися
         </button>
       </div>
 

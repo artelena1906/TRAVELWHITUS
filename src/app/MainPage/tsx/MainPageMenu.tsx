@@ -134,8 +134,8 @@ export default function MainPageMenu() {
                         <Image
                           src={subItem.img}
                           alt={subItem.text}
-                          width={50}
-                          height={50}
+                          width={70}
+                          height={70}
                           className={styles.countryImage}
                         />
                       )}
