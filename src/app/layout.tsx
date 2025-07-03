@@ -5,7 +5,6 @@ import MainPageMenu from "./MainPage/tsx/MainPageMenu";
 import styles from "./MainPage/css/MainPage.module.css";
 import MainPageFooter from "./MainPage/tsx/MainPageFooter";
 import { usePathname } from "next/navigation";
-import { Metadata } from "next"; // Импортируем Metadata
 
 
 export default function RootLayout({
