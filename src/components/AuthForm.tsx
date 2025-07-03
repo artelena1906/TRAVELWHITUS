@@ -143,6 +143,7 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
   const [message, setMessage] = useState<string | null>(null);
   const router = useRouter();
   const db = getFirestore(auth.app);
+  
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -186,9 +187,8 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
       // Обновляем displayName с правильной типизацией
       await (user as any).updateProfile({
         displayName: `${name} ${surname}`,
-      }).catch((error: unknown) => {
-        console.error("UpdateProfile error:", error);
-        throw error;
+      }).catch(() => {
+        throw new Error("Помилка оновлення профілю");
       });
 
       await setDoc(inviteRef, { used: true, usedAt: new Date().toISOString() }, { merge: true });
