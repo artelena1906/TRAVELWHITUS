@@ -124,12 +124,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { auth } from "../../firebase";
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  User,
-} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import styles from "../app/MainPageStart.module.css";
 
@@ -142,8 +137,8 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
   const [message, setMessage] = useState<string | null>(null);
   const router = useRouter();
-  const db = getFirestore(auth.app);
-  
+  const db = getFirestore();
+  const authInstance = getAuth(); // Явно инициализируем auth
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -152,13 +147,13 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
     const password = formData.get("password") as string;
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(authInstance, email, password);
       const user = userCredential.user;
       localStorage.setItem("token", user.uid);
       localStorage.setItem("name", user.displayName || email.split("@")[0]);
       onLogin(email, password);
       router.push("/MainPage");
-    } catch (error) {
+    } catch {
       setMessage("Неправильный email или пароль");
     }
   };
@@ -181,11 +176,11 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
         return;
       }
 
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user as User; // Явное приведение типа
+      const userCredential = await createUserWithEmailAndPassword(authInstance, email, password);
+      const user = userCredential.user;
 
-      // Обновляем displayName с правильной типизацией
-      await (user as any).updateProfile({
+      // Используем модульный updateProfile без приведения к any
+      await updateProfile(user, {
         displayName: `${name} ${surname}`,
       }).catch(() => {
         throw new Error("Помилка оновлення профілю");
@@ -204,8 +199,7 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
       localStorage.setItem("name", `${name} ${surname}`);
       setMessage("Ви успішно зареєстровані");
       setTimeout(() => router.push("/MainPage"), 2000);
-    } catch (error) {
-      console.error("Registration error:", error);
+    } catch {
       setMessage("Помилка при реєстрації");
     }
   };
