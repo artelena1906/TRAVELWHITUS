@@ -4,32 +4,41 @@ import styles from "../css/MainPage.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { auth } from "../../api/firebase"; 
+import { onAuthStateChanged, signOut, User } from "firebase/auth";
 
 export default function MainPageLogo() {
-  const [userName, setUserName] = useState<string>(""); // Имя из localStorage
+  const [userName, setUserName] = useState<string>("");
   const router = useRouter();
 
-  // Загружаем имя из localStorage при монтировании компонента
   useEffect(() => {
-    const storedName = localStorage.getItem("name");
-    if (storedName) {
-      setUserName(storedName);
-    } else {
-      // Перенаправляем на страницу входа, если имя отсутствует
-      router.push("/");
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+      if (user) {
+        setUserName(user.displayName || localStorage.getItem("name") || "Користувач");
+        localStorage.setItem("token", user.uid);
+        localStorage.setItem("name", user.displayName || "");
+      } else {
+        router.push("/");
+      }
+    });
+
+    return () => unsubscribe();
   }, [router]);
 
-  // Обработчик выхода
-  const handleLogout = () => {
-    localStorage.removeItem("token"); // Удаляем токен
-    localStorage.removeItem("name"); // Удаляем имя
-    router.push("/"); // Перенаправляем на стартовую страницу
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("token");
+      localStorage.removeItem("name");
+      router.push("/");
+    } catch (error) {
+      console.error("Помилка при виході:", error);
+    }
   };
 
   return (
     <div className={styles.headerContainer}>
-      <div className={styles.spacer}></div> {/* Пустой блок для баланса слева */}
+      <div className={styles.spacer}></div>
       <div className={styles.logoContainer}>
         <Link prefetch={true} href="./MainPage">
           <Image
