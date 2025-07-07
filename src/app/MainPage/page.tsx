@@ -2,7 +2,8 @@ import React from "react";
 import MainPageVideoTur from "./tsx/MainPageVideoTur";
 import MainPageSectionBlog from "./tsx/MainPageSectionBlog";
 import MainPageSectionTour from "./tsx/MainPageSectionTour";
-import MainPageWithUs from "./tsx/MainPageWithUs";
+import MainPageSectionDreems from "./tsx/MainPageSectionDreems";
+
 
 export default function MainPage() {
   return (
@@ -10,7 +11,7 @@ export default function MainPage() {
       <MainPageVideoTur />
      <MainPageSectionTour />
      <MainPageSectionBlog />
-     <MainPageWithUs/>
+     <MainPageSectionDreems />
      </>
   );
 }

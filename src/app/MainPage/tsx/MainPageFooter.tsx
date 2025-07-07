@@ -2,12 +2,15 @@ import React from "react";
 import styles from "../css/MainPageFooter.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import Mainpagewithus from './MainPageWithUs';
 
 export default function MainPageFooter() {
   return (
+    <div className={styles.container}>
+      <Mainpagewithus />
     <div className={styles.containerFooter}>
       {/* Логотип слева */}
-      <div className={styles.logoContainer}>
+      <div className={styles.leftBlock}>
         <Link href="/MainPage" className={styles.logo}>
           <Image
             src="/img/Logosova1.png"
@@ -19,8 +22,15 @@ export default function MainPageFooter() {
         </Link>
       </div>
 
+     <div className={styles.centerBlock}>
+          <Link href="../PageAboutUs"><p>Тури</p></Link>
+          <Link href="../PageAboutUs"><p>Про нас</p></Link>
+          <Link href="../PageAboutUs" ><p>Політика конфіденційності</p></Link>
+        </div>
+
+
       {/* Соцсети справа */}
-      <div className={styles.socialContainer}>
+     <div className={styles.rightBlock}>
         <div className={styles.up}>
           <Link href="https://www.instagram.com/helenas.travel/" className={styles.card1} target="_blank"
             rel="noopener noreferrer">
@@ -85,6 +95,7 @@ export default function MainPageFooter() {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 }

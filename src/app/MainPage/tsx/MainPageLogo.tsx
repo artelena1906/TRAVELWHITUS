@@ -53,7 +53,12 @@ export default function MainPageLogo() {
       <div className={styles.userSection}>
         <span>Привіт, {userName}</span>
         <button className={styles.logoutButton} onClick={handleLogout}>
-          Вихід
+          <Image
+            src="/img/logout.png"
+            alt="Вихід"
+            width={40}
+            height={30}
+          />
         </button>
       </div>
     </div>

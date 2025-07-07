@@ -18,14 +18,14 @@ export default function MainPageMenu() {
   }
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>([
-    { href: "./MainPage", text: "ГОЛОВНА" },
+    { href: "/MainPage", text: "ГОЛОВНА" },
     { href: "#", text: "КРАЇНИ" },
     { href: "/PageTours", text: "ТУРИ" },
     { href: "/PageDreams", text: "МРІЇ" },
     { href: "/PageBlog", text: "БЛОГ" },
     { href: "/PageContacts", text: "ФОТОГАЛЕРЕЯ" },
     { href: "/PageLogin", text: "ВІДЕОГАЛЕРЕЯ" },
-    { href: "/PageAboutUs", text: "ПРО НАС" },
+    // { href: "/PageAboutUs", text: "ПРО НАС" },
   ]);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<string | null>(null);
@@ -110,9 +110,8 @@ export default function MainPageMenu() {
                 {item.text}
                 {item.subItems && (
                   <span
-                    className={`${styles.triangle} ${
-                      hoveredItem === item.text ? styles.triangleHover : ""
-                    }`}
+                    className={`${styles.triangle} ${hoveredItem === item.text ? styles.triangleHover : ""
+                      }`}
                   ></span>
                 )}
               </Link>
@@ -124,12 +123,16 @@ export default function MainPageMenu() {
         </nav>
         {menuItems.map((item, index) =>
           item.subItems && isDropdownOpen === item.text ? (
-            <div key={index} className={styles.dropdown}>
+            <div key={index} className={`${styles.dropdown} ${styles.open}`}>
               <div className={styles.thickGoldLine}></div>
               <ul className={styles.subMenu}>
                 {item.subItems.map((subItem, subIndex) => (
                   <li key={subIndex} className={styles.subMenuItem}>
-                    <Link href={subItem.href} className={styles.subMenuLink}>
+                    <Link
+                      href={subItem.href}
+                      className={styles.subMenuLink}
+                      onClick={() => setIsDropdownOpen(null)}
+                    >
                       {subItem.img && (
                         <Image
                           src={subItem.img}
@@ -147,6 +150,7 @@ export default function MainPageMenu() {
             </div>
           ) : null
         )}
+
       </div>
     </div>
   );
