@@ -1,28 +1,3 @@
-// import React from "react";
-// import styles from "../css/MainPageFooter.module.css";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// export default function MainPageFooter() {
-//     return (
-//         <div className={styles.containerFooter}>
-//                 <div>
-//                     <Link href="/MainPage" className={styles.logo}>
-//                         <Image
-//                             src="/img/logoSova1.png"
-//                             alt="Логотип"
-//                             width={150}
-//                             height={150}
-//                             className={styles.logoImage}
-//                         />
-//                     </Link>
-//                 </div>
-//         </div>
-//     )
-// }
-
-
-// MainPage/tsx/MainPageFooter.tsx
 import React from "react";
 import styles from "../css/MainPageFooter.module.css";
 import Image from "next/image";
@@ -47,7 +22,7 @@ export default function MainPageFooter() {
       {/* Соцсети справа */}
       <div className={styles.socialContainer}>
         <div className={styles.up}>
-          <Link href="https://www.instagram.com" className={styles.card1} target="_blank"
+          <Link href="https://www.instagram.com/helenas.travel/" className={styles.card1} target="_blank"
             rel="noopener noreferrer">
             <svg
               className={styles.instagram}
