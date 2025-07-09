@@ -4,6 +4,13 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import styles from '../css/MainPageSearch.module.css';
 import { AiOutlineDown } from "react-icons/ai";
 
+interface TourRaw {
+  country: string;
+  price: string | number;
+  continent: string;
+  tourTypes?: string[];
+}
+
 interface Country {
   id: number;
   name: string;
@@ -49,13 +56,13 @@ export default function MainPageSearch() {
       const res = await fetch('/MainPageHeader.json');
       const data = await res.json();
 
-      const tours: Country[] = data.bodyData.tours.map((t: any, i: number) => ({
-        id: i,
-        name: t.country,
-        price: Number(t.price),
-        continent: t.continent,
-        tourTypes: t.tourTypes || [],
-      }));
+    const tours: Country[] = (data.bodyData.tours as TourRaw[]).map((t, i) => ({
+  id: i,
+  name: t.country,
+  price: Number(t.price),
+  continent: t.continent,
+  tourTypes: t.tourTypes || [],
+}));
       setCountries(tours);
 
       const prices = tours.map(t => t.price);
