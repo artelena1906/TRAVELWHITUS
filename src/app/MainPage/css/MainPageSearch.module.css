@@ -1,0 +1,158 @@
+/* .wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    margin-top: 1.0rem;
+} */
+
+/* .wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  max-height: 100vh;      
+  overflow-y: auto;    
+  position: sticky;
+  top: 0;     
+margin-top: 1.0rem;
+} */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  margin-top: 1rem;
+}
+
+.wrappercounter {
+    font-size: 18px;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.wrapperfilter {
+  font-size: 16px;
+  margin: 0;
+  padding: 1.0rem 0.5rem;
+}
+
+.accordion button {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;         
+  padding: 20px 12px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  background-color: white;
+  border: 0.5px solid #FFC1A6;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.panel {
+  margin-bottom: 1.0rem;
+  border-radius: 8px;
+  background: white;
+  border: 0.5px solid rgb(233, 227, 227);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.panel label {
+  display: flex;          
+  align-items: center;
+  font-size: 18px;         
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.panel label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 4px;    
+  appearance: none;      
+  border: 2px solid #4E6F2E;
+  background-color: white;
+  cursor: pointer;
+}
+
+.panel label input[type="checkbox"]:checked {
+  background-color: #FFC1A6;
+}
+
+.priceRangeLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 10px;
+}
+
+.panel input[type="range"] {
+    width: 90%;
+    margin: 20px 10px 0 10px;
+  background-color: #FFC1A6;
+}
+
+.clearButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clearButton {
+  background-color: #FFC1A6;
+  /* background-color: transparent; */
+  border: 1px solid #FFC1A6;
+  border-radius: 14px;
+  padding: 6px 8px;
+  margin-bottom: 10px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.clearButton:hover {
+  background-color: #f39a74;
+}
+
+.activeFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* margin-bottom: 15px; */
+}
+
+.filtersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.filterChip {
+  background-color: white;
+  border: 1px solid #FFC1A6;
+  border-radius: 16px;
+  padding: 4px 8px;
+  font-size: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filterChip:hover {
+  background-color: #e0e0e0;
+}
+
+.filtersScrollable {
+  max-height: 500px; /* или любое другое ограничение, можно и через vh */
+  overflow-y: auto;
+  padding: 0 5px; /* чтобы скролл не слипался с краем */
+}
+
+
