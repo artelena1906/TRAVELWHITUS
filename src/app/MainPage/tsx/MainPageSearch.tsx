@@ -64,7 +64,8 @@ export default function MainPageSearch() {
       setMinPrice(min);
       setMaxPrice(max);
 
-      const sp = Object.fromEntries([...searchParams.entries()]);
+      // const sp = Object.fromEntries([...searchParams.entries()]);
+      const sp: Record<string, string> = Object.fromEntries([...searchParams.entries()]);
       setFilters(f => ({
         ...f,
         continent: sp.continent?.split(',') || [],
@@ -99,15 +100,24 @@ export default function MainPageSearch() {
     filters.priceRange[1] !== maxPrice;
 
   useEffect(() => {
-    const qp: any = {};
-    if (filters.continent.length) qp.continent = filters.continent.join(',');
-    if (filters.countries.length) qp.countries = filters.countries.join(',');
-    if (filters.months.length) qp.months = filters.months.join(',');
-    if (filters.tourTypes.length) qp.tourTypes = filters.tourTypes.join(',');
-    qp.priceMin = filters.priceRange[0];
-    qp.priceMax = filters.priceRange[1];
+    // const qp: any = {};
+    // if (filters.continent.length) qp.continent = filters.continent.join(',');
+    // if (filters.countries.length) qp.countries = filters.countries.join(',');
+    // if (filters.months.length) qp.months = filters.months.join(',');
+    // if (filters.tourTypes.length) qp.tourTypes = filters.tourTypes.join(',');
+    // qp.priceMin = filters.priceRange[0];
+    // qp.priceMax = filters.priceRange[1];
 
-    router.push('/PageTours?' + new URLSearchParams(qp).toString(), { scroll: false });
+    // router.push('/PageTours?' + new URLSearchParams(qp).toString(), { scroll: false });
+    const qp: Record<string, string> = {};
+if (filters.continent.length) qp.continent = filters.continent.join(',');
+if (filters.countries.length) qp.countries = filters.countries.join(',');
+if (filters.months.length) qp.months = filters.months.join(',');
+if (filters.tourTypes.length) qp.tourTypes = filters.tourTypes.join(',');
+qp.priceMin = String(filters.priceRange[0]);
+qp.priceMax = String(filters.priceRange[1]);
+
+router.push('/PageTours?' + new URLSearchParams(qp).toString(), { scroll: false });
   }, [filters, router]);
 
   const toggle = (key: StringArrayKeys, value: string) => {
