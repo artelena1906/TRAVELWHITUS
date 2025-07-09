@@ -11,6 +11,13 @@ interface Country {
   continent: string;
   tourTypes: string[];
 }
+interface Filters {
+  continent: string[];
+  countries: string[];
+  months: string[];
+  tourTypes: string[];
+  priceRange: [number, number];
+}
 
 const CONTINENTS = ['Європа', 'Азія', 'Південна Амерка', 'Північна Америка', 'Африка'];
 const MONTHS = [
@@ -19,59 +26,61 @@ const MONTHS = [
 ];
 const TOUR_TYPES = ['Luxury', 'З гідом', 'Економ'];
 
+type StringArrayKeys = keyof Omit<Filters, 'priceRange'>; // 'continent' | 'countries' | 'months' | 'tourTypes'
+
 export default function MainPageSearch() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [filters, setFilters] = useState({
-    continent: [] as string[],
-    countries: [] as string[],
-    months: [] as string[],
-    tourTypes: [] as string[],
-    priceRange: [0, 1000] as [number, number],
+  const [filters, setFilters] = useState<Filters>({
+    continent: [],
+    countries: [],
+    months: [],
+    tourTypes: [],
+    priceRange: [0, 1000],
   });
 
   const [activeAcc, setActiveAcc] = useState<{ [key: string]: boolean }>({});
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Загрузка стран и данных из JSON
   useEffect(() => {
-    fetch('/MainPageHeader.json')
-      .then(res => res.json())
-      .then(data => {
-        const tours: Country[] = data.bodyData.tours.map((t: any, i: number) => ({
-          id: i,
-          name: t.country,
-          price: Number(t.price),
-          continent: t.continent,
-          tourTypes: t.tourTypes || [],
-        }));
-        setCountries(tours);
+    async function fetchData() {
+      const res = await fetch('/MainPageHeader.json');
+      const data = await res.json();
 
-        const prices = tours.map(t => t.price);
-        const min = Math.min(...prices);
-        const max = Math.max(...prices);
-        setMinPrice(min);
-        setMaxPrice(max);
+      const tours: Country[] = data.bodyData.tours.map((t: any, i: number) => ({
+        id: i,
+        name: t.country,
+        price: Number(t.price),
+        continent: t.continent,
+        tourTypes: t.tourTypes || [],
+      }));
+      setCountries(tours);
 
-        // Чтение параметров из URL
-        const sp = Object.fromEntries([...searchParams.entries()]);
-        setFilters(f => ({
-          ...f,
-          continent: sp.continent?.split(',') || [],
-          countries: sp.countries?.split(',') || [],
-          months: sp.months?.split(',') || [],
-          tourTypes: sp.tourTypes?.split(',') || [],
-          priceRange:
-            sp.priceMin && sp.priceMax
-              ? [Number(sp.priceMin), Number(sp.priceMax)]
-              : [min, max],
-        }));
-      });
-  }, []);
+      const prices = tours.map(t => t.price);
+      const min = Math.min(...prices);
+      const max = Math.max(...prices);
+      setMinPrice(min);
+      setMaxPrice(max);
 
-  // Фильтрация туров 
+      const sp = Object.fromEntries([...searchParams.entries()]);
+      setFilters(f => ({
+        ...f,
+        continent: sp.continent?.split(',') || [],
+        countries: sp.countries?.split(',') || [],
+        months: sp.months?.split(',') || [],
+        tourTypes: sp.tourTypes?.split(',') || [],
+        priceRange:
+          sp.priceMin && sp.priceMax
+            ? [Number(sp.priceMin), Number(sp.priceMax)]
+            : [min, max],
+      }));
+    }
+
+    fetchData();
+  }, [searchParams]);
+
   const filteredTours = countries.filter(tour => {
     const matchContinent = filters.continent.length === 0 || filters.continent.includes(tour.continent);
     const matchCountry = filters.countries.length === 0 || filters.countries.includes(tour.name);
@@ -81,15 +90,14 @@ export default function MainPageSearch() {
     return matchContinent && matchCountry && matchTourType && matchPrice;
   });
 
-  // Проверяем, применены ли фильтры
   const isFiltered =
     filters.continent.length > 0 ||
     filters.countries.length > 0 ||
+    filters.months.length > 0 ||
     filters.tourTypes.length > 0 ||
     filters.priceRange[0] !== minPrice ||
     filters.priceRange[1] !== maxPrice;
 
-  // Обновление URL при изменении фильтров
   useEffect(() => {
     const qp: any = {};
     if (filters.continent.length) qp.continent = filters.continent.join(',');
@@ -99,17 +107,18 @@ export default function MainPageSearch() {
     qp.priceMin = filters.priceRange[0];
     qp.priceMax = filters.priceRange[1];
 
-    router.push('/PageTours?' + new URLSearchParams(qp).toString(), {
-  scroll: false
-});
-  }, [filters]);
+    router.push('/PageTours?' + new URLSearchParams(qp).toString(), { scroll: false });
+  }, [filters, router]);
 
-  // Переключение чекбоксов
-  const toggle = (key: string, value: string) => {
+  const toggle = (key: StringArrayKeys, value: string) => {
     setFilters(f => {
-      const arr = new Set(f[key as keyof typeof f] as string[]);
-      arr.has(value) ? arr.delete(value) : arr.add(value);
-      return { ...f, [key]: Array.from(arr) } as any;
+      const arr = new Set(f[key]);
+      if (arr.has(value)) {
+        arr.delete(value);
+      } else {
+        arr.add(value);
+      }
+      return { ...f, [key]: Array.from(arr) };
     });
   };
 
@@ -121,65 +130,66 @@ export default function MainPageSearch() {
 
       <p className={styles.wrapperfilter}>Відсортувати за:</p>
 
-      {isFiltered && (
-  <div className={styles.activeFilters}>
-    <div className={styles.filtersList}>
-      {filters.continent.map(c => (
-        <button key={`cont-${c}`} className={styles.filterChip} onClick={() => toggle('continent', c)}>
-          {c} ✖
-        </button>
-      ))}
-      {filters.countries.map(c => (
-        <button key={`country-${c}`} className={styles.filterChip} onClick={() => toggle('countries', c)}>
-          {c} ✖
-        </button>
-      ))}
-      {filters.months.map(m => (
-        <button key={`month-${m}`} className={styles.filterChip} onClick={() => toggle('months', m)}>
-          {m} ✖
-        </button>
-      ))}
-      {filters.tourTypes.map(t => (
-        <button key={`type-${t}`} className={styles.filterChip} onClick={() => toggle('tourTypes', t)}>
-          {t} ✖
-        </button>
-      ))}
-      {(filters.priceRange[0] !== minPrice || filters.priceRange[1] !== maxPrice) && (
-        <button
-          className={styles.filterChip}
-          onClick={() => setFilters(f => ({ ...f, priceRange: [minPrice, maxPrice] }))}
-        >
-          Ціна: {filters.priceRange[0]}–{filters.priceRange[1]} ✖
-        </button>
-      )}
-    </div>
+       <div className={styles.filtersScrollable}>
 
-          <div className={styles.clearButtonWrapper}>
-            <button
-              className={styles.clearButton}
-              onClick={() => {
-                setFilters({
-                  continent: [],
-                  countries: [],
-                  months: [],
-                  tourTypes: [],
-                  priceRange: [minPrice, maxPrice],
-                });
-                setActiveAcc({}); // схлопываем все
-              }}
-            >
-              Очистити все
-            </button>
+      {isFiltered && (
+        <div className={styles.activeFilters}>
+          <div className={styles.filtersList}>
+            {filters.continent.map(c => (
+              <button key={`cont-${c}`} className={styles.filterChip} onClick={() => toggle('continent', c)}>
+                {c} ✖
+              </button>
+            ))}
+            {filters.countries.map(c => (
+              <button key={`country-${c}`} className={styles.filterChip} onClick={() => toggle('countries', c)}>
+                {c} ✖
+              </button>
+            ))}
+            {filters.months.map(m => (
+              <button key={`month-${m}`} className={styles.filterChip} onClick={() => toggle('months', m)}>
+                {m} ✖
+              </button>
+            ))}
+            {filters.tourTypes.map(t => (
+              <button key={`type-${t}`} className={styles.filterChip} onClick={() => toggle('tourTypes', t)}>
+                {t} ✖
+              </button>
+            ))}
+            {(filters.priceRange[0] !== minPrice || filters.priceRange[1] !== maxPrice) && (
+              <button
+                className={styles.filterChip}
+                onClick={() => setFilters(f => ({ ...f, priceRange: [minPrice, maxPrice] }))}
+              >
+                Ціна: {filters.priceRange[0]}–{filters.priceRange[1]} ✖
+              </button>
+            )}
           </div>
+
+           <div className={styles.clearButtonWrapper}>
+  <button
+    className={styles.clearButton}
+    onClick={() => {
+      setFilters({
+        continent: [],
+        countries: [],
+        months: [],
+        tourTypes: [],
+        priceRange: [minPrice, maxPrice],
+      });
+      setActiveAcc({}); // закрываем все аккордеоны
+    }}
+  >
+    Очистити все
+  </button>
+</div>
         </div>
       )}
 
-<div className={styles.filtersScrollable}>
       {/* Континент */}
       <div className={styles.accordion}>
         <button onClick={() => setActiveAcc(a => ({ ...a, continent: !a.continent }))}>
-                  Континент <AiOutlineDown className={styles.arrow} />
-              </button>
+          Континент <AiOutlineDown className={styles.arrow} />
+        </button>
         {activeAcc.continent && (
           <div className={styles.panel}>
             {CONTINENTS.map(c => (
@@ -260,33 +270,32 @@ export default function MainPageSearch() {
       </div>
 
       {/* Ціна */}
-        <div className={styles.accordion}>
-          <button onClick={() => setActiveAcc(a => ({ ...a, price: !a.price }))}>
-            Ціна <AiOutlineDown className={styles.arrow} />
-          </button>
-          {activeAcc.price && (
-            <div className={styles.panel}>
-              <input
-                type="range"
-                min={minPrice}
-                max={maxPrice}
-                value={filters.priceRange[1]}
-                onChange={e =>
-                  setFilters(f => ({
-                    ...f,
-                    priceRange: [minPrice, Number(e.target.value)],
-                  }))
-                }
-              />
-              <div className={styles.priceRangeLabels}>
-                <span>{filters.priceRange[0]}</span>
-                <span>{filters.priceRange[1]}</span>
-              </div>
+      <div className={styles.accordion}>
+        <button onClick={() => setActiveAcc(a => ({ ...a, price: !a.price }))}>
+          Ціна <AiOutlineDown className={styles.arrow} />
+        </button>
+        {activeAcc.price && (
+          <div className={styles.panel}>
+            <input
+              type="range"
+              min={minPrice}
+              max={maxPrice}
+              value={filters.priceRange[1]}
+              onChange={e =>
+                setFilters(f => ({
+                  ...f,
+                  priceRange: [minPrice, Number(e.target.value)],
+                }))
+              }
+            />
+            <div className={styles.priceRangeLabels}>
+              <span>{filters.priceRange[0]}</span>
+              <span>{filters.priceRange[1]}</span>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
-
+    </div>
   );
 }
