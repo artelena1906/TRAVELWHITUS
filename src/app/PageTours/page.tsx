@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import styles from './css/PageTours.module.css';
 import MainPageSearch from '../MainPage/tsx/MainPageSearch';
 import MainPageSectionTour from '../MainPage/tsx/MainPageSectionTour';
@@ -11,7 +11,9 @@ export default function PageTours() {
   return (
     <div className={styles.container}>
       <div className={styles.leftcolumn}>
-        <MainPageSearch onFiltersChange={setFilters} />
+        <Suspense fallback={<div>Завантаження фільтрів...</div>}>
+          <MainPageSearch onFiltersChange={setFilters} />
+        </Suspense>
       </div>
       <div className={styles.rightcolumn}>
         <MainPageSectionTour filters={filters} />
