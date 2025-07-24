@@ -193,6 +193,46 @@ text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
   margin-bottom: 15px;
   font-family: 'Montserrat', sans-serif;
 }
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.eyeIcon {
+  width: 20px;
+  height: 15px;
+}
+
+.eyeButton img,
+.eyeIcon {
+  background: transparent !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 5px;
+  background: none !important;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.eyeButton:focus,
+.eyeButton:active {
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
   
   /* Затемнение оверлея */
   @keyframes fadeOverlay {
