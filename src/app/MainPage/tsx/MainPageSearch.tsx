@@ -473,7 +473,11 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
   const toggle = (key: StringArrayKeys, value: string) => {
     setFilters((f) => {
       const arr = new Set(f[key]);
-      arr.has(value) ? arr.delete(value) : arr.add(value);
+      if (arr.has(value)) {
+  arr.delete(value);
+} else {
+  arr.add(value);
+}
       return { ...f, [key]: Array.from(arr) };
     });
   };
