@@ -13,33 +13,23 @@ export default function WhyWithUs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const jsonUrl = process.env.NEXT_PUBLIC_BASE_URL
-      ? `${process.env.NEXT_PUBLIC_BASE_URL}/MainPageHeader.json`
-      : "/MainPageHeader.json";
-
-    console.log("Попытка загрузки JSON с URL:", jsonUrl);
-
-    fetch(jsonUrl)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Не удалось загрузить JSON: ${res.status} ${res.statusText}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Полный JSON:", data);
-        console.log("data.bodyData.tours[2].withus:", data.bodyData?.tours?.[2]?.withus);
-        setWithus(data.bodyData?.tours?.[2]?.withus || []);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Ошибка загрузки данных:", error.message);
-        setError(error.message);
-        setWithus([]);
-        setLoading(false);
-      });
-  }, []);
+    useEffect(() => {
+  fetch("/MainPageHeader.json")
+    .then((res) => {
+      if (!res.ok) throw new Error("Не удалось загрузить JSON");
+      return res.json();
+    })
+    .then((data) => {
+      console.log("Загруженные данные:", data);
+      setWithus(data.bodyData.withus || []);
+      setLoading(false); // <--- ОБЯЗАТЕЛЬНО
+    })
+    .catch((error) => {
+      console.error("Ошибка загрузки данных:", error);
+      setError(error.message); // <--- ОБЯЗАТЕЛЬНО
+      setLoading(false);
+    });
+}, []);
 
   if (loading) {
     return <div className={styles.loading}>Завантаження...</div>;

@@ -333,6 +333,7 @@ interface TourRaw {
   continent: string;
   tourTypes?: string[];
   month?: string;
+  date: string;
 }
 
 interface Country {
@@ -342,6 +343,7 @@ interface Country {
   continent: string;
   tourTypes: string[];
   month?: string;
+  date: string;
 }
 
 export interface Filters {
@@ -354,8 +356,8 @@ export interface Filters {
 
 const CONTINENTS = ['Європа', 'Азія', 'Південна Амерка', 'Північна Америка', 'Африка'];
 const MONTHS = [
-  'Січень','Лютий','Березень','Квітень','Травень','Червень',
-  'Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'
+  'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень',
+  'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'
 ];
 const TOUR_TYPES = ['На машині', 'Екскурсії з гідом включені', 'Без екскурсій', 'Винний тур', 'Активний тур'];
 
@@ -387,6 +389,7 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
       try {
         const querySnapshot = await getDocs(collection(db, 'tours'));
         const toursData: Country[] = [];
+
         querySnapshot.forEach((doc) => {
           const data = doc.data() as TourRaw;
           toursData.push({
@@ -396,8 +399,10 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
             continent: data.continent,
             tourTypes: data.tourTypes || [],
             month: data.month || '',
+            date: data.date,
           });
         });
+
         setCountries(toursData);
 
         const prices = toursData.map((t) => t.price);
@@ -435,17 +440,11 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
   }, [filters, onFiltersChange, initialLoadDone]);
 
   const filteredTours = countries.filter((tour) => {
-    const matchContinent =
-      filters.continent.length === 0 || filters.continent.includes(tour.continent);
-    const matchCountry =
-      filters.countries.length === 0 || filters.countries.includes(tour.name);
-    const matchTourType =
-      filters.tourTypes.length === 0 ||
-      tour.tourTypes.some((type) => filters.tourTypes.includes(type));
-    const matchPrice =
-      tour.price >= filters.priceRange[0] && tour.price <= filters.priceRange[1];
-    const matchMonth =
-      filters.months.length === 0 || (tour.month && filters.months.includes(tour.month));
+    const matchContinent = filters.continent.length === 0 || filters.continent.includes(tour.continent);
+    const matchCountry = filters.countries.length === 0 || filters.countries.includes(tour.name);
+    const matchTourType = filters.tourTypes.length === 0 || tour.tourTypes.some((type) => filters.tourTypes.includes(type));
+    const matchPrice = tour.price >= filters.priceRange[0] && tour.price <= filters.priceRange[1];
+    const matchMonth = filters.months.length === 0 || (tour.month && filters.months.includes(tour.month));
 
     return matchContinent && matchCountry && matchTourType && matchPrice && matchMonth;
   });
@@ -474,12 +473,7 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
   const toggle = (key: StringArrayKeys, value: string) => {
     setFilters((f) => {
       const arr = new Set(f[key]);
-      // arr.has(value) ? arr.delete(value) : arr.add(value);
-      if (arr.has(value)) {
-  arr.delete(value);
-} else {
-  arr.add(value);
-      }
+      arr.has(value) ? arr.delete(value) : arr.add(value);
       return { ...f, [key]: Array.from(arr) };
     });
   };
@@ -517,10 +511,7 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
                 </button>
               ))}
               {(filters.priceRange[0] !== minPrice || filters.priceRange[1] !== maxPrice) && (
-                <button
-                  className={styles.filterChip}
-                  onClick={() => setFilters((f) => ({ ...f, priceRange: [minPrice, maxPrice] }))}
-                >
+                <button className={styles.filterChip} onClick={() => setFilters((f) => ({ ...f, priceRange: [minPrice, maxPrice] }))}>
                   Ціна: {filters.priceRange[0]}–{filters.priceRange[1]} ✖
                 </button>
               )}
@@ -545,14 +536,14 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
           </div>
         )}
 
-            {/* Континент */}
+        {/* Континент */}
         <div className={styles.accordion}>
-          <button onClick={() => setActiveAcc(a => ({ ...a, continent: !a.continent }))}>
+          <button onClick={() => setActiveAcc((a) => ({ ...a, continent: !a.continent }))}>
             Континент <AiOutlineDown className={styles.arrow} />
           </button>
           {activeAcc.continent && (
             <div className={styles.panel}>
-              {CONTINENTS.map(c => (
+              {CONTINENTS.map((c) => (
                 <label key={c}>
                   <input
                     type="checkbox"
@@ -568,12 +559,12 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
 
         {/* Країна */}
         <div className={styles.accordion}>
-          <button onClick={() => setActiveAcc(a => ({ ...a, countries: !a.countries }))}>
+          <button onClick={() => setActiveAcc((a) => ({ ...a, countries: !a.countries }))}>
             Країна <AiOutlineDown className={styles.arrow} />
           </button>
           {activeAcc.countries && (
             <div className={styles.panel}>
-              {Array.from(new Set(countries.map(c => c.name))).map(cn => (
+              {Array.from(new Set(countries.map((c) => c.name))).map((cn) => (
                 <label key={cn}>
                   <input
                     type="checkbox"
@@ -589,12 +580,12 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
 
         {/* Місяць */}
         <div className={styles.accordion}>
-          <button onClick={() => setActiveAcc(a => ({ ...a, months: !a.months }))}>
+          <button onClick={() => setActiveAcc((a) => ({ ...a, months: !a.months }))}>
             Дата <AiOutlineDown className={styles.arrow} />
           </button>
           {activeAcc.months && (
             <div className={styles.panel}>
-              {MONTHS.map(m => (
+              {MONTHS.map((m) => (
                 <label key={m}>
                   <input
                     type="checkbox"
@@ -610,12 +601,12 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
 
         {/* Тип туру */}
         <div className={styles.accordion}>
-          <button onClick={() => setActiveAcc(a => ({ ...a, tourTypes: !a.tourTypes }))}>
+          <button onClick={() => setActiveAcc((a) => ({ ...a, tourTypes: !a.tourTypes }))}>
             Тип туру <AiOutlineDown className={styles.arrow} />
           </button>
           {activeAcc.tourTypes && (
             <div className={styles.panel}>
-              {TOUR_TYPES.map(t => (
+              {TOUR_TYPES.map((t) => (
                 <label key={t}>
                   <input
                     type="checkbox"
@@ -631,7 +622,7 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
 
         {/* Ціна */}
         <div className={styles.accordion}>
-          <button onClick={() => setActiveAcc(a => ({ ...a, price: !a.price }))}>
+          <button onClick={() => setActiveAcc((a) => ({ ...a, price: !a.price }))}>
             Ціна <AiOutlineDown className={styles.arrow} />
           </button>
           {activeAcc.price && (
@@ -641,8 +632,8 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
                 min={minPrice}
                 max={maxPrice}
                 value={filters.priceRange[1]}
-                onChange={e =>
-                  setFilters(f => ({
+                onChange={(e) =>
+                  setFilters((f) => ({
                     ...f,
                     priceRange: [minPrice, Number(e.target.value)],
                   }))
@@ -659,4 +650,3 @@ export default function MainPageSearch({ onFiltersChange }: MainPageSearchProps)
     </div>
   );
 }
-
