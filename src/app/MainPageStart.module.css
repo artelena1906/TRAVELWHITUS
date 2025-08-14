@@ -164,21 +164,40 @@ text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
   font-family: 'Montserrat', sans-serif;
 }
 
-.form button {
+.formButton {
+  background-color: #FFC107;
+  color: #1A237E;
+  border: none;
   padding: 10px;
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
-  background-color: #FFC107;
-  color: #1A237E;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.form button:hover {
+.formButton:hover {
   background-color: #FFB300;
 }
+
+.guestButton {
+  background-color: #d9d4d4; /* светло-серый фон */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+   color: #1A237E;
+  font-size: 16px;
+  border: none;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.guestButton:hover {
+  background-color: #FFC107; /* при наведении более светлый желтый фон */
+}
+
 
 .error {
   color: red;
@@ -233,8 +252,8 @@ text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
   box-shadow: none;
   background: transparent;
 }
-  
-  /* Затемнение оверлея */
+
+ /* Затемнение оверлея */
   @keyframes fadeOverlay {
     0% { background: rgba(0, 0, 0, 0); }
     100% { background: rgba(13, 19, 78, 0.5); } /* Затемняем до черного */

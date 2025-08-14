@@ -9,6 +9,7 @@
 // } from "firebase/auth";
 // import { doc, getDoc, setDoc } from "firebase/firestore";
 // import styles from "../app/MainPageStart.module.css";
+// import Image from "next/image";
 
 // interface AuthFormProps {
 //   onLogin: (email: string, password: string) => void;
@@ -19,13 +20,13 @@
 //   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
 //   const [message, setMessage] = useState<string | null>(null);
 //   const [loading, setLoading] = useState<boolean>(false);
+//   const [showPassword, setShowPassword] = useState<boolean>(false);
 //   const router = useRouter();
-//   const [showPassword, setShowPassword] = useState(false);
 
-//   // Сброс значений input при смене вкладки
 //   useEffect(() => {
 //     const inputs = document.querySelectorAll("input");
 //     inputs.forEach((input) => (input.value = ""));
+//     setShowPassword(false);
 //   }, [activeTab]);
 
 //   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
@@ -109,7 +110,7 @@
 //   return (
 //     <div>
 //       <div className={styles.tabs}>
-//         <button
+//         <button 
 //           className={`${styles.tab} ${activeTab === "login" ? styles.active : ""}`}
 //           onClick={() => {
 //             setActiveTab("login");
@@ -147,14 +148,30 @@
 //             disabled={loading}
 //             autoComplete="username"
 //           />
-//           <input
-//             type="password"
-//             name="password"
-//             placeholder="Пароль"
-//             required
-//             disabled={loading}
-//             autoComplete="current-password"
-//           />
+//           <div className={styles.passwordWrapper}>
+//             <input
+//               type={showPassword ? "text" : "password"}
+//               name="password"
+//               placeholder="Пароль"
+//               required
+//               disabled={loading}
+//               autoComplete="current-password"
+//             />
+//             <button
+//               type="button"
+//               onClick={() => setShowPassword((prev) => !prev)}
+//               className={styles.eyeButton}
+//               tabIndex={-1}
+//             >
+//               <Image
+//                 src={showPassword ? "/img/open.png" : "/img/close.png"}
+//                 alt={showPassword ? "Сховати пароль" : "Показати пароль"}
+//                 width={20}
+//                 height={15}
+//                 className={styles.eyeIcon}
+//               />
+//             </button>
+//           </div>
 //           <button type="submit" disabled={loading}>Увійти</button>
 //         </form>
 //       ) : (
@@ -191,14 +208,30 @@
 //             disabled={loading}
 //             autoComplete="new-email"
 //           />
-//           <input
-//             type="password"
-//             name="password"
-//             placeholder="Пароль"
-//             required
-//             disabled={loading}
-//             autoComplete="new-password"
-//           />
+//           <div className={styles.passwordWrapper}>
+//             <input
+//               type={showPassword ? "text" : "password"}
+//               name="password"
+//               placeholder="Пароль"
+//               required
+//               disabled={loading}
+//               autoComplete="new-password"
+//             />
+//             <button
+//               type="button"
+//               onClick={() => setShowPassword((prev) => !prev)}
+//               className={styles.eyeButton}
+//               tabIndex={-1}
+//             >
+//               <Image
+//                 src={showPassword ? "/img/open.png" : "/img/close.png"}
+//                 alt={showPassword ? "Сховати пароль" : "Показати пароль"}
+//                 width={20}
+//                 height={15}
+//                 className={styles.eyeIcon}
+//               />
+//             </button>
+//           </div>
 //           <input
 //             type="text"
 //             name="inviteCode"
@@ -223,6 +256,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import styles from "../app/MainPageStart.module.css";
@@ -261,6 +295,8 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
 
       localStorage.setItem("token", user.uid);
       localStorage.setItem("name", user.displayName || email.split("@")[0]);
+      localStorage.setItem("role", "user");
+
       onLogin(email, password);
       router.push("/MainPage");
     } catch {
@@ -311,6 +347,7 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
 
       localStorage.setItem("token", user.uid);
       localStorage.setItem("name", `${name} ${surname}`);
+      localStorage.setItem("role", "user");
       setMessage("Ви успішно зареєстровані");
 
       setTimeout(() => {
@@ -319,6 +356,21 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
     } catch (error: unknown) {
       const err = error as Error;
       setMessage("Помилка при реєстрації: " + err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGuestLogin = async () => {
+    setLoading(true);
+    try {
+      await signOut(auth); // разлогиниваем текущего пользователя Firebase
+      localStorage.setItem("token", "guest");
+      localStorage.setItem("name", "Гість");
+      localStorage.setItem("role", "guest");
+      router.push("/MainPage");
+    } catch (err) {
+      setMessage("Помилка при вході як гість");
     } finally {
       setLoading(false);
     }
@@ -389,7 +441,23 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
               />
             </button>
           </div>
-          <button type="submit" disabled={loading}>Увійти</button>
+          <button 
+          type="submit" 
+          disabled={loading}
+          className={styles.formButton}
+          >
+            Увійти
+            </button>
+
+          {/* Кнопка входа как гость */}
+          <button
+            type="button"
+            disabled={loading}
+            onClick={handleGuestLogin}
+            className={styles.guestButton}
+          >
+            Увійти без реєстрації
+          </button>
         </form>
       ) : (
         <form className={styles.form} onSubmit={handleRegister} autoComplete="off">
