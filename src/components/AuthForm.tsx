@@ -354,9 +354,12 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
         router.push("/MainPage");
       }, 1000);
     } catch (error: unknown) {
-      const err = error as Error;
-      setMessage("Помилка при реєстрації: " + err.message);
-    } finally {
+  if (error instanceof Error) {
+    setMessage("Помилка при реєстрації: " + error.message);
+  } else {
+    setMessage("Помилка при реєстрації");
+  }
+} finally {
       setLoading(false);
     }
   };
