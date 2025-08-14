@@ -373,8 +373,9 @@ export default function AuthForm({ onLogin, errorMessage }: AuthFormProps) {
       localStorage.setItem("role", "guest");
       router.push("/MainPage");
     } catch (err) {
-      setMessage("Помилка при вході як гість");
-    } finally {
+  console.error(err); // теперь переменная используется
+  setMessage("Помилка при вході як гість");
+} finally {
       setLoading(false);
     }
   };
