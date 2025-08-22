@@ -1,19 +1,13 @@
 'use client';
 import React, { useState, useEffect } from "react";
 import styles from "../css/MainPageVideoTur.module.css";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../api/firebase";
 
 interface Tour {
-  id: number;
+  id: string;
   urlvideo: string;
   name: string;
-}
-
-interface BodyData {
-  tours: Tour[];
-}
-
-interface JsonData {
-  bodyData: BodyData;
 }
 
 export default function MainPageVideoTur() {
@@ -22,24 +16,25 @@ export default function MainPageVideoTur() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Загрузка данных из JSON
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        const response = await fetch("/MainPageHeader.json");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data: JsonData = await response.json();
-        if (Array.isArray(data.bodyData.tours)) {
-          // Берем последние 5 туров
-          const lastFiveTours = data.bodyData.tours.slice(-5);
-          setTours(lastFiveTours);
-        } else {
-          throw new Error("Неверная структура данных в JSON");
-        }
-      } catch (error) {
-        console.error("Ошибка загрузки данных:", error);
+        const querySnapshot = await getDocs(collection(db, "tours"));
+        const fetchedTours: Tour[] = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          fetchedTours.push({
+            id: doc.id,
+            urlvideo: data.urlvideo,
+            name: data.name,
+          });
+        });
+
+        // берем последние 5 туров
+        const lastFiveTours = fetchedTours.slice(-5);
+        setTours(lastFiveTours);
+      } catch (err) {
+        console.error("Ошибка загрузки данных:", err);
         setError("Не удалось загрузить данные. Попробуйте позже.");
       } finally {
         setIsLoading(false);
@@ -49,7 +44,7 @@ export default function MainPageVideoTur() {
     fetchTours();
   }, []);
 
-  // Автоматическая смена слайдов каждые 5 секунд
+  // Авто-слайд каждые 6 секунд
   useEffect(() => {
     if (tours.length === 0) return;
 
@@ -60,22 +55,11 @@ export default function MainPageVideoTur() {
     return () => clearInterval(interval);
   }, [tours]);
 
-  // Обработчик клика по точке
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
-  };
+  const handleDotClick = (index: number) => setCurrentIndex(index);
 
-  if (isLoading) {
-    return <div>Загрузка...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (tours.length === 0) {
-    return <div>Видео не найдено</div>;
-  }
+  if (isLoading) return <div>Загрузка...</div>;
+  if (error) return <div>{error}</div>;
+  if (tours.length === 0) return <div>Видео не найдено</div>;
 
   return (
     <div className={styles.carouselContainer}>
@@ -83,9 +67,7 @@ export default function MainPageVideoTur() {
         {tours.map((tour, index) => (
           <div
             key={tour.id}
-            className={`${styles.videoSlide} ${
-              index === currentIndex ? styles.active : ""
-            }`}
+            className={`${styles.videoSlide} ${index === currentIndex ? styles.active : ""}`}
           >
             <video autoPlay loop muted playsInline className={styles.video}>
               <source src={tour.urlvideo} type="video/mp4" />
@@ -93,7 +75,7 @@ export default function MainPageVideoTur() {
             </video>
             {index === currentIndex && (
               <div
-                key={`name-${currentIndex}`} // Уникальный ключ для перезапуска анимации
+                key={`name-${currentIndex}`}
                 className={styles.tourName}
               >
                 {tour.name}
@@ -106,9 +88,7 @@ export default function MainPageVideoTur() {
         {tours.map((_, index) => (
           <span
             key={index}
-            className={`${styles.dot} ${
-              index === currentIndex ? styles.activeDot : ""
-            }`}
+            className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""}`}
             onClick={() => handleDotClick(index)}
           />
         ))}
