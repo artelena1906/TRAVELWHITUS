@@ -1,5 +1,4 @@
 'use client';
-
 import { useState, useEffect } from "react";
 import { Box, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography, Button } from "@mui/material";
 import Link from "next/link";
@@ -9,7 +8,6 @@ import { app } from "../../../firebase"; // путь к твоей инициа�
 import ToursAdmin from './ToursAdmin';
 
 // Заглушки для форм
-const ToursForm = () => <Typography>Форма для турів</Typography>;
 const BlogForm = () => <Typography>Форма для блогу</Typography>;
 const DreamsForm = () => <Typography>Форма для мрій</Typography>;
 

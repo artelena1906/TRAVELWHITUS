@@ -6,6 +6,7 @@ import { Filters } from './MainPageSearch';
 import { db } from '../../api/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import Link from 'next/link';
+import { DocumentData } from "firebase/firestore";
 
 interface Tour {
   id: string;
@@ -47,7 +48,7 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
 
         const arr: Tour[] = [];
         snapshot.forEach((doc) => {
-          const data = doc.data() as any;
+          const data = doc.data() as DocumentData;
           if (!data?.date) return;
 
           const dt = parseDate(data.date);
