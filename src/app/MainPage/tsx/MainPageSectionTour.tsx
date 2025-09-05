@@ -5,20 +5,21 @@ import Image from 'next/image';
 import { Filters } from './MainPageSearch';
 import { db } from '../../api/firebase';
 import { collection, getDocs } from 'firebase/firestore';
+import Link from 'next/link';
 
 interface Tour {
   id: string;
   urlimage: string;
   date: string;
   month?: string;
-  country: string;
+  country?: string;
   name: string;
-  sity: string;
-  description: string;
-  seats: string;
+  sity?: string;
+  description?: string;
+  seats?: string;
   counter: number;
   price: number;
-  continent: string;
+  continent?: string;
   tourTypes?: string[];
   typeID?: string;
 }
@@ -27,52 +28,85 @@ interface MainPageSectionTourProps {
   filters?: Filters | null;
 }
 
-// Функция для преобразования "ДД.ММ.ГГГГ" в Date
-function parseDate(dateStr: string): Date {
-  const [day, month, year] = dateStr.split('.');
-  return new Date(Number(year), Number(month) - 1, Number(day));
-}
+// функция парсинга "ДД.ММ.ГГГГ"
+const parseDate = (dateStr: string): Date => {
+  const [d, m, y] = dateStr.split('.').map(Number);
+  return new Date(y, m - 1, d);
+};
 
 export default function MainPageSectionTour({ filters }: MainPageSectionTourProps) {
   const [tours, setTours] = useState<Tour[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchTours() {
+    const fetchTours = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'tours'));
-        const toursData: Tour[] = [];
-        querySnapshot.forEach(doc => {
-          toursData.push({ id: doc.id, ...doc.data() } as Tour);
+        const snapshot = await getDocs(collection(db, 'tours'));
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const arr: Tour[] = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data() as any;
+          if (!data?.date) return;
+
+          const dt = parseDate(data.date);
+          if (dt >= today) {
+            arr.push({
+              id: doc.id,
+              urlimage: data.urlimage || '',
+              name: data.name || 'Без назви',
+              sity: data.sity || '',
+              country: data.country || '',
+              continent: data.continent || '',
+              month: data.month || '',
+              typeID: data.typeID || '',
+              date: data.date,
+              counter: Number(data.counter) || 0,
+              price: Number(data.price) || 0,
+            });
+          }
         });
 
-        // Сортировка по дате перед сохранением
-        toursData.sort((a, b) => parseDate(a.date).getTime() - parseDate(b.date).getTime());
+        // сортировка по дате
+        arr.sort(
+          (a, b) => parseDate(a.date).getTime() - parseDate(b.date).getTime()
+        );
 
-        setTours(toursData);
-      } catch (error) {
-        console.error('Ошибка загрузки туров из Firestore:', error);
+        const nearestTours = arr.slice(0, 3);
+
+        setTours(nearestTours);
+
+      } catch (e) {
+        console.error('Ошибка загрузки туров:', e);
       } finally {
         setIsLoading(false);
       }
-    }
+    };
 
     fetchTours();
-  }, [filters]);
+  }, []);
 
-  if (isLoading) return <p>Загрузка туров...</p>;
+  if (isLoading) return <p>Загрузка турів...</p>;
+  if (!tours.length) return <p>Турів не знайдено</p>;
 
+  // фильтрация
   const filteredTours = filters
-    ? tours.filter(tour => {
-        if (filters.continent.length > 0 && !filters.continent.includes(tour.continent)) return false;
-        if (filters.countries.length > 0 && !filters.countries.includes(tour.country)) return false;
+    ? tours.filter((tour) => {
+        if (filters.continent.length > 0 && !filters.continent.includes(tour.continent || '')) return false;
+        if (filters.countries.length > 0 && !filters.countries.includes(tour.country || '')) return false;
         if (filters.months.length > 0 && (!tour.month || !filters.months.includes(tour.month))) return false;
         if (
           filters.tourTypes.length > 0 &&
           (!tour.typeID || !filters.tourTypes.includes(tour.typeID))
-        ) return false;
+        )
+          return false;
         const priceNumber = Number(tour.price);
-        if (priceNumber < filters.priceRange[0] || priceNumber > filters.priceRange[1]) return false;
+        if (
+          priceNumber < filters.priceRange[0] ||
+          priceNumber > filters.priceRange[1]
+        )
+          return false;
         return true;
       })
     : tours;
@@ -84,7 +118,7 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
         {filteredTours.length === 0 ? (
           <p>Турів не знайдено</p>
         ) : (
-          filteredTours.map(tour => (
+          filteredTours.map((tour) => (
             <div key={tour.id} className={styles.tourCard}>
               <div className={styles.tourMedia}>
                 <Image
@@ -98,10 +132,15 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
               </div>
               <div className={styles.tourInfo}>
                 <h3 className={styles.tourName}>{tour.name}</h3>
-                <p className={styles.tourCities}>{tour.sity}</p>
+                {tour.sity && <p className={styles.tourCities}>{tour.sity}</p>}
                 <div className={styles.tourDetails}>
-                  <span className={styles.tourDate}>Початок мандрівки: {tour.date}</span>
-                  <span className={styles.tourDays}>Кількість днів: {tour.counter} днів</span>
+                  <span className={styles.tourDays}>
+                    {/* Кількість днів: */}
+                    {tour.counter} днів
+                  </span>
+                  <span className={styles.tourDate}>
+                    Початок подорожі: {tour.date}
+                  </span>
                   <span className={styles.tourPrice}>Ціна: {tour.price} €</span>
                 </div>
               </div>
@@ -109,6 +148,10 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
           ))
         )}
       </div>
+      <Link href="/PageTours" className={styles.linkBlog}>
+           <button className={styles.buttonBlog}>Календар подорожей</button>
+        </Link>
     </div>
   );
 }
+

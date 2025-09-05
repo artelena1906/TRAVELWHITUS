@@ -1,33 +1,58 @@
-import React from "react";
+'use client';
+import { useEffect, useState } from "react";
 import styles from "../css/MainPageFooter.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import Mainpagewithus from './MainPageWithUs';
 
 export default function MainPageFooter() {
+  // Получаем роль пользователя из localStorage
+const [role, setRole] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+ useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userRole = localStorage.getItem("role");
+      setRole(userRole);
+      setLoading(false);
+    }
+  }, []);
+
+   if (loading) return null;
+
   return (
     <div className={styles.container}>
       <Mainpagewithus />
-    <div className={styles.containerFooter}>
-      {/* Логотип слева */}
-      <div className={styles.leftBlock}>
-        <Link href="/MainPage" className={styles.logo}>
-          <Image
-            src="/img/Logosova1.png"
-            alt="Логотип"
-            width={200}
-            height={200}
-            className={styles.logoImage}
-          />
-        </Link>
-      </div>
+      <div className={styles.containerFooter}>
 
-     <div className={styles.centerBlock}>
-          <Link href="../PageAboutUs"><p>Тури</p></Link>
-          <Link href="../PageAboutUs"><p>Про нас</p></Link>
-          <Link href="../PageAboutUs" ><p>Політика конфіденційності</p></Link>
+        {/* Логотип слева */}
+        <div className={styles.leftBlock}>
+          <Link href="/MainPage" className={styles.logo}>
+            <Image
+              src="/img/Logosova1.png"
+              alt="Логотип"
+              width={200}
+              height={200}
+              className={styles.logoImage}
+            />
+          </Link>
         </div>
 
+        {/* Центр с навигацией */}
+        <div className={styles.centerBlock}>
+          <Link href="../PageAboutUs"><p>Тури</p></Link>
+          <Link href="../PageAboutUs"><p>Про нас</p></Link>
+          <Link href="../PageAboutUs"><p>Політика конфіденційності</p></Link>
+
+           {/* Кнопка админки для админа */}
+          {role === "admin" && (
+            <Link href="../../adminka">
+              <p style={{ fontWeight: "bold", color: "red", cursor: "pointer" }}>
+                Адмінпанель
+              </p>
+            </Link>
+          )}
+        </div>
 
       {/* Соцсети справа */}
      <div className={styles.rightBlock}>

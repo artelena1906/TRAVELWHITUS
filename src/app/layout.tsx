@@ -13,15 +13,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const [role, setRole] = useState<string>("");
+  const [role, setRole] = useState<string>("guest");
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const storedRole = localStorage.getItem("role") || "guest";
     setRole(storedRole);
   }, []);
 
+  const isAdminRoute = isClient && pathname?.startsWith("/adminka");
+
   return (
-    <html lang="ukr">
+    <html lang="uk">
       <head>
         <title>Мандроманія</title>
         <meta name="description" content="Авторські тури" />
@@ -32,9 +36,10 @@ export default function RootLayout({
             role === "guest" ? styles.withGuest : ""
           }`}
         >
-          {pathname !== "/" && (
+          {/* Хедер и футер показываем только если не админка и на клиенте */}
+          {isClient && !isAdminRoute && pathname !== "/" && (
             <>
-              {role === "guest" && <GuestWarning />} {/* жёлтая полоса */}
+              {role === "guest" && <GuestWarning />}
               <div className={styles.fixedHeader}>
                 <MainPageLogo />
                 <MainPageMenu />
@@ -50,7 +55,7 @@ export default function RootLayout({
             {children}
           </main>
 
-          {pathname !== "/" && (
+          {isClient && !isAdminRoute && pathname !== "/" && (
             <div className={styles.footerContent}>
               <MainPageFooter />
             </div>

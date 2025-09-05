@@ -1,0 +1,104 @@
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 50px;
+}
+
+.textTitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 5px 0;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+.textContainerP1{
+    font-size: 22px;
+    text-align: center;
+    margin: 10px 0 0 0;
+}
+
+.textContainerP2{
+    text-indent: 35px;
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.2;  /* чтобы текст было удобно читать */
+    text-align: justify;
+}
+
+.textContainerP3{
+    text-indent: 35px;
+    font-size: 18px;
+    line-height: 1.2;  /* чтобы текст было удобно читать */
+    text-align: justify;
+    margin: 0;
+}
+
+.textContainer ul{
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.textContainer ul li{
+    list-style-position: inside;
+    padding-left: 10px;
+}
+
+.linkButton{
+    color: #fea500;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .textContainer {
+        margin: 10px 20px;
+    }
+
+    .textTitle {
+        font-size: 24px;
+    }
+
+    .textContainerP1{
+        font-size: 20px;
+    }
+
+    .textContainerP2{
+        font-size: 16px;
+    }
+
+    .textContainerP3{
+        font-size: 16px;
+    }
+
+    .textContainer ul{
+        font-size: 16px;
+    }   
+}   
+
+@media (max-width: 450px) {
+    .textContainer {
+        margin: 10px 10px;
+    }
+
+    .textTitle {
+        font-size: 20px;
+    }
+
+    .textContainerP1{
+        font-size: 18px;
+    }
+
+    .textContainerP2{
+        font-size: 14px;
+    }
+
+    .textContainerP3{
+        font-size: 14px;
+    }
+
+    .textContainer ul{
+        font-size: 14px;
+    }   
+}

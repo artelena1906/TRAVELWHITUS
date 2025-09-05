@@ -2,7 +2,7 @@
 import { useState, Suspense } from 'react';
 import styles from './css/PageTours.module.css';
 import MainPageSearch from '../MainPage/tsx/MainPageSearch';
-import MainPageSectionTour from '../MainPage/tsx/MainPageSectionTour';
+import MainPageSectionTourAll from '../MainPage/tsx/MainPageSectionTourAll';
 import { Filters } from '../MainPage/tsx/MainPageSearch';
 
 export default function PageTours() {
@@ -16,7 +16,7 @@ export default function PageTours() {
         </Suspense>
       </div>
       <div className={styles.rightcolumn}>
-        <MainPageSectionTour filters={filters} />
+        <MainPageSectionTourAll filters={filters} />
       </div>
     </div>
   );
