@@ -6,6 +6,7 @@ import { doc, getDoc, DocumentData } from 'firebase/firestore';
 import styles from './PageToursIndividual.module.css';
 import PageTourSchedule from './PageTourSchedule';
 import { FullTour, TourDay } from '../../../types/tour';
+import Link from 'next/link';
 
 export default function TourIndividual() {
   const params = useParams();
@@ -25,7 +26,15 @@ export default function TourIndividual() {
           const data = docSnap.data() as DocumentData;
 
           // Приведение данных к FullTour
-          const days: TourDay[] = (data.days || []).map((d: any, index: number) => ({
+          // const days: TourDay[] = (data.days || []).map((d: any, index: number) => ({
+          //   id: d.id || `${index + 1}`,
+          //   dayNumber: d.dayNumber || index + 1,
+          //   date: d.date || '',
+          //   description: d.description || '',
+          //   photos: d.photos || [],
+          // }));
+
+           const days: TourDay[] = (data.days || []).map((d: any, index: number) => ({
             id: d.id || `${index + 1}`,
             dayNumber: d.dayNumber || index + 1,
             date: d.date || '',
@@ -93,24 +102,24 @@ export default function TourIndividual() {
           <nav className={styles.leftMenu}>
             <ul>
               <li>
-                <a href="/" className={styles.breadcrumbLink}>
+                <Link href="/" className={styles.breadcrumbLink}>
                   Про подорож
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/" className={styles.breadcrumbLink}>
+                <Link href="/" className={styles.breadcrumbLink}>
                   Опис маршруту
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/" className={styles.breadcrumbLink}>
+                <Link href="/" className={styles.breadcrumbLink}>
                   Деталі
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/" className={styles.breadcrumbLink}>
+                <Link href="/" className={styles.breadcrumbLink}>
                   Відгуки
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
