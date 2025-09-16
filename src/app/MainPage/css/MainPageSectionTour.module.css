@@ -47,6 +47,7 @@
 .tourCard {
   background: #fff;
    min-height: 350px;
+   text-decoration: none;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -113,6 +114,7 @@
 .tourDays {
   font-size: 16px;
   margin-top: 10px;
+  color: black
 }
 
 .tourPrice {

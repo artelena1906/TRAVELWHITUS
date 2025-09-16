@@ -1,0 +1,181 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* margin: 0 auto; */
+}
+
+.hero {
+  height: 600px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroTitle {
+  margin-top: 250px;
+  font-family: Unbounded, Arial, sans-serif;;
+  font-weight: bold;
+  font-size: 7.5rem;
+  padding: 0 50px;
+  color: white;
+}
+
+.details {
+  color: white;
+  font-weight: bold;
+margin-top: 40px;
+padding: 0 50px;
+  font-size: 2.8rem; 
+}
+
+.details1 {
+  color: white;
+  padding: 10px 50px;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.Button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 50px;
+}
+
+.bookButton {
+  border: none;
+  background-color: #fea500;
+  color: white;
+  border-radius: 12px;
+  padding: 12px 30px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.bookButton:hover {
+  background-color: #e03e3e;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  gap: 20px;
+}
+
+.leftContainer {
+  width: 15%;
+}
+
+.rightContainer {
+  font-family: Stolzl, Arial, sans-serif;
+  /* flex: 6; */
+  text-align: justify;
+width: 85%;
+}
+
+.leftMenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 70px;
+  border-left: 3px solid #ccc;
+}
+
+.leftMenu li{
+list-style: none;
+margin-bottom: 15px;
+}
+
+.leftMenu ul {
+  list-style: none; /* убираем маркеры */
+  margin-left: 20px;
+  padding: 0;
+}
+
+.breadcrumbLink{
+  text-decoration: none;
+  color: #e59604f5;
+  /* font-weight: bold; */
+  font-size: 1.2rem;}
+
+  .tourName{
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .countryText{
+    font-size: 1.2rem;
+    margin: 30px 10px;
+    color: rgb(82, 81, 81);
+  }
+
+  .containerschedule{  
+  display: flex;
+  /* justify-content: space-between; */
+  color: rgb(114, 114, 114);
+  /* font-family: Stolzl, Arial, sans-serif; */
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  /* font-family: 'Calibri', sans-serif; */
+}
+
+.leftColumn {
+  width: 15%;
+}
+
+.rightColumn {
+  width: 85%;
+  text-align: justify;
+  margin-right: 10px;
+}
+
+.pDay{
+  background: rgb(220, 218, 218);
+ padding: 5px 20px;
+  border-radius: 12px;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.rightColumn p {
+  margin: 0 0 4px 0; 
+  line-height: 1.2; 
+}
+
+
+.date{
+  margin-top: 20px;
+  font-size: 1.0rem;
+  color:#e59604f5;
+}
+
+.separator {
+  border: none;          /* убираем стандартный стиль hr */
+  height: 2px;           /* толщина линии */
+  background: #ccc;      /* цвет линии */
+  width: 100%;           /* на всю ширину контейнера */
+  margin: 20px 0;        /* отступы сверху и снизу */
+}
+
+.dayImage {
+  width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 10px;
+}
+
+.photos{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: flex-start;
+}

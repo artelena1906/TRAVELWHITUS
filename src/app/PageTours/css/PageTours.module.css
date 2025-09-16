@@ -155,15 +155,6 @@
   margin: 20px 0;
 }
 
-.dots {
-  display: flex;
-  gap: 6px;
-}
-
-.dot.activeDot {
-  background: #333;
-}
-
 .pager {
   margin-top: 40px;
   width: 100%;

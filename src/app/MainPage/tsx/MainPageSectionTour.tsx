@@ -120,7 +120,7 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
           <p>Турів не знайдено</p>
         ) : (
           filteredTours.map((tour) => (
-            <div key={tour.id} className={styles.tourCard}>
+            <Link key={tour.id} href={`/PageTours/${tour.id}`} className={styles.tourCard}>
               <div className={styles.tourMedia}>
                 <Image
                   src={tour.urlimage}
@@ -145,7 +145,7 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
                   <span className={styles.tourPrice}>Ціна: {tour.price} €</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))
         )}
       </div>

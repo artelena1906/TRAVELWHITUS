@@ -10,14 +10,18 @@
 }
 
 .fixedHeader {
-  top: 0;
+  position: fixed;   /* фиксируем к окну */
+  top: 0;            /* сверху */
   left: 0;
-  right: 0;
-  background: white;
-  z-index: 1500;
+  width: 100%;       /* занимает всю ширину */
+  z-index: 1500;     /* поверх всего */
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: white;
+  height: 80px;      /* базовая высота */
 }
+
 
 /* если есть полоса гостя */
 .withGuest .fixedHeader {
@@ -32,6 +36,7 @@
 
 .mainContent {
   flex-grow: 1; /* Контент занимает оставшееся пространство */
+   padding-top: 80px;
 }
 
 
@@ -41,7 +46,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px; 
+  height: 80px; 
   width: 100%;
   background: white;
 }
@@ -135,6 +140,7 @@
   justify-content: space-around;
   align-items: center;
   background: white;
+  gap: 25px;
 }
 
 .menuItem {

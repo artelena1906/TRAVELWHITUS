@@ -93,39 +93,59 @@
 'use client';
 import React, { useEffect, useState } from "react";
 import { Box, Card, CardMedia, CardContent, Typography, Button, Modal } from "@mui/material";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
-import AddTourForm, { FullTour } from "./AddTourForm";
+import AddTourForm from "./AddTourForm";
+import { FullTour, TourDay } from "../../types/tour";
 
 interface TourCardData {
   id: string;
   name: string;
   country: string;
+  countryDescription?: string;
   date: string;
   sity: string;
   price: number;
   seats: string;
   urlimage: string;
+  urlvideo?: string;
+  continent?: string;
+  month?: string;
+  typeID?: string;
+  description?: string;
+  counter?: number;
+  days?: TourDay[];
+  activity?: boolean;
 }
 
 export default function ToursList() {
   const [tours, setTours] = useState<TourCardData[]>([]);
-  const [openAddModal, setOpenAddModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [editingTour, setEditingTour] = useState<FullTour | null>(null);
 
-  // Завантаження турів
+  // Загрузка туров
   const fetchTours = async () => {
     const querySnapshot = await getDocs(collection(db, "tours"));
-    const toursData = querySnapshot.docs.map(doc => {
-      const data = doc.data();
+    const toursData = querySnapshot.docs.map(docSnap => {
+      const data = docSnap.data();
       return {
-        id: doc.id,
+        id: docSnap.id,
         name: data.name,
         country: data.country,
+        countryDescription: data.countryDescription || "",
         date: data.date,
         sity: data.sity,
         price: data.price,
         seats: data.seats,
         urlimage: data.urlimage || "/placeholder.jpg",
+        urlvideo: data.urlvideo || "",
+        continent: data.continent || "",
+        month: data.month || "",
+        typeID: data.typeID || "",
+        description: data.description || "",
+        counter: data.counter || 0,
+        days: data.days || [],
+        activity: data.activity ?? true,
       } as TourCardData;
     });
     setTours(toursData);
@@ -135,25 +155,80 @@ export default function ToursList() {
     fetchTours();
   }, []);
 
-  const handleOpen = () => setOpenAddModal(true);
-  const handleClose = () => setOpenAddModal(false);
-
+  // Добавление нового тура
   const handleAddTour = async (tourData: Omit<FullTour, "id">) => {
     const docRef = await addDoc(collection(db, "tours"), tourData);
 
     const newTour: TourCardData = {
       id: docRef.id,
-      name: tourData.name,
-      country: tourData.country,
-      date: tourData.date,
-      sity: tourData.sity,
-      price: tourData.price,
-      seats: tourData.seats,
+      ...tourData,
       urlimage: tourData.urlimage || "/placeholder.jpg",
+      urlvideo: tourData.urlvideo || "",
+      countryDescription: tourData.countryDescription || "",
+      days: tourData.days || [],
+      activity: tourData.activity ?? true,
     };
 
     setTours(prev => [...prev, newTour]);
-    handleClose();
+    setOpenModal(false);
+  };
+
+  // Редактирование тура
+ const handleOpenEdit = (tour: TourCardData) => {
+  setEditingTour({
+    id: tour.id,
+    name: tour.name || "",
+    country: tour.country || "",
+    countryDescription: tour.countryDescription || "",
+    date: tour.date || "",
+    sity: tour.sity || "",
+    price: tour.price || 0,
+    seats: tour.seats || "",
+    urlimage: tour.urlimage || "",
+    urlvideo: tour.urlvideo || "",
+    continent: tour.continent || "",
+    month: tour.month || "",
+    typeID: tour.typeID || "",
+    description: tour.description || "",
+    counter: tour.counter || 0,
+    activity: tour.activity ?? true,
+    days: tour.days || [],
+  });
+  setOpenModal(true);
+};
+
+const handleUpdateTour = async (tourData: Omit<FullTour, "id">) => {
+  if (!editingTour) return;
+
+  const docRef = doc(db, "tours", editingTour.id);
+  await updateDoc(docRef, tourData);
+
+  setTours(prev =>
+    prev.map(t =>
+      t.id === editingTour.id
+        ? {
+            ...t,
+            name: tourData.name,
+            country: tourData.country,
+            countryDescription: tourData.countryDescription,
+            date: tourData.date,
+            sity: tourData.sity,
+            price: tourData.price,
+            seats: tourData.seats,
+            urlimage: tourData.urlimage || "/placeholder.jpg",
+          }
+        : t
+    )
+  );
+
+  setEditingTour(null);
+  setOpenModal(false);
+};
+
+
+  const handleCloseModal = () => {
+    setEditingTour(null);
+    setOpenModal(false);
   };
 
   return (
@@ -167,13 +242,13 @@ export default function ToursList() {
             textTransform: "none",
           }}
           variant="contained"
-          onClick={handleOpen}
+          onClick={() => setOpenModal(true)}
         >
           Додати тур
         </Button>
       </Box>
 
-      <Modal open={openAddModal} onClose={handleClose}>
+      <Modal open={openModal} onClose={handleCloseModal}>
         <Box
           sx={{
             position: "absolute" as const,
@@ -188,7 +263,11 @@ export default function ToursList() {
             width: { xs: "90%", sm: 600, md: 800 },
           }}
         >
-          <AddTourForm onClose={handleClose} onAdd={handleAddTour} />
+          <AddTourForm
+            onClose={handleCloseModal}
+            onAdd={editingTour ? handleUpdateTour : handleAddTour}
+            initialData={editingTour ?? undefined}
+          />
         </Box>
       </Modal>
 
@@ -231,7 +310,7 @@ export default function ToursList() {
                   borderColor: "blue",
                   textTransform: "none",
                 }}
-                onClick={() => alert(`Редагувати тур: ${tour.name}`)}
+                onClick={() => handleOpenEdit(tour)}
               >
                 Редагувати
               </Button>
