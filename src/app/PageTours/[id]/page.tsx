@@ -34,12 +34,12 @@ export default function TourIndividual() {
           //   photos: d.photos || [],
           // }));
 
-           const days: TourDay[] = (data.days || []).map((d: any, index: number) => ({
-            id: d.id || `${index + 1}`,
-            dayNumber: d.dayNumber || index + 1,
-            date: d.date || '',
-            description: d.description || '',
-            photos: d.photos || [],
+          const days: TourDay[] = (data.days || []).map((d: Partial<TourDay>, index: number) => ({
+            id: d.id ?? `${index + 1}`,
+            dayNumber: d.dayNumber ?? index + 1,
+            date: d.date ?? '',
+            description: d.description ?? '',
+            photos: d.photos ?? [],
           }));
 
           setTour({
