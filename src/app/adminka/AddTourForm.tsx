@@ -405,10 +405,12 @@ export default function AddTourForm({ onClose, onAdd, initialData }: AddTourForm
     setFormData(prev => ({ ...prev, days: [...prev.days, newDay] }));
   };
 
-  const updateDay = (id: string, key: keyof TourDay, value: any) => {
-    setFormData(prev => ({
+  const updateDay = <K extends keyof TourDay>(id: string, key: K, value: TourDay[K]) => {
+    setFormData((prev) => ({
       ...prev,
-      days: prev.days.map(d => d.id === id ? { ...d, [key]: value } : d),
+      days: prev.days.map((d) =>
+        d.id === id ? { ...d, [key]: value } : d
+      ),
     }));
   };
 
