@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "../css/MainPageFooter.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import Mainpagewithus from './MainPageWithUs';
+// import Mainpagewithus from './MainPageWithUs';
 
 export default function MainPageFooter() {
   // Получаем роль пользователя из localStorage

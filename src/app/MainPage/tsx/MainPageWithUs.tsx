@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import styles from "../css/MainPageHeader.module.css";
-import Image from "next/image";
+// import Image from "next/image";
 
 interface WithUs {
   title: string;
