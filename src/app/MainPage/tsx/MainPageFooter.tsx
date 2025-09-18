@@ -22,7 +22,7 @@ const [role, setRole] = useState<string | null>(null);
 
   return (
     <div className={styles.container}>
-      <Mainpagewithus />
+      {/* <Mainpagewithus /> */}
       <div className={styles.containerFooter}>
 
         {/* Логотип слева */}

@@ -46,7 +46,7 @@ export default function WhyWithUs() {
         {withus.length > 0 ? (
           withus.map((item, index) => (
             <div className={styles.whyWithUsItem} key={index}>
-              {item.urlimage && (
+              {/* {item.urlimage && (
                 <div className={styles.imageWrapper}>
                   <Image
                     src={item.urlimage}
@@ -57,7 +57,7 @@ export default function WhyWithUs() {
                   />
                 </div>
 
-              )}
+              )} */}
               <h4 className={styles.whyWithUsTitle}>{item.title}</h4>
             </div>
           ))

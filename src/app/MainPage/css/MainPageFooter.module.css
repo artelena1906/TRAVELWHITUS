@@ -5,7 +5,7 @@
   background-image: url("/img/footer2.png");
   width: 100%;
   height: auto;
-  margin: 50px 0 0 0;
+  margin: 30px 0 0 0;
   box-sizing: border-box;
   background-size: cover;
   background-position: center;
@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;        
-   margin: 70px 0 0 0;
+   margin:  0;
 }
 
 /* Левая часть — логотип */
@@ -36,7 +36,7 @@
 }
 
 .centerBlock {
-  display: flex;
+  display: flex; 
   justify-content: center;
   width: 100%;
 }
@@ -197,47 +197,93 @@
     fill: white; /* Белый самолётик при ховере */
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-  .containerFooter {
-    flex-direction: column; /* Логотип и соцсети вертикально */
-    height: auto; /* Высота по содержимому */
-    padding: 20px;
-  }
+/************** Адаптивность ************/
+
+@media (max-width: 1020px) {
+.centerBlock {
+  flex-direction: column;
+  margin: auto;
+}
+
+.centerBlock p{
+  font-size: 16px;
+  padding: 10px 0 0 0;
+  margin: 0;
+  /* margin-top: 3px; */
+}
+}
+
+@media (max-width: 650px) {
+.containerFooter {      
+   margin: 0;
+}
 
   .logoContainer {
     margin-bottom: 20px;
   }
 
   .logoImage {
-    max-width: 120px;
-    max-height: 120px;
+    max-width: 150px;
+    max-height: 150px;
   }
 
   .card1, .card2, .card3, .card4 {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
   }
 
   .instagram, .facebook, .whatsapp, .telegram {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .centerBlock p{
+  font-size: 14px;
+  padding: 10px 0 0 0;
+  margin: 0;
+}
+}
+
+@media (max-width: 550px) {
+.logoImage {
+    max-width: 110px;
+    max-height: 110px;
+  }
+
+  .card1, .card2, .card3, .card4 {
+    width: 40px;
+    height: 40px;
+  }
+
+  .instagram, .facebook, .whatsapp, .telegram {
+    width: 22px;
+    height: 22px;
   }
 }
 
 @media (max-width: 480px) {
+.rightBlock {
+  padding: 10px 20px 20px 10px;  
+}
+
   .logoImage {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 90px;
+    max-height: 90px;
   }
 
   .card1, .card2, .card3, .card4 {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
   }
 
   .instagram, .facebook, .whatsapp, .telegram {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
   }
+
+.centerBlock p{
+  font-size: 14px;
+  padding: 5px 0;
+  margin: 0;
+}
 }

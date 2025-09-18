@@ -324,8 +324,9 @@
 
 
   .menu {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: center;
+      gap: 5px;
   }
 
   .menubtn {

@@ -203,9 +203,9 @@
     border-radius: 8px;
   }
 
-  .tourMedia {
+  /* .tourMedia {
     height: 150px;
-  }
+  } */
 
   .tourName {
     font-size: 16px;
@@ -220,6 +220,11 @@
   .tourPrice {
     font-size: 14px;
   }
+
+  .buttonBlog {
+  padding: 10px 25px;
+  font-size: 1.0rem;
+}
 }
 
 @media (max-width: 480px) {
@@ -236,9 +241,9 @@
     gap: 10px;
   } */
 
-  .tourMedia {
+  /* .tourMedia {
     height: 120px;
-  }
+  } */
 
   .tourName {
     font-size: 14px;
@@ -253,4 +258,10 @@
   .tourPrice {
     font-size: 13px;
   }
+
+  
+  .buttonBlog {
+  padding: 10px 15px;
+  font-size: 0.8rem;
+}
 }

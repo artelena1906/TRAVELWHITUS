@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 100%; */
   margin: 20px 40px 0 40px;
 }
 
@@ -13,20 +12,19 @@
 
 .whyWithUsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
   gap: 20px;
   width: 100%;
 }
 
 .whyWithUsItem {
   background: rgb(237, 228, 211);
-  /* background: #dcd3d3; */
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex; 
-  text-align: left; /* выравнивание текста */
-  gap: 20px; /* расстояние между картинкой и текстом */
+  text-align: left; 
+  gap: 20px; 
 }
 
 .withusImage {
@@ -46,7 +44,7 @@
 
 .imageWrapper {
   width: 100px;
-  height: 100px;
+  /* height: 100px; */
   border-radius: 8px;
 }
 
@@ -71,6 +69,13 @@
   padding: 20px;
 }
 
+@media (max-width: 1410px) {
+  .withusImage {
+    width: 70px;
+    height: 70px;
+  }
+}
+
 @media (max-width: 768px) {
   .containerWithUs {
     padding: 15px;
@@ -80,14 +85,18 @@
     font-size: 20px;
   }
 
-  .withusContainer {
+  /* .whyWithUsContainer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
-  }
+  } */
 
   .withusItem {
     padding: 10px;
   }
+
+  .whyWithUsItem {
+  gap: 15px; /* расстояние между картинкой и текстом */
+}
 
   .withusImage {
     width: 80px;
@@ -97,6 +106,11 @@
   .withusTitle {
     font-size: 14px;
   }
+
+  .whyWithUsTitle {
+  font-size: 14px;
+}
+
 }
 
 @media (max-width: 480px) {
@@ -108,17 +122,25 @@
     font-size: 18px;
   }
 
-  .withusContainer {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
+  /* .whyWithUsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  } */
 
   .withusImage {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
   }
 
   .withusTitle {
     font-size: 13px;
   }
+
+    .whyWithUsItem {
+  gap: 5px; /* расстояние между картинкой и текстом */
+}
+
+  /* .whyWithUsTitle {
+  font-size: 12px;
+} */
 }
