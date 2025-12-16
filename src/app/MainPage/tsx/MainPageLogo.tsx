@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../css/MainPage.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 export default function MainPageLogo() {
   // const [userName, setUserName] = useState<string>("Гість");
-  const [role, setRole] = useState<string>("guest"); // "user" или "guest"
+  // const [role, setRole] = useState<string>("guest"); // "user" или "guest"
   const router = useRouter();
 
   // useEffect(() => {
