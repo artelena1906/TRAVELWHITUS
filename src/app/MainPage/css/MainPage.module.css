@@ -4,7 +4,7 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
-  background: rgba(237, 228, 211, 0.3);
+  background: #fffae1;
   max-width: 100vw;   /* фикс для адаптива */
   overflow-x: hidden; /* подстраховка */
 }
@@ -44,7 +44,7 @@
 
 .headerContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 80px; 
   width: 100%;
@@ -67,9 +67,9 @@
   margin: 0 10px;
 }
 
-.spacer {
+/* .spacer {
   flex: 1;
-}
+} */
 
 .logoContainer {
   flex: 0 1 auto;

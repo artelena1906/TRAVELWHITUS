@@ -8,6 +8,15 @@ interface PageTourScheduleProps {
 }
 
 export default function PageTourSchedule({ tour }: PageTourScheduleProps) {
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}-${month}-${year}`;
+};
+
   return (
     <div className={styles.container}>
       {tour.days.map((day, index) => (
@@ -15,7 +24,7 @@ export default function PageTourSchedule({ tour }: PageTourScheduleProps) {
           <div className={styles.containerschedule}>
             <div className={styles.leftColumn}>
               <span className={styles.pDay}>День {day.dayNumber}</span>
-              <div className={styles.date}>{day.date}</div>
+              <div className={styles.date}>{formatDate(day.date)}</div>
             </div>
             <div className={styles.rightColumn}>
               {day.description
@@ -34,7 +43,7 @@ export default function PageTourSchedule({ tour }: PageTourScheduleProps) {
                   key={idx}
                   src={photo}
                   width={280}
-                  height={180}
+                  height={210}
                   className={styles.dayImage}
                   priority={false}
                   alt={`Фото ${day.dayNumber}`}

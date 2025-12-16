@@ -107,14 +107,14 @@ margin-bottom: 15px;
 }
 
   .tourName{
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 2vw, 2.0rem);
     font-weight: bold;
     margin-top: 30px;
     text-align: center;
   }
 
   .countryText{
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin: 30px 10px;
     color: rgb(82, 81, 81);
   }
@@ -122,7 +122,7 @@ margin-bottom: 15px;
   .containerschedule{  
   display: flex;
   color: rgb(114, 114, 114);
-  font-size: 1.1rem;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
   margin-top: 1rem;
 }
 
@@ -149,12 +149,9 @@ margin-bottom: 15px;
   line-height: 1.2; 
 }
 
-
 .date{
-  /* margin-top: 20px;
-  font-size: 1.0rem; */
-  margin: clamp(0.5rem, 2vw, 10.0rem) 0 clamp(0.5rem, 3vw, 10.0rem) 0;
-  font-size: clamp(1.0rem, 2vw, 2.0rem);
+  margin: clamp(0.5rem, 1vw, 4.0rem) 0 clamp(0.5rem, 3vw, 10.0rem) 0;
+  font-size: clamp(1.0rem, 2vw, 1.2rem);
   color:#e59604f5;
 }
 
@@ -167,21 +164,22 @@ margin-bottom: 15px;
 }
 
 .dayImage {
-  flex: 1 1 calc(25% - 10px); /* 4 фото в ряд (минус gap) */
-  max-width: calc(25% - 10px);
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
+  width: 280px;          /* фиксированная ширина */
+  height: 210px;         /* фиксированная высота (4:3) */
   object-fit: cover;
+  border-radius: 12px;
+  flex: 0 0 auto;        /* запрещаем сжатие/растяжение */
 }
 
 .photos {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 10px;
-  justify-content: flex-start;
+  margin-top: 15px;
+  justify-content: center;
+  overflow-x: auto;       /* включаем скролл */
+  -webkit-overflow-scrolling: touch; /* плавный свайп */
 }
+
 
 /****************max-width: 950px**************************/
 
@@ -189,6 +187,11 @@ margin-bottom: 15px;
 .breadcrumbLink {
   padding: 0 clamp(0.1rem, 1vw, 0.6rem);
 }
+
+.photos {
+  margin: 0 10px;
+  justify-content: flex-start;
+  }
 
 .description {
     flex-direction: column; /* вертикально */
@@ -225,18 +228,9 @@ margin-bottom: 15px;
 }
 
 @media (max-width: 840px) {
-   .tourName {
-    font-size: 1.6rem;
-    margin: 0;
+  .tourName {
+    margin: auto;
   }
-
-   .countryText{
-    font-size: 1.0rem;
-  }
-
-    .containerschedule {  
-  font-size: 1.0rem;
-}
 }
 
 @media (max-width: 710px) {
@@ -249,14 +243,14 @@ margin-bottom: 15px;
 
   .leftColumn {
     width: 100%;
-    padding: 0 0.5rem; /* внутренний отступ слева и справа */
+    padding: 0 0.5rem; 
     box-sizing: border-box;
   }
 
   .rightColumn {
     width: 100%;
     text-align: justify;
-    padding: 0 0.5rem; /* внутренний отступ */
+    padding: 0 0.5rem; 
     box-sizing: border-box;
   }
 }

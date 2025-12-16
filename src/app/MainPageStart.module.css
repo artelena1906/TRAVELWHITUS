@@ -1,4 +1,4 @@
-  .container {
+  /* .container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,10 +15,10 @@
     height: 100vh;
     object-fit: cover;
     position: absolute;
-    object-position: center; /* Центрирование видео */
-    top: 0;
+    object-position: center; 
+        top: 0;
     left: 0;
-  }
+  } */
   
   /* Черный прозрачный оверлей */
   .overlay {
@@ -32,38 +32,39 @@
   }
   
   /* Блок с текстом */
-  .typewriter {
+   .typewriter {
     position: relative;
     z-index: 2;
     text-align: center;
   }
-  
-  .typewriter h1 {
+   
+   .typewriter h1 {
     font-weight: 700;
     font-size: 2.5rem;
     color: #FFD700;
     text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
-    margin: 200px auto 20px auto;
+    margin: 100px auto 20px auto;
     overflow: hidden;
     white-space: nowrap;
     width: 0;
-    animation: typing 4s steps(45, end) forwards;
+    animation: typing 3s steps(45, end) forwards;
   }
-  
-  .typewriter h3 {
+   
+   .typewriter h3 {
     font-weight: 700;
     font-size: 1.5rem;
     color: #FFD700;
-    text-shadow: 2лpx 2px 10px rgba(229, 236, 30, 0.5);
+    text-shadow: 2px 2px 10px rgba(229, 236, 30, 0.5);
     margin: auto;
     overflow: hidden;
     white-space: nowrap;
     width: 0;
     opacity: 0;
-    animation: fadeIn 0s 5s forwards, typing 6s steps(45, end) forwards 4s;
+    animation: fadeIn 0s 4s forwards, typing 5s steps(45, end) forwards;
+
   }
 
-  .button {
+   /* .button {
     position: absolute;
     margin-top: 50px;
     left: 50%;
@@ -83,12 +84,12 @@
   
   .button.show {
     opacity: 1;
-  }
+  } */
 
   /* Свечение при наведении */
-.button:hover {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); /* Золотое свечение */
-  transform: translateX(-50%) scale(1.05); /* Легкое увеличение */
+/* .button:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); 
+  transform: translateX(-50%) scale(1.05); 
 }
 
 .modal {
@@ -103,9 +104,9 @@
   align-items: center;
   z-index: 10;
   animation: fadeIn 0.5s ease-in-out;
-}
+} */
 
-.modalContent {
+/* .modalContent {
   background: #F5F5F5;
   padding: 20px;
   border-radius: 12px;
@@ -113,7 +114,6 @@
   width: 40%;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 165, 0, 0.3);
   border: 1px solid #ffd700;
-  /* min-width:80%; */
 }
 
 .closeButton {
@@ -130,9 +130,9 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
-}
+} */
 
-.tab {
+/* .tab {
   padding: 10px 20px;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
@@ -156,12 +156,12 @@
 .form input {
   padding: 10px;
   font-size: 16px;
- border: 1px solid #666666; /* Серые рамки */
+ border: 1px solid #666666;
   border-radius: 5px;
   font-family: 'Montserrat', sans-serif;
-}
+} */
 
-.formButton {
+/* .formButton {
   background-color: #FFC107;
   color: #1A237E;
   border: none;
@@ -176,10 +176,10 @@
 
 .formButton:hover {
   background-color: #FFB300;
-}
+} */
 
-.guestButton {
-  background-color: #d9d4d4; /* светло-серый фон */
+/* .guestButton {
+  background-color: #d9d4d4; 
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -188,10 +188,10 @@
   border: none;
   margin-top: 10px;
   transition: 0.2s;
-}
+} */
 
-.guestButton:hover {
-  background-color: #FFC107; /* при наведении более светлый желтый фон */
+/* .guestButton:hover {
+  background-color: #FFC107; 
 }
 
 
@@ -207,9 +207,9 @@
   text-align: center;
   margin-bottom: 15px;
   font-family: 'Montserrat', sans-serif;
-}
+} */
 
-.passwordWrapper {
+/* .passwordWrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -223,9 +223,9 @@
 .eyeIcon {
   width: 20px;
   height: 15px;
-}
+} */
 
-.eyeButton img,
+/* .eyeButton img,
 .eyeIcon {
   background: transparent !important;
   outline: none;
@@ -240,14 +240,143 @@
   cursor: pointer;
   padding: 0;
   outline: none;
-}
+} */
 
-.eyeButton:focus,
+/* .eyeButton:focus,
 .eyeButton:active {
   outline: none;
   box-shadow: none;
   background: transparent;
+} */
+
+
+.page {
+  position: relative;
+  min-height: 100vh;
 }
+
+/* INTRO */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999; 
+  
+  overflow: hidden;
+  background: #000;
+  transition: background-color 0.1s;
+}
+
+.intro.split {
+  background: transparent;
+}
+
+/* При разъезде затемнение исчезает */
+.split .overlay {
+  opacity: 0;
+}
+
+.half {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 2.2s ease-in-out; /* SPLIT_DURATION_MS */
+  will-change: transform;
+}
+
+.left { left: 0; }
+.right { right: 0; }
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+}
+.right .video { left: -100%; }
+
+/* Разъезд половинок */
+.split .left { transform: translateX(-100%); }
+.split .right { transform: translateX(100%); }
+
+/* ТЕКСТ */
+.textLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+  transition: opacity 0.5s ease; /* Текст плавно исчезнет при разъезде */
+}
+
+/* Скрываем текст, когда створки поехали */
+.fadeOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Первая строка: стартует почти сразу (через 0.2 сек) */
+.line1 {
+  font-size: clamp(26px, 3.2vw, 46px);
+  font-weight: 700;
+  animation: slideIn 900ms ease forwards;
+}
+
+/* Вторая строка: стартует сразу после первой */
+/* 200ms (delay 1) + 900ms (duration 1) = 1100ms */
+.line2 {
+  margin-top: 12px;
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 500;
+  animation: slideIn 1200ms ease forwards;
+  animation-delay: 900ms;
+}
+
+/* Кнопка "Пропустити" */
+.skip {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 4;
+
+background: gold;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+}
+
+.skip:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); 
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+  
+
+  /* Свечение при наведении */
+/* .button:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); 
+  transform: translateX(-50%) scale(1.05); 
+}
+
+
+
 
  /* Затемнение оверлея */
   @keyframes fadeOverlay {
