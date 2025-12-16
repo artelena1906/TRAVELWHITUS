@@ -1,16 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styles from "../css/MainPage.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 // import { auth } from "../../api/firebase";
 // import { onAuthStateChanged, signOut, User } from "firebase/auth";
 
 export default function MainPageLogo() {
   // const [userName, setUserName] = useState<string>("Гість");
   // const [role, setRole] = useState<string>("guest"); // "user" или "guest"
-  const router = useRouter();
+  // const router = useRouter();
 
   // useEffect(() => {
     // const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
