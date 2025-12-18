@@ -4,9 +4,9 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
-  background: #fffae1;
-  max-width: 100vw;   /* фикс для адаптива */
-  overflow-x: hidden; /* подстраховка */
+  background: #f4ebdb;
+  width: 100vw;  
+  overflow-x: hidden;
 }
 
 .fixedHeader {
@@ -18,8 +18,8 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  background: white;
-  height: 80px;      /* базовая высота */
+  /* background: white; */
+  height: 150px;      /* базовая высота */
 }
 
 
@@ -67,65 +67,16 @@
   margin: 0 10px;
 }
 
-/* .spacer {
-  flex: 1;
-} */
-
 .logoContainer {
-  flex: 0 1 auto;
+  /* flex: 0 1 auto; */
   text-align: center;
 }
 
 .logo {
-  max-width: 100%;
+  /* max-width: 100%; */
   height: auto;
+  /* margin-top: 50px; */
 }
-
-.userSection {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  margin-right: 2rem;
-}
-
-.userSection span {
-  color: #171717;
-  font-size: 1.2rem;
-  white-space: nowrap;
-}
-/* 
-.logoutButton {
-   background: white;
-  border: none;
-  padding: 5px 5px;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.logoutImg {
-  width: 40px;
-  height: 30px; 
-} */
-
-.logoutButton {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.logoutIcon {
-  position: relative;
-  width: 24px;
-  height: 24px;
-}
-
-.logoutButton:hover {
-  background:grey;
-}
-
 
 /*******СТИЛИ ДЛЯ MainPageMenu****************/
 .menuContainer {
@@ -140,7 +91,7 @@
   justify-content: space-around;
   align-items: center;
   background: white;
-  gap: 25px;
+  gap: 35px;
 }
 
 .menuItem {
@@ -152,7 +103,7 @@
 
 .menubtn {
   text-decoration: none;
-  color: #171717;
+  color: #9F4636;
   font-size: 1.2rem;
   padding: 0.5rem;
   cursor: pointer;
@@ -181,7 +132,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: #FFC1A6;
+  background: #9F4636;
   animation: slideIn 0.5s ease forwards;
 }
 

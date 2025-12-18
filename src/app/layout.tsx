@@ -97,6 +97,7 @@
 "use client";
 
 import React from "react";
+import "./globals.css";
 import MainPageLogo from "./MainPage/tsx/MainPageLogo";
 import MainPageMenu from "./MainPage/tsx/MainPageMenu";
 import MainPageFooter from "./MainPage/tsx/MainPageFooter";

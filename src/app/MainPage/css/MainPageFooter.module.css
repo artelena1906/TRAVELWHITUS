@@ -1,23 +1,15 @@
 /* MainPage/css/MainPageFooter.module.css */
 .container{
   display: flex;
-  flex-direction: column;
-  background-image: url("/img/footer2.png");
-  width: 100%;
+  justify-content: space-between;
+  background: #6C2D2C;
   height: auto;
   margin: 30px 0 0 0;
   box-sizing: border-box;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.containerFooter {
-  /* position: relative; */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;        
-   margin:  0;
+  color: #F1dcc9;
 }
 
 /* Левая часть — логотип */
@@ -30,15 +22,22 @@
 .rightBlock {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.5em;
-  align-items: flex-end;
-  padding: 20px 30px 30px 20px;  
+  padding: 20px 20px 20px 20px;
+}
+
+.rightBlock span {
+  margin-right: 50px;
+  color: #F1dcc9;
+  font-size: 20px;
+  /* margin: 5px 0; */
 }
 
 .centerBlock {
+  margin-left: 50px;
   display: flex; 
   justify-content: center;
-  width: 100%;
 }
 
 .centerBlock p{
@@ -72,18 +71,20 @@
 .up {
   display: flex;
   flex-direction: row;
-  gap: 0.5em;
+  gap: 0.5em; 
+  margin-left: 30px;
 }
 
 .down {
   display: flex;
   flex-direction: row;
   gap: 0.5em;
+    margin-left: 30px;
 }
 
 .card1 {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   outline: none;
   border: none;
   background: white;
@@ -101,8 +102,8 @@
 }
 
 .card2 {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   outline: none;
   border: none;
   background: white;
@@ -120,8 +121,8 @@
 }
 
 .card3 {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   outline: none;
   border: none;
   background: white;
@@ -139,8 +140,8 @@
 }
 
 .card4 {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   outline: none;
   border: none;
   background: white;
