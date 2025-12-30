@@ -1,0 +1,30 @@
+/* components/Skeleton/Skeleton.module.css */
+.skeleton {
+    /* Базовий сірий колір */
+    background-color: #e0e0e0;
+    /* Градієнт для ефекту мерехтіння */
+    background: linear-gradient(
+      90deg,
+      #e0e0e0 0px,
+      #f0f0f0 50%,
+      #e0e0e0 100%
+    );
+    /* Розмір фону більший за елемент, щоб градієнт міг рухатися */
+    background-size: 200% 100%;
+    /* Заокруглені кути для сучасно вигляду */
+    border-radius: 8px;
+    /* Анімація руху */
+    animation: shimmer 1.5s infinite linear;
+    /* Важливо: скелетон має займати місце */
+    display: block;
+    width: 100%;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }

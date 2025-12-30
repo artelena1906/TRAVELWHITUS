@@ -3,12 +3,20 @@ import React, { useState, useEffect } from "react";
 import styles from "../css/MainPageVideoTur.module.css";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../api/firebase";
+import Skeleton from '../../../components/Skeleton/Skeleton';
+import Link from 'next/link';
 
 interface Tour {
   id: string;
   urlvideo: string;
   name: string;
 }
+
+// функция парсинга "ДД.ММ.ГГГГ"
+const parseDate = (dateStr: string): Date => {
+  const [d, m, y] = dateStr.split('.').map(Number);
+  return new Date(y, m - 1, d);
+};
 
 export default function MainPageVideoTur() {
   const [tours, setTours] = useState<Tour[]>([]);
@@ -21,14 +29,20 @@ export default function MainPageVideoTur() {
       try {
         const querySnapshot = await getDocs(collection(db, "tours"));
         const fetchedTours: Tour[] = [];
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
         querySnapshot.forEach((doc) => {
           const data = doc.data();
+          if (!data?.date) return;
+ const dt = parseDate(data.date);
+if (dt >= today) {
           fetchedTours.push({
             id: doc.id,
             urlvideo: data.urlvideo,
             name: data.name,
           });
-        });
+        }});
 
         // берем последние 5 туров
         const lastFiveTours = fetchedTours.slice(-5);
@@ -57,7 +71,11 @@ export default function MainPageVideoTur() {
 
   const handleDotClick = (index: number) => setCurrentIndex(index);
 
-  if (isLoading) return <div>Загрузка...</div>;
+  if (isLoading) {
+  // Замість тексту показуємо сірий прямокутник
+  return <Skeleton height="40px" width="60%" />;
+}
+
   if (error) return <div>{error}</div>;
   if (tours.length === 0) return <div>Видео не найдено</div>;
 
@@ -65,8 +83,7 @@ export default function MainPageVideoTur() {
     <div className={styles.carouselContainer}>
       <div className={styles.videoWrapper}>
         {tours.map((tour, index) => (
-          <div
-            key={tour.id}
+          <Link key={tour.id} href={`/PageTours/${tour.id}`}
             className={`${styles.videoSlide} ${index === currentIndex ? styles.active : ""}`}
           >
             <video autoPlay loop muted playsInline className={styles.video}>
@@ -81,7 +98,7 @@ export default function MainPageVideoTur() {
                 {tour.name}
               </div>
             )}
-          </div>
+          </Link>
         ))}
       </div>
       <div className={styles.dotsContainer}>

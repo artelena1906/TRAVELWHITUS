@@ -35,13 +35,13 @@
 }
 
 .centerBlock {
-  margin-left: 50px;
+  margin-left: 100px;
   display: flex; 
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .centerBlock p{
-  color: white;
+  color: #F1dcc9;
   font-size: 20px;
   text-decoration: none;
   text-align: center;

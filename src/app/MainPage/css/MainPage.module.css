@@ -157,7 +157,7 @@
 
 .thickGoldLine {
   height: 5px;
-  background: #FFC1A6;
+  background: #9F4636;
   animation: fillGold 1.5s ease forwards;
   width: 100%;
 }
@@ -182,7 +182,7 @@
 
 .dropdown a {
   text-decoration: none;
-  color: #171717;
+  color: #6C2C2D;
   font-size: 1rem;
 }
 

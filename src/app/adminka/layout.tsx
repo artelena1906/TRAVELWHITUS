@@ -7,7 +7,6 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Здесь мы ничего не рендерим кроме содержимого админки.
   return <>{children}</>;
 }
 
