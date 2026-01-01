@@ -6,7 +6,7 @@
 
 .hero {
   min-height: 400px;
-  height: auto; /* даём возможность увеличиваться */
+  height: auto; 
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -18,7 +18,7 @@
   margin-top: clamp(1.5rem, 100vw, 15.5rem);
   font-family: Unbounded, Arial, sans-serif;
   font-weight: bold;
-  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  font-size: clamp(2.5rem, 10vw, 5.5rem);
   padding: 0 clamp(0.5rem, 4vw, 5.5rem);
   color: white;
 }
@@ -47,8 +47,8 @@
 
 .bookButton {
   border: none;
-  background-color: #fea500;
-  color: white;
+  background-color: #f1dcc9;
+  color: #6c2d2c;
   border-radius: 12px;
   padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 1vw, 2rem);
   font-weight: bold;
@@ -58,7 +58,8 @@
 }
 
 .bookButton:hover {
-  background-color: #d68b00e8;
+  background-color: #6c2d2c;
+  color: #f1dcc9;
 }
 
 /**page.tsx**/
@@ -85,7 +86,7 @@ width: 85%;
   flex-direction: column;
   width: 100%;
   margin-top: 70px;
-  border-left: 3px solid #ccc;
+  border-left: 3px solid #9f4636;
 }
 
 .leftMenu li{
@@ -101,7 +102,7 @@ margin-bottom: 15px;
 
 .breadcrumbLink{
   text-decoration: none;
-  color: #e59604f5;
+  color: #9f4636;
   font-weight: bold;
   font-size: clamp(0.4rem, 1.5vw, 1.2rem);
 }
@@ -114,7 +115,7 @@ margin-bottom: 15px;
   }
 
   .countryText{
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-size: clamp(0.8rem, 1.8vw, 1.2rem);
     margin: 30px 10px;
     color: rgb(82, 81, 81);
   }
@@ -122,7 +123,7 @@ margin-bottom: 15px;
   .containerschedule{  
   display: flex;
   color: rgb(114, 114, 114);
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-size: clamp(0.8rem, 1.8vw, 1.1rem);
   margin-top: 1rem;
 }
 
@@ -137,7 +138,8 @@ margin-bottom: 15px;
 }
 
 .pDay{
-  background: rgb(220, 218, 218);
+  background: #9f4636;
+  color: #f1dcc9;
  padding: 5px 20px;
   border-radius: 12px;
   display: inline-block;
@@ -152,20 +154,20 @@ margin-bottom: 15px;
 .date{
   margin: clamp(0.5rem, 1vw, 4.0rem) 0 clamp(0.5rem, 3vw, 10.0rem) 0;
   font-size: clamp(1.0rem, 2vw, 1.2rem);
-  color:#e59604f5;
+  color:#9f4636;
 }
 
 .separator {
   border: none;          /* убираем стандартный стиль hr */
   height: 2px;           /* толщина линии */
-  background: #ccc;      /* цвет линии */
+  background: #9f4636;      /* цвет линии */
   width: 100%;           /* на всю ширину контейнера */
   margin: 20px 0;        /* отступы сверху и снизу */
 }
 
 .dayImage {
-  width: 280px;          /* фиксированная ширина */
-  height: 210px;         /* фиксированная высота (4:3) */
+  width: 250px;          /* фиксированная ширина */
+  height: 180px;         /* фиксированная высота (4:3) */
   object-fit: cover;
   border-radius: 12px;
   flex: 0 0 auto;        /* запрещаем сжатие/растяжение */
@@ -173,9 +175,9 @@ margin-bottom: 15px;
 
 .photos {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-top: 15px;
-  justify-content: center;
+  /* justify-content: center; */
   overflow-x: auto;       /* включаем скролл */
   -webkit-overflow-scrolling: touch; /* плавный свайп */
 }
@@ -211,7 +213,7 @@ margin-bottom: 15px;
   .leftMenu {
     margin-top: 20px;       /* уменьшаем отступ сверху */
     border-left: none;      /* убираем левую линию */
-    border-bottom: 3px solid #ccc; /* добавляем линию снизу для отделения */
+    border-bottom: 3px solid #9f4636; /* добавляем линию снизу для отделения */
     padding-bottom: 10px;
   }
 
