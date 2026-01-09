@@ -43,6 +43,8 @@ export default function TourIndividual() {
             price: data.price || 0,
             seats: data.seats || '',
             description: data.description || '',
+            textDetails: data.textDetails || '',
+            details: data.details || null,
             urlimage: data.urlimage || '',
             urlvideo: data.urlvideo || '',
             continent: data.continent || '',

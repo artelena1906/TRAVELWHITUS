@@ -4,6 +4,7 @@ export interface FullTour {
   name: string;
   country: string;
   date: string;
+  textDetails?: string;
   price: number;
   urlimage: string | null;
   continent: string;
@@ -17,6 +18,7 @@ export interface FullTour {
   urlvideo?: string | null;
   counter: number;
   days: TourDay[];
+  details?: TourDatails;
 }
 
 // День тура
@@ -26,4 +28,14 @@ export interface TourDay {
   date: string;
   description: string;
   photos: string[];
+}
+
+// Деталі тура
+export interface TourDatails {
+  accommodation?: string[];
+  formatTravel?: string[];
+  importantKnow?: string[];
+  includPrice?: string[];
+  notIncludPrice: string[];
+  route?: string[];
 }
