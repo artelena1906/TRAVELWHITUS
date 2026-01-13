@@ -130,7 +130,7 @@ export default function PageTourSchedule({ tour }: PageTourScheduleProps) {
       {/* Проверяем, есть ли вообще блок details или текстовое описание */}
       {(tour.textDetails || tour.details) && (
         <>
-          <hr className={styles.separator} style={{ marginTop: '40px', marginBottom: '40px' }} />
+          <hr className={styles.separator} />
 
           {/*Текстовое описание (если есть) */}
           {tour.textDetails && (

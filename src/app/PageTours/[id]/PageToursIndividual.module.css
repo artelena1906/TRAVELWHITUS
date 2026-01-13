@@ -87,6 +87,8 @@ width: 85%;
   width: 100%;
   margin-top: 70px;
   border-left: 3px solid #9f4636;
+  position: sticky;
+  top: 170px;
 }
 
 .leftMenu li{
@@ -187,7 +189,6 @@ margin-bottom: 15px;
 .detailsText{
   display: flex;
   font-size: clamp(0.8rem, 1.8vw, 1.1rem);
-  line-height: 1.5;
   margin: 30px 10px;
 } 
 
@@ -208,13 +209,27 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+}
 
+.containerDetails h4{
+  margin: 0 0 0 40px;
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  color: #9f4636;
+}
+
+.containerDetails ul{
+   line-height: 1.5;
 }
 
 
 /****************max-width: 950px**************************/
+@media (max-width: 1250px) {
+.description {
+    flex-direction: column; /* вертикально */
+    padding: 5px;          /* меньше отступы */
+    gap: 0;               /* убираем промежутки */
+  }
 
-@media (max-width: 950px) {
 .breadcrumbLink {
   padding: 0 clamp(0.1rem, 1vw, 0.6rem);
 }
@@ -222,12 +237,6 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
 .photos {
   margin: 0 10px;
   justify-content: flex-start;
-  }
-
-.description {
-    flex-direction: column; /* вертикально */
-    padding: 5px;          /* меньше отступы */
-    gap: 0;               /* убираем промежутки */
   }
 
   .leftContainer,
@@ -239,11 +248,33 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
     margin-bottom: 20px; /* отступ от меню до контента */
   }
 
-  .leftMenu {
-    margin-top: 20px;       /* уменьшаем отступ сверху */
-    border-left: none;      /* убираем левую линию */
-    border-bottom: 3px solid #9f4636; /* добавляем линию снизу для отделения */
+  /* .leftMenu {
+    margin-top: 20px;      
+    border-left: none;     
+    border-bottom: 3px solid #9f4636; 
     padding-bottom: 10px;
+  } */
+
+  .leftMenu {
+    margin-top: 20px;
+    border-left: none;
+    border-bottom: 3px solid #9f4636;
+    padding-bottom: 10px;
+
+    /* --- НАСТРОЙКИ ДЛЯ МОБИЛЬНОГО STICKY --- */
+    position: sticky;
+    
+    /* Самое важное: высота вашего хедера (150px) */
+    top: 150px; 
+    
+    /* Чтобы меню было поверх текста, который едет снизу */
+    z-index: 1000; 
+    
+    /* ОБЯЗАТЕЛЬНО: цвет фона такой же, как у сайта (#f4ebdb) 
+       Иначе текст будет некрасиво просвечивать под меню */
+    background-color: #f4ebdb; 
+    
+    width: 100%;
   }
 
   .leftMenu ul {
@@ -265,6 +296,13 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
 }
 
 @media (max-width: 710px) {
+
+  .blockDetails {
+ 
+  grid-template-columns: 1fr; /* Две колонки одинаковой ширины */
+  
+}
+
   .containerschedule {  
     display: flex;
     flex-direction: column;

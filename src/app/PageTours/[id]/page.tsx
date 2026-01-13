@@ -109,11 +109,11 @@ export default function TourIndividual() {
                   Деталі
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/" className={styles.breadcrumbLink}>
                   Відгуки
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
