@@ -20,7 +20,6 @@ export default function PageTourSchedule({ tour }: PageTourScheduleProps) {
 
   return (
     <div className={styles.container}>
-      {/* 1. ВЫВОД СПИСКА ДНЕЙ (МАРШРУТ) */}
       {tour.days.map((day, index) => (
         <div key={day.id || index}>
           <div className={styles.containerschedule}>

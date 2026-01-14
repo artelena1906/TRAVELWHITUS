@@ -222,76 +222,80 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
 }
 
 
-/****************max-width: 950px**************************/
+/****************max-width: 1250px**************************/
 @media (max-width: 1250px) {
-.description {
-    flex-direction: column; /* вертикально */
-    padding: 5px;          /* меньше отступы */
-    gap: 0;               /* убираем промежутки */
+  /* 1. Общие настройки сетки */
+  .description {
+    flex-direction: column; /* Элементы друг под другом */
+    padding: 0;             /* Убираем отступы по краям, чтобы меню было на всю ширину */
+    gap: 0;
   }
 
-.breadcrumbLink {
-  padding: 0 clamp(0.1rem, 1vw, 0.6rem);
-}
-
-.photos {
-  margin: 0 10px;
-  justify-content: flex-start;
-  }
-
-  .leftContainer,
-  .rightContainer {
-    width: 100%;  /* на всю ширину */
-  }
-
+  /* 2. НАСТРОЙКИ ЛИПКОГО КОНТЕЙНЕРА (Самое важное) */
   .leftContainer {
-    margin-bottom: 20px; /* отступ от меню до контента */
-  }
-
-  /* .leftMenu {
-    margin-top: 20px;      
-    border-left: none;     
-    border-bottom: 3px solid #9f4636; 
-    padding-bottom: 10px;
-  } */
-
-  .leftMenu {
-    margin-top: 20px;
-    border-left: none;
-    border-bottom: 3px solid #9f4636;
-    padding-bottom: 10px;
-
-    /* --- НАСТРОЙКИ ДЛЯ МОБИЛЬНОГО STICKY --- */
-    position: sticky;
-    
-    /* Самое важное: высота вашего хедера (150px) */
-    top: 150px; 
-    
-    /* Чтобы меню было поверх текста, который едет снизу */
-    z-index: 1000; 
-    
-    /* ОБЯЗАТЕЛЬНО: цвет фона такой же, как у сайта (#f4ebdb) 
-       Иначе текст будет некрасиво просвечивать под меню */
-    background-color: #f4ebdb; 
-    
     width: 100%;
+    height: auto;
+    min-height: 0;
+    position: sticky;
+    top: 150px; 
+    z-index: 1000;              /* Поверх текста */
+    background-color: #f4ebdb;  /* Цвет фона (обязательно!) */
+    border-bottom: 3px solid #9f4636; /* Линия снизу */
+    padding: 10px 0;
+    margin: 0; /* Убираем лишние внешние отступы */
   }
 
+  /* 3. Сброс настроек самого меню (оно теперь просто лежит внутри контейнера) */
+  .leftMenu {
+    position: static; /* Отключаем sticky внутри, теперь работает родитель */
+    top: auto;
+    width: 100%;
+    margin-top: 0; 
+    border: none;     /* Границу перенесли на контейнер */
+    padding-bottom: 0;
+  }
+
+  /* Делаем список горизонтальным */
   .leftMenu ul {
     display: flex;
-    flex-wrap: wrap;       /* чтобы ссылки могли переноситься */
-    justify-content: center;
+    flex-wrap: wrap;        /* Перенос строк, если не влезает */
+    justify-content: center; /* По центру */
     margin: 0;
+    padding: 0;
+    gap: 15px;              /* Отступ между ссылками */
   }
 
   .leftMenu li {
-    margin: 0 15px 10px 0; /* горизонтальные отступы */
+    margin: 0; /* Убираем margin, так как используем gap */
+  }
+
+  /* Адаптация ссылок */
+  .breadcrumbLink {
+    padding: 5px 10px; /* Чуть больше область клика для пальцев */
+    display: block;
+  }
+
+  /* 4. Настройки контента снизу */
+  .rightContainer {
+    width: 100%;
+    padding: 20px 15px; /* Добавляем воздух тексту */
+  }
+
+  .photos {
+    margin: 0 10px;
+    justify-content: center; /* Фото по центру красивее на мобильных */
   }
 }
 
 @media (max-width: 840px) {
   .tourName {
     margin: auto;
+  }
+}
+
+@media (max-width: 770px) {
+  .leftContainer {
+    top: 120px;
   }
 }
 
@@ -324,6 +328,12 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
   }
 }
   
+
+@media (max-width: 490px) {
+.leftContainer {
+    top: 100px;
+  }
+}
 
 @media (max-width: 450px) {
 .breadcrumbLink {
