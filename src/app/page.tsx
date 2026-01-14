@@ -1,4 +1,4 @@
-import React from "react";
+
 // Импортируем основной компонент страницы
 import MainPageContent from "./MainPage/page"; 
 

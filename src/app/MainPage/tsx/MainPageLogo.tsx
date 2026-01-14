@@ -11,7 +11,7 @@ export default function MainPageLogo() {
         <div className={styles.spacer}></div>
 
         <div className={styles.logoContainer}>
-          <Link prefetch={true} href="/MainPage">
+          <Link prefetch={true} href="/">
             <Image
               src="/img/logo5.png"
               alt="Логотип"

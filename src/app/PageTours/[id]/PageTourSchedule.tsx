@@ -1,70 +1,4 @@
-// import React from "react";
-// import styles from './PageToursIndividual.module.css';
-// import { FullTour } from "../../../types/tour";
-// import Image from "next/image";
 
-// interface PageTourScheduleProps {
-//   tour: FullTour;
-// }
-
-// export default function PageTourSchedule({ tour }: PageTourScheduleProps) {
-
-// const formatDate = (dateString: string) => {
-//   const date = new Date(dateString);
-//   const day = String(date.getDate()).padStart(2, "0");
-//   const month = String(date.getMonth() + 1).padStart(2, "0");
-//   const year = date.getFullYear();
-//   return `${day}-${month}-${year}`;
-// };
-
-//   return (
-//   <div className={styles.container}>
-//     {tour.days.map((day, index) => (
-//       <div key={day.id}>
-//         <div className={styles.containerschedule}>
-//           <div className={styles.leftColumn}>
-//             <span className={styles.pDay}>День {day.dayNumber}</span>
-//             <div className={styles.date}>{formatDate(day.date)}</div>
-//           </div>
-
-//           <div className={styles.rightColumn}>
-//             {day.description
-//               .split("\n")
-//               .filter(p => p.trim() !== "")
-//               .map((paragraph, i) => (
-//                 <p key={i}>{paragraph}</p>
-//               ))}
-
-//             {day.photos?.length > 0 && (
-//               <div className={styles.photos}>
-//                 {day.photos.map((photo, idx) => (
-//                   <Image
-//                     key={idx}
-//                     src={photo}
-//                     width={280}
-//                     height={210}
-//                     className={styles.dayImage}
-//                     alt={`Фото ${day.dayNumber}`}
-//                   />
-//                 ))}
-//               </div>
-//             )}
-//           </div>
-//         </div>
-
-//         {index < tour.days.length - 1 && (
-//           <hr className={styles.separator} />
-//         )}
-
-        
-//       </div>
-//     ))}
-//   </div>
-// );
-// }
-
-
-import React from "react";
 import styles from './PageToursIndividual.module.css';
 import { FullTour } from "../../../types/tour";
 import Image from "next/image";
@@ -125,6 +59,10 @@ export default function PageTourSchedule({ tour }: PageTourScheduleProps) {
           )}
         </div>
       ))}
+
+      {/* --- ДОБАВЛЯЕМ "ЯКОРЬ" ДЛЯ СКРОЛЛА СЮДА --- */}
+      {/* Сюда приедет экран при нажатии на "Деталі" */}
+      <div id="section-details" style={{ scrollMarginTop: "180px" }}></div>
 
       {/* ВЫВОД БЛОКА ДЕТАЛЕЙ */}
       {/* Проверяем, есть ли вообще блок details или текстовое описание */}
