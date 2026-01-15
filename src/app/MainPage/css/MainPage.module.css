@@ -105,7 +105,7 @@
 .menubtn {
   text-decoration: none;
   color: #9F4636;
-  font-size: 1.2rem;
+  font-size: clamp(1.2rem, 1.8vw, 0.6rem);
   padding: 0.5rem;
   cursor: pointer;
   display: flex;
@@ -294,10 +294,10 @@
   max-width: 60%;
 }
 
-.logoContainer {
+/* .logoContainer {
   text-align: left;
   margin-left: 10vw;
-}
+} */
 
 .fixedHeader {
   height: 120px; 
