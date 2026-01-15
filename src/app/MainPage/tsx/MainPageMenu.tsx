@@ -23,8 +23,8 @@ export default function MainPageMenu() {
     { href: "/PageTours", text: "ТУРИ" },
     { href: "/PageDreams", text: "МРІЇ" },
     { href: "/PageBlog", text: "БЛОГ" },
-    { href: "/PageContacts", text: "ФОТОГАЛЕРЕЯ" },
-    { href: "/PageLogin", text: "ВІДЕОГАЛЕРЕЯ" },
+    { href: "/PageContacts", text: "ФОТО" },
+    { href: "/PageLogin", text: "ВІДЕО" },
     // { href: "/PageAboutUs", text: "ПРО НАС" },
   ]);
 
