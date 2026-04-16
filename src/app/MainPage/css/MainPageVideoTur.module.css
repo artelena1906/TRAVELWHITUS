@@ -8,8 +8,8 @@
 .carouselContainer {
   display: flex;
   width: 100%;
-  height: 100vh; /* видео на весь экран по высоте */
-  max-height: 800px; /* ограничение на больших экранах */
+  height: 100vh; 
+  max-height: 800px; 
   position: relative;
   overflow: hidden;
   margin: 0;
@@ -42,7 +42,7 @@
   transform: translateX(100%);
 }
 
-.tourName {
+/* .tourName {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -72,7 +72,53 @@
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
     }
+  } */
+
+  .tourName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Начальное состояние задаем здесь, чтобы не было скачка до старта анимации */
+  transform: translate(-50%, -50%) scale(0.6); 
+  width: 90%;
+  color: white;
+  
+  /* Адаптивный размер: минимум 1.8rem, максимум 5rem */
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  
+  /* Глубокая многослойная тень для идеальной читаемости на любом видео */
+  text-shadow: 
+  0 4px 15px rgba(0, 0, 0, 0.6), /* Глубокая тень для объема */
+  0 0 50px rgba(0, 0, 0, 0.4);   /* Мягкое темное облако вокруг букв */
+               
+  text-align: center;
+  opacity: 0;
+  z-index: 10;
+  
+  /* Более сложная кривая анимации для плавности */
+  animation: slideForward 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideForward {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+    filter: blur(15px); /* Текст появляется из расфокуса */
   }
+  40% {
+    opacity: 0.3; /* Плавный вход */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
   
   .dotsContainer {
     position: absolute;
