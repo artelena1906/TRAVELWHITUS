@@ -5,8 +5,12 @@
   margin: 0;
   padding: 0;
   background: #f4ebdb;
-  /* width: 100vw;   */
-  /* overflow-x: hidden; */
+ /* background: linear-gradient(
+  180deg,
+  #f4ebdb 0%,
+  #f8f1e4 40%,
+  #ffffff 100%
+); */
   overflow-x: clip;
 }
 
@@ -20,7 +24,13 @@
   flex-direction: column;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   /* background: white; */
-  height: 150px;      /* базовая высота */
+  /* height: 150px;       */
+   background: linear-gradient(
+  180deg,
+  #f4ebdb 0%,
+  #f8f1e4 40%,
+  #ffffff 100%
+);
 }
 
 
@@ -37,7 +47,7 @@
 
 .mainContent {
   flex-grow: 1; /* Контент занимает оставшееся пространство */
-   padding-top: 80px;
+   padding-top: 60px;
 }
 
 
@@ -47,9 +57,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px; 
+  height: 60px; 
   width: 100%;
-  background: white;
+ /* background: linear-gradient(
+  180deg,
+  #f4ebdb 0%,
+  #f8f1e4 40%,
+  #ffffff 100%
+); */
 }
 
 .guestWarning {
@@ -91,8 +106,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: white;
-  gap: 35px;
+  /* background: white; */
+  gap: 25px;
 }
 
 .menuItem {
@@ -105,7 +120,7 @@
 .menubtn {
   text-decoration: none;
   color: #9F4636;
-  font-size: clamp(1.2rem, 1.8vw, 0.6rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.4rem);
   padding: 0.5rem;
   cursor: pointer;
   display: flex;
@@ -291,7 +306,7 @@
   }
 
   .logo {
-  max-width: 60%;
+  max-width: 50%;
 }
 
 /* .logoContainer {

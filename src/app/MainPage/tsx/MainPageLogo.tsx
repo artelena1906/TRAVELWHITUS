@@ -15,7 +15,7 @@ export default function MainPageLogo() {
             <Image
               src="/img/logo5.png"
               alt="Логотип"
-              width={480}
+              width={340}
               height={100}
               className={styles.logo}
             />
