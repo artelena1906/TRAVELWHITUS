@@ -114,7 +114,7 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Найближчі тури</h1>
+      <h1 className={styles.title}>Куди їдемо далі?</h1>
       <div className={styles.toursContainer}>
         {filteredTours.length === 0 ? (
           <p>Турів не знайдено</p>
@@ -125,33 +125,38 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
                 <Image
                   src={tour.urlimage}
                   alt={tour.name}
-                  width={300}
-                  height={200}
+                  width={250}
+                  height={150}
                   className={styles.tourImage}
                   priority={false}
                 />
               </div>
               <div className={styles.tourInfo}>
-                <h3 className={styles.tourName}>{tour.name}</h3>
-                {tour.sity && <p className={styles.tourCities}>{tour.sity}</p>}
-                <div className={styles.tourDetails}>
+                <span className={styles.tourName}>{tour.name}</span>
+                 <div className={styles.tourMeta}>
                   <span className={styles.tourDays}>
-                    {/* Кількість днів: */}
                     {tour.counter} днів
                   </span>
                   <span className={styles.tourDate}>
                     Початок подорожі: {tour.date}
                   </span>
-                  <span className={styles.tourPrice}>Ціна: {tour.price} €</span>
+                   <div className={styles.tourBottom}>
+    <span className={styles.tourPrice}>{tour.price} €</span>
+    <button className={styles.buttonBlog}>
+      Деталі пригоди
+    </button>
+  </div>
+  </div>
                 </div>
-              </div>
+              {/* </div> */}
+              
             </Link>
           ))
         )}
       </div>
-      <Link href="/PageTours" className={styles.linkBlog}>
+      {/* <Link href="/PageTours" className={styles.linkBlog}>
            <button className={styles.buttonBlog}>Календар подорожей</button>
-        </Link>
+        </Link> */}
     </div>
   );
 }

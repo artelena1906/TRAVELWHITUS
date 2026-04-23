@@ -25,10 +25,17 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   /* background: white; */
   /* height: 150px;       */
-   background: linear-gradient(
+   /* background: linear-gradient(
   180deg,
   #f4ebdb 0%,
   #f8f1e4 40%,
+  #ffffff 100%
+); */
+background: linear-gradient(
+  180deg,
+  #f4ebdb 0%,
+  #f4ebdb 10%,   /* Держим темный цвет чуть дольше */
+  #ffffff 90%,   /* Резче уходим в белый в самом конце */
   #ffffff 100%
 );
 }
@@ -47,7 +54,7 @@
 
 .mainContent {
   flex-grow: 1; /* Контент занимает оставшееся пространство */
-   padding-top: 60px;
+   /* padding-top: 60px; */
 }
 
 
@@ -120,7 +127,7 @@
 .menubtn {
   text-decoration: none;
   color: #9F4636;
-  font-size: clamp(0.9rem, 1.8vw, 1.4rem);
+  font-size: clamp(0.8rem, 1.6vw, 1.3rem);
   padding: 0.5rem;
   cursor: pointer;
   display: flex;

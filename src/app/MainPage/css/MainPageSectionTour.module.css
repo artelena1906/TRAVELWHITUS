@@ -2,99 +2,127 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: transparent;
-  /* padding: 20px;  */
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
+  /* min-height: 100vh; */
 }
 
 .title {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin: 40px 0;
-  color: #6c2d2c
+  font-size: 2.0rem;
+  font-weight: 600;
+  margin: 50px 0 30px 0;
+  color: #6c2d2c;
+  text-align: center;
+  font-family: var(--font-montserrat), sans-serif;
 }
 
+/* Контейнер карточек — ВАЖНО: колонка */
 .toursContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(315px, 370px));
-  gap: 15px;
-  width: 100%;        
-  max-width: 1300px;  
-  justify-content: center;
+  display: flex;
+  justify-content: center; /* центрируем */
+  gap: 20px;
+  flex-wrap: wrap; /* перенос, если не влезают */
+  width: 100%;
+  /* margin: 0 auto; */
 }
 
+/* Кнопка */
 .buttonBlog {
-  background-color: #6D2C2D;
-  border: none;
-  color: #f1dcc9;
-  padding: 15px 35px;
-  border-radius: 25px;
+ background-color: #9F4636;
+  color: #fff;
+  border: 1px solid #9F4636;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 1.0rem;
-  font-weight: bold;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .buttonBlog:hover {
-  background: #9F4636; /* Тёплый оранжево-персиковый */
+  background-color: transparent;
+  border: 2px solid #9F4636;
+  color: #9F4636;
+  font-weight: bold;
 }
 
 .linkBlog {
   text-decoration: none;
-  margin:40px 0 20px 0;
+  margin: 40px 0 20px 0;
 }
 
 .tourCard {
-  background: #fff;
-   min-height: 350px;
-   text-decoration: none;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  cursor: pointer;
-  box-sizing: border-box;
+  width: 480px;
+  height: 180px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
 }
 
 .tourCard:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
+/* 📷 Левая часть (фото) */
 .tourMedia {
-  width: 100%;
-  height: 250px;
-  overflow: hidden; 
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  flex: 0 0 200px;
+  height: 100%;
+  object-fit: cover;
+  border-right: 1px solid #f1e5d5;
 }
 
-.page {
+/* .page {
   flex: 0 0 100%;
   display: flex;
   justify-content: center; 
   gap: 20px;
-}
+} */
 
+/* Картинка */
 .tourImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* 📄 Правая часть */
 .tourInfo {
-  padding: 15px;
   flex: 1;
+  padding: 8px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .tourName {
   font-size: 20px;
   font-weight: bold;
-  margin: 0 0 10px;
-  color: #42313A;
+  color: #2c2c2c;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tourMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* font-size: 13px; */
+  /* color: #777; */
+}
+
+/* Детали */
+.tourDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
 }
 
 .tourCities {
@@ -104,25 +132,27 @@
   line-height: 1.4;
 }
 
-.tourDetails {
-  display: flex;
- flex-direction: column;
-  margin-top: auto;
-}
-
-.tourDate,
-.tourDays {
+.tourDays,
+.tourDate {
   font-size: 16px;
-  margin-top: 10px;
-  color: black
+  text-align: center;
+  color: #555;
 }
 
+/* Цена */
+.tourBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* Цена */
 .tourPrice {
-  margin-top: 20px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
+  margin-left: 15px;
   color: #9F4636;
-  text-align: end;
 }
 
 .arrows {
