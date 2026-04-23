@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* box-sizing: border-box; */
-  /* min-height: 100vh; */
 }
 
 .title {
@@ -15,7 +13,7 @@
   font-family: var(--font-montserrat), sans-serif;
 }
 
-/* Контейнер карточек — ВАЖНО: колонка */
+/* Контейнер карточек*/
 .toursContainer {
   display: flex;
   justify-content: center; /* центрируем */
