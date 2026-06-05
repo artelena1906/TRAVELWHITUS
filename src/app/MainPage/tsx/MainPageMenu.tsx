@@ -19,12 +19,12 @@ export default function MainPageMenu() {
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>([
     // { href: "/", text: "ГОЛОВНА" },
-    { href: "#", text: "КРАЇНИ" },
-    { href: "/PageTours", text: "ТУРИ" },
-    { href: "/PageDreams", text: "МРІЇ" },
-    { href: "/PageBlog", text: "БЛОГ" },
-    { href: "/PageContacts", text: "ФОТО" },
-    { href: "/PageLogin", text: "ВІДЕО" },
+    { href: "#", text: "Країни" },
+    { href: "/PageTours", text: "Тури" },
+    { href: "/PageDreams", text: "Мрії" },
+    { href: "/PageBlog", text: "Блог" },
+    { href: "/PageContacts", text: "Фото" },
+    { href: "/PageLogin", text: "Відео" },
     // { href: "/PageAboutUs", text: "ПРО НАС" },
   ]);
 
