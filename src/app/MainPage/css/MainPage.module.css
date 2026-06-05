@@ -64,7 +64,8 @@ background: linear-gradient(
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  margin: 15px 0 0 0;
+  /* height: 60px; */
   width: 100%;
  /* background: linear-gradient(
   180deg,
@@ -73,6 +74,7 @@ background: linear-gradient(
   #ffffff 100%
 ); */
 }
+
 /* 
 .guestWarning {
   width: 100%;
@@ -310,6 +312,13 @@ background: linear-gradient(
   font-size: 0.8rem;
 }
 
+.headerContainerMenu {
+  margin: 5px 0;
+}
+
+.headerContainer {
+  margin: 5px 0 0 0;
+}
 
   .menu {
     /* flex-wrap: wrap; */
