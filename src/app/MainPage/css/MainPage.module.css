@@ -64,7 +64,7 @@ background: linear-gradient(
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px; 
+  /* height: 60px;  */
   width: 100%;
  /* background: linear-gradient(
   180deg,
@@ -322,7 +322,7 @@ background: linear-gradient(
 } */
 
 .fixedHeader {
-  height: 120px; 
+  height: 100px; 
 }
 
   @keyframes slideDown {
@@ -392,6 +392,6 @@ background: linear-gradient(
   }
 
   .fixedHeader {
-  height: 100px; 
+  height: 80px; 
 }
 }
