@@ -87,7 +87,7 @@ export default function MainPageMenu() {
   };
 
   return (
-    <div className={styles.headerContainer}>
+    <div className={styles.headerContainerMenu}>
       <div
         className={styles.menuContainer}
         ref={menuRef}

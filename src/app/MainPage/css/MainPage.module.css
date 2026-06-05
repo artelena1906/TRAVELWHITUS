@@ -42,9 +42,9 @@ background: linear-gradient(
 
 
 /* если есть полоса гостя */
-.withGuest .fixedHeader {
-  top: 40px; /* подними шапку ниже полосы */
-}
+/* .withGuest .fixedHeader {
+  top: 40px; 
+} */
 
 
 .mainContent.noPadding {
@@ -64,7 +64,7 @@ background: linear-gradient(
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 60px;  */
+  height: 60px;
   width: 100%;
  /* background: linear-gradient(
   180deg,
@@ -73,7 +73,7 @@ background: linear-gradient(
   #ffffff 100%
 ); */
 }
-
+/* 
 .guestWarning {
   width: 100%;
   background: #f3df07;
@@ -82,13 +82,13 @@ background: linear-gradient(
   font-weight: bold;
   text-align: center;
   padding: 8px 0;
-  z-index: 2000; /* выше хедера */
-  position: relative; /* чтобы не пропадала */
-}
+  z-index: 2000; 
+  position: relative; 
+} */
 
-.guestWarning span{
+/* .guestWarning span{
   margin: 0 10px;
-}
+} */
 
 .logoContainer {
   /* flex: 0 1 auto; */
@@ -102,19 +102,33 @@ background: linear-gradient(
 }
 
 /*******СТИЛИ ДЛЯ MainPageMenu****************/
+.headerContainerMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  /* height: 60px; */
+  width: 100%;
+ /* background: linear-gradient(
+  180deg,
+  #f4ebdb 0%,
+  #f8f1e4 40%,
+  #ffffff 100%
+); */
+}
+
 .menuContainer {
   position: relative;
   /* width: 60%; */
   margin: 0 auto;
 }
 
-
 .menu {
   display: flex;
   justify-content: space-around;
   align-items: center;
   /* background: white; */
-  gap: 25px;
+  gap: 35px;
 }
 
 .menuItem {
@@ -357,7 +371,7 @@ background: linear-gradient(
 }
 
 .withGuest .fixedHeader {
-  top: 50px; 
+  top: 20px; 
 }
   .dropdown ul {
     height: 120px;

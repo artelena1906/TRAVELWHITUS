@@ -8,7 +8,7 @@ export default function MainPageLogo() {
   return (
     <>
       <div className={styles.headerContainer}>
-        <div className={styles.spacer}></div>
+        {/* <div className={styles.spacer}></div> */}
 
         <div className={styles.logoContainer}>
           <Link prefetch={true} href="/">
