@@ -97,9 +97,9 @@
 "use client";
 
 import React from "react";
-import "./globals.css";
+// import "./globals.css";
 import MainPageLogo from "./MainPage/tsx/MainPageLogo";
-import MainPageMenu from "./MainPage/tsx/MainPageMenu";
+// import MainPageMenu from "./MainPage/tsx/MainPageMenu";
 import MainPageFooter from "./MainPage/tsx/MainPageFooter";
 import styles from "./MainPage/css/MainPage.module.css";
 
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Хедер всегда на месте */}
         <div className={styles.fixedHeader}>
           <MainPageLogo />
-          <MainPageMenu />
+          {/* <MainPageMenu /> */}
         </div>
 
         <div className={styles.container}>

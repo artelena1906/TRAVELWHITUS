@@ -1,115 +1,127 @@
 'use client';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "../css/MainPageVideoTur.module.css";
-import { collection, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore"; 
 import { db } from "../../api/firebase";
 import Skeleton from '../../../components/Skeleton/Skeleton';
 import Link from 'next/link';
 
-interface Tour {
-  id: string;
-  urlvideo: string;
-  name: string;
-}
-
-// функция парсинга "ДД.ММ.ГГГГ"
-const parseDate = (dateStr: string): Date => {
-  const [d, m, y] = dateStr.split('.').map(Number);
-  return new Date(y, m - 1, d);
-};
-
 export default function MainPageVideoTur() {
-  const [tours, setTours] = useState<Tour[]>([]);
+  const [videos, setVideos] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Массив рефов для контроля каждого видеоплеера напрямую
+  const videoRefs = useRef<HTMLVideoElement[]>([]);
 
   useEffect(() => {
-    const fetchTours = async () => {
+    const fetchVideos = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "tours"));
-        const fetchedTours: Tour[] = [];
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const docRef = doc(db, "main_videos", "Videos");
+        const docSnap = await getDoc(docRef);
 
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          if (!data?.date) return;
- const dt = parseDate(data.date);
-if (dt >= today) {
-          fetchedTours.push({
-            id: doc.id,
-            urlvideo: data.urlvideo,
-            name: data.name,
-          });
-        }});
-
-        // берем последние 5 туров
-        const lastFiveTours = fetchedTours.slice(-5);
-        setTours(lastFiveTours);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (Array.isArray(data?.video)) {
+            setVideos(data.video);
+          } else {
+            setError("Поле 'video' не знайдено.");
+          }
+        } else {
+          setError("Документ 'Videos' не знайдено.");
+        }
       } catch (err) {
-        console.error("Ошибка загрузки данных:", err);
-        setError("Не удалось загрузить данные. Попробуйте позже.");
+        console.error("Помилка завантаження:", err);
+        setError("Не вдалося завантажити фонове відео.");
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchTours();
+    fetchVideos();
   }, []);
 
-  // Авто-слайд каждые 6 секунд
+  // Авто-слайд кожні 6 секунд
   useEffect(() => {
-    if (tours.length === 0) return;
+    if (videos.length === 0) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % tours.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % videos.length);
     }, 6000);
 
     return () => clearInterval(interval);
-  }, [tours]);
+  }, [videos]);
 
-  const handleDotClick = (index: number) => setCurrentIndex(index);
+  // Принудительный запуск видео при смене слайда (лечит баг черного экрана в Safari и Chrome)
+  useEffect(() => {
+    if (videoRefs.current[currentIndex]) {
+      const activeVideo = videoRefs.current[currentIndex];
+      activeVideo.muted = true; // Жестко включаем mute в коде
+      activeVideo.play().catch((err) => {
+        console.log("Автозапуск заблокирован браузером, пробуем снова:", err);
+      });
+    }
+  }, [currentIndex, videos]);
 
   if (isLoading) {
-  // Замість тексту показуємо сірий прямокутник
-  return <Skeleton height="40px" width="60%" />;
-}
+    return <Skeleton height="80vh" width="100%" />;
+  }
 
-  if (error) return <div>{error}</div>;
-  if (tours.length === 0) return <div>Видео не найдено</div>;
+  if (error || videos.length === 0) {
+    return (
+      <div className={styles.carouselContainer}>
+        <div className={styles.videoWrapper} style={{ backgroundColor: '#1a1a1a' }} />
+        <StaticOverlay />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.carouselContainer}>
+      {/* Задній фон */}
       <div className={styles.videoWrapper}>
-        {tours.map((tour, index) => (
-          <Link key={tour.id} href={`/PageTours/${tour.id}`}
+        {videos.map((videoUrl, index) => (
+          <div
+            key={index}
             className={`${styles.videoSlide} ${index === currentIndex ? styles.active : ""}`}
           >
-            <video autoPlay loop muted playsInline className={styles.video}>
-              <source src={tour.urlvideo} type="video/mp4" />
+            <video 
+              ref={(el) => { if (el) videoRefs.current[index] = el; }} // сохраняем ссылку на плеер
+              autoPlay 
+              loop 
+              muted // для HTML
+              playsInline 
+              className={styles.video}
+              preload="auto"
+            >
+              <source src={videoUrl} type="video/mp4" />
               Ваш браузер не підтримує відео.
             </video>
-            {index === currentIndex && (
-              <div
-                key={`name-${currentIndex}`}
-                className={styles.tourName}
-              >
-                {tour.name}
-              </div>
-            )}
-          </Link>
+          </div>
         ))}
       </div>
-      <div className={styles.dotsContainer}>
-        {tours.map((_, index) => (
-          <span
-            key={index}
-            className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""}`}
-            onClick={() => handleDotClick(index)}
-          />
-        ))}
-      </div>
+
+      {/* Передній план */}
+      <StaticOverlay />
+    </div>
+  );
+}
+
+function StaticOverlay() {
+  return (
+    <div className={styles.overlayContent}>
+      <span className={styles.subtitle}>Авторські подорожі</span>
+      <h1 className={styles.title}>
+        Подорожі, що<br />залишають слід<br />у серці
+      </h1>
+      <p className={styles.description}>
+        Ми створюємо маршрути для тих, хто хоче більше, <br />ніж просто побачити країну. 
+        <br />Відкривайте світ глибше разом з Мандроманією.
+      </p>
+      <Link href="/PageTours" className={styles.ctaButton}>
+        Обрати пригоду
+      </Link>
     </div>
   );
 }

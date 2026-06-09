@@ -4,13 +4,7 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
-  background: #f4ebdb;
- /* background: linear-gradient(
-  180deg,
-  #f4ebdb 0%,
-  #f8f1e4 40%,
-  #ffffff 100%
-); */
+  background: #F5F1EA;
   overflow-x: clip;
 }
 
@@ -21,31 +15,18 @@
   width: 100%;       /* занимает всю ширину */
   z-index: 1500;     /* поверх всего */
   display: flex;
-  flex-direction: column;
+  height: 80px;
+  align-items: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  /* background: white; */
-  /* height: 150px;       */
-   /* background: linear-gradient(
+   background: #F5F1EA;
+/* background: linear-gradient(
   180deg,
   #f4ebdb 0%,
-  #f8f1e4 40%,
+  #f4ebdb 10%,   
+  #ffffff 90%,   
   #ffffff 100%
 ); */
-background: linear-gradient(
-  180deg,
-  #f4ebdb 0%,
-  #f4ebdb 10%,   /* Держим темный цвет чуть дольше */
-  #ffffff 90%,   /* Резче уходим в белый в самом конце */
-  #ffffff 100%
-);
 }
-
-
-/* если есть полоса гостя */
-/* .withGuest .fixedHeader {
-  top: 40px; 
-} */
-
 
 .mainContent.noPadding {
   padding-top: 0; /* Без отступа на стартовой странице */
@@ -62,75 +43,42 @@ background: linear-gradient(
 
 .headerContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 15px 0 0 0;
-  /* height: 60px; */
+  justify-content: space-between; /* Раскидывает логотип влево, а меню — вправо */
+  align-items: center;           /* Выравнивает логотип и текст меню строго по вертикальному центру */
   width: 100%;
- /* background: linear-gradient(
-  180deg,
-  #f4ebdb 0%,
-  #f8f1e4 40%,
-  #ffffff 100%
-); */
+  height: 100%;
+  padding: 0 40px;
 }
 
-/* 
-.guestWarning {
-  width: 100%;
-  background: #f3df07;
-  color: #171717;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 8px 0;
-  z-index: 2000; 
-  position: relative; 
-} */
-
-/* .guestWarning span{
-  margin: 0 10px;
-} */
-
 .logoContainer {
-  /* flex: 0 1 auto; */
-  text-align: center;
+  display: flex;
+  align-items: center; /* Центрируем картинку по вертикали */
+height: 100%;
+}
+
+.logoContainer a {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .logo {
-  /* max-width: 100%; */
-  height: auto;
-  /* margin-top: 50px; */
+  height: 100%;                    /* Если покажется мало — поставь 70% или 75%! Это стандартный способ регулировки. */
 }
 
 /*******СТИЛИ ДЛЯ MainPageMenu****************/
 .headerContainerMenu {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 15px 0;
-  /* height: 60px; */
-  width: 100%;
- /* background: linear-gradient(
-  180deg,
-  #f4ebdb 0%,
-  #f8f1e4 40%,
-  #ffffff 100%
-); */
 }
 
 .menuContainer {
   position: relative;
-  /* width: 60%; */
-  margin: 0 auto;
 }
 
 .menu {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* background: white; */
-  gap: 35px;
+  gap: 25px;
 }
 
 .menuItem {
@@ -142,8 +90,9 @@ background: linear-gradient(
 
 .menubtn {
   text-decoration: none;
-  color: #9F4636;
-  font-size: clamp(0.8rem, 1.6vw, 1.3rem);
+  color: black /* #9F4636;*/;
+  font-size: clamp(0.8rem, 1.6vw, 1.2rem);
+  font-family: 'Manrope', cursive;
   padding: 0.5rem;
   cursor: pointer;
   display: flex;

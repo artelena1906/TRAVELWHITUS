@@ -6,36 +6,54 @@
 }
 
 .carouselContainer {
-  display: flex;
-  width: 100%;
-  height: 100vh; 
-  max-height: 800px; 
   position: relative;
+  width: 100%;
+  height: 100vh; /* или любая нужная высота баннера */
   overflow: hidden;
-  /* margin: 0; */
-  /* perspective: 1000px; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10%; /* отступ слева для контента */
 }
   
-  .videoWrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-  
- .videoSlide {
-  width: 100%;
-  height: 100%;
+.videoWrapper {
   position: absolute;
   top: 0;
-  left: 100%;
-  opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.videoWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: 2;
 }
   
-  .videoSlide.active {
+.videoSlide {
+  position: absolute;
+  top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out; /* плавная смена видео */
+}
+  
+.videoSlide.active {
   opacity: 1;
-  transform: translateX(0);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
   
  .videoSlide:not(.active) {
@@ -73,6 +91,57 @@
       opacity: 1;
     }
   } */
+
+
+  .overlayContent {
+  position: relative;
+  z-index: 3; /* выше, чем видео и затемнение */
+  color: #ffffff;
+  max-width: 600px;
+  font-family: sans-serif; /* укажите ваш шрифт */
+}
+
+.subtitle {
+  color: #D68A47; /* оранжевый цвет из макета */
+  font-size: 1.8rem;
+   display: block;
+  /* margin-bottom: 5px; */
+font-family: 'Caveat', cursive;
+font-weight: 500;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 35px;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-family: 'Manrope', cursive;
+  margin-bottom: 35px;
+  opacity: 0.9;
+}
+
+/* Стиль для новой единственной кнопки */
+.ctaButton {
+  display: inline-block;
+  background-color: #9e3623; /* терракотовый/красный цвет из макета */
+  color: #ffffff;
+  padding: 15px 35px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #bd432d;
+}
 
    .tourName {
   position: absolute;

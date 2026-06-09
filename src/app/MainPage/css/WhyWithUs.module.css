@@ -1,0 +1,96 @@
+.advantagesSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 35px;
+    width: 100%;
+}
+
+.container {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.advantageCard {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0 25px;
+  gap: 15px;
+}
+
+/* Вертикальные линии между карточками */
+.advantageCard:not(:last-child) {
+  border-right: 1px solid rgba(158, 54, 35, 0.2); /* Тонкая линия терракотового цвета */
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+}
+
+.line {
+  border: none;
+  width: 100%;
+  border-top: 1px solid rgba(158, 54, 35, 0.2);
+  margin: 30px auto 0 auto; /* Центрируем её и делаем отступ сверху */
+  padding: 0 20px; /* Чтобы края не липли к экрану на планшетах */
+}
+
+.icon {
+  width: 100%;
+  height: auto;
+  /* Если иконки изначально черные, этот фильтр сделает их терракотовыми (#9e3623). 
+     Если они уже экспортированы в нужном цвете — удали строку ниже */
+  filter: invert(24%) sepia(61%) saturate(2159%) x(146deg) brightness(91%) contrast(88%);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+.description {
+  font-family: 'Manrope', cursive;
+  font-size: 1.0rem;
+  line-height: 1.5;
+  color: #555555;
+  margin: 0;
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ --- */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    gap: 40px; /* Отступы между карточками, когда они в столбик */
+  }
+
+  .advantageCard {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* На мобилках убираем вертикальные линии справа */
+  .advantageCard:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(158, 54, 35, 0.15); /* Вместо них делаем легкую линию снизу */
+    padding-bottom: 25px;
+  }
+}
