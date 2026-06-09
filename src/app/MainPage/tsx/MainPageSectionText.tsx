@@ -7,7 +7,7 @@ export default function MainPageSectionText() {
     return (
         <div className={styles.textContainer}>
             <div>
-                <Image src="/img/Baner.png"
+                <Image src="/img/Baner_new.png"
                     alt="Image"
                     className={styles.sectionImage}
                     width={800}
