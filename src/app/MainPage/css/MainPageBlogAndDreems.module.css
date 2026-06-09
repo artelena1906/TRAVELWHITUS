@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start; /* Выравниваем секции по верхней линии заголовков */
+  width: 100%;
+  max-width: 1200px;       /* Ограничиваем общую ширину по сетке сайта */
+  margin: 60px auto 0 auto; /* Центрируем весь блок на странице */
+  padding: 0 30px;         /* Отступы по бокам, чтобы контент не лип к экрану */
+  box-sizing: border-box;
+}
+
+/* Левая колонка — Блог */
+.sectionBlog {
+  /* Занимает ровно половину контейнера с учетом отступа gap */
+  flex: 0 0 calc(50% - 25px); 
+  width: 100%;
+  padding-right: 25px;     /* Внутренний отступ до вертикальной линии */
+  /* Вертикальная разделительная линия справа */
+  border-right: 1px solid rgba(158, 54, 35, 0.15); 
+  box-sizing: border-box;
+}
+
+/* Правая колонка — Мрії */
+.sectionDreams {
+  /* Тоже занимает ровно половину */
+  flex: 0 0 calc(50% - 25px); 
+  width: 100%;
+  padding-left: 25px;      /* Внутренний отступ от вертикальной линии */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛОК --- */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column; /* На планшетах и телефонах блоки встанут друг под другом */
+    gap: 50px;
+    padding: 0 15px;
+  }
+
+  .sectionBlog {
+    flex: 0 0 100%;
+    padding-right: 0;
+    border-right: none;    /* Убираем вертикальную линию на мобилках */
+    border-bottom: 1px solid rgba(158, 54, 35, 0.15); /* Делаем вместо нее горизонтальную снизу */
+    padding-bottom: 40px;
+  }
+
+  .sectionDreams {
+    flex: 0 0 100%;
+    padding-left: 0;
+  }
+}

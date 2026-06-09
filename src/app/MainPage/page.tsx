@@ -1,8 +1,7 @@
 
 import MainPageVideoTur from "./tsx/MainPageVideoTur";
-import MainPageSectionBlog from "./tsx/MainPageSectionBlog";
 import MainPageSectionTour from "./tsx/MainPageSectionTour";
-import MainPageSectionDreems from "./tsx/MainPageSectionDreems";
+import MainPageBlogAndDreems from "./tsx/MainPageBlogAndDreems";
 import MainPageSectionText from "./tsx/MainPageSectionText";
 import WhyWithUs from "./tsx/WhyWithUs";
 
@@ -13,9 +12,8 @@ export default function MainPage() {
       <MainPageVideoTur />
       <WhyWithUs />
      <MainPageSectionTour />
-     <MainPageSectionText/>
-     <MainPageSectionBlog />
-     <MainPageSectionDreems />
+     <MainPageSectionText/>   
+     <MainPageBlogAndDreems />
      </>
   );
 }
