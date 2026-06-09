@@ -94,7 +94,7 @@ export default function MainPageHeader() {
         <div className={styles.logoContainer}>
           <Link prefetch={true} href="/">
             <Image
-              src="/img/Baner_new.png"
+              src="/img/Logo_new.png"
               alt="Логотип"
               width={260}
               height={80}
