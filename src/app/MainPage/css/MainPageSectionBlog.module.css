@@ -110,7 +110,7 @@
   align-items: center;
   min-width: 200px; 
   max-width: 200px; /* Максимальная ширина поста */
-  background: #FAF8F4;; /* Белый фон для карточки */
+  background: #FAF8F4; 
   border-radius: 12px;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;

@@ -49,9 +49,9 @@
   transform: translateX(-50%); /* Магія, яка вириває блок із батьківських паддінгів */
   
   background-color: #000000;  /* ЧИСТИЙ ЧОРНИЙ КОЛІР за запитом 🖤 */
-  color: #FAF8F4;
-  margin: 60px 0;
-  padding: 35px 0;            /* Внутрішні відступи зверху і знизу */
+  color: #F5F1EA;
+  margin: 40px 0;
+  padding: 10px 0;            /* Внутрішні відступи зверху і знизу */
   box-sizing: border-box;
 }
 
@@ -60,7 +60,7 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 20px;
   display: flex;
   flex-direction: row;        /* Елементи йдуть зліва направо */
   justify-content: space-between; /* Текст ліворуч, кнопка — праворуч */
@@ -72,7 +72,7 @@
 .leftPart {
   display: flex;
   align-items: center;
-  gap: 25px;                  /* Відстань між літачком та текстом */
+  gap: 45px;                  /* Відстань між літачком та текстом */
 }
 
 .postImage {
@@ -89,7 +89,7 @@
 }
 
 .mainText {
-  font-family: sans-serif;    
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
   font-weight: 600;
   margin: 0;
@@ -97,7 +97,7 @@
 }
 
 .subText {
-  font-family: sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
   font-weight: 600;
   margin: 0;
@@ -111,7 +111,7 @@
   gap: 12px;                  /* Відстань від тексту до стрілочки */
   background-color: #FAF8F4;  /* Світло-кремовий фон кнопки */
   color: #000000;             /* Текст тепер теж чистого чорного кольору */
-  padding: 14px 40px;         /* Пропорції овалу */
+  padding: 20px 40px;         /* Пропорції овалу */
   border-radius: 100px;       /* Перетворює кнопку на ідеальну капсулу */
   font-family: sans-serif;
   font-size: 1.05rem;
