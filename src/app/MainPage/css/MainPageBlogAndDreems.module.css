@@ -4,33 +4,162 @@
   justify-content: space-between;
   align-items: flex-start; /* Выравниваем секции по верхней линии заголовков */
   width: 100%;
-  max-width: 1200px;       /* Ограничиваем общую ширину по сетке сайта */
-  margin: 60px auto 0 auto; /* Центрируем весь блок на странице */
-  padding: 0 30px;         /* Отступы по бокам, чтобы контент не лип к экрану */
+  /* max-width: 1200px;        */
+  /* margin: 60px auto 0 auto;  */
+  padding: 0 30px;         
   box-sizing: border-box;
 }
 
 /* Левая колонка — Блог */
 .sectionBlog {
   /* Занимает ровно половину контейнера с учетом отступа gap */
-  flex: 0 0 calc(50% - 25px); 
+  flex: 0 0 calc(50% - 20px); 
   width: 100%;
-  padding-right: 25px;     /* Внутренний отступ до вертикальной линии */
-  /* Вертикальная разделительная линия справа */
-  border-right: 1px solid rgba(158, 54, 35, 0.15); 
-  box-sizing: border-box;
+  padding: 0 15px;     /* Внутренний отступ до вертикальной линии */
 }
 
 /* Правая колонка — Мрії */
 .sectionDreams {
   /* Тоже занимает ровно половину */
-  flex: 0 0 calc(50% - 25px); 
+  flex: 0 0 calc(50% - 20px); 
   width: 100%;
-  padding-left: 25px;      /* Внутренний отступ от вертикальной линии */
+  padding: 0 15px;    /* Внутренний отступ от вертикальной линии */
+  /* display: flex; */
+  /* flex-direction: column;
+  box-sizing: border-box; */
+}
+
+.container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start; /* Выравниваем секции по верхней линии заголовков */
+  width: 100%;
+  /* max-width: 1200px;        */
+  /* margin: 60px auto 0 auto;  */
+  padding: 0 30px;         
   box-sizing: border-box;
 }
+
+/* Головна чорна плашка на всю ширину екрану */
+.sectionBlack {
+  width: 100vw;               /* Розтягуємо строго від краю до краю екрану */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* Магія, яка вириває блок із батьківських паддінгів */
+  
+  background-color: #000000;  /* ЧИСТИЙ ЧОРНИЙ КОЛІР за запитом 🖤 */
+  color: #FAF8F4;
+  margin: 60px 0;
+  padding: 35px 0;            /* Внутрішні відступи зверху і знизу */
+  box-sizing: border-box;
+}
+
+/* Обмежувач контенту всередині плашки (щоб усе стояло чітко по сітці сайту) */
+.contentWrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: row;        /* Елементи йдуть зліва направо */
+  justify-content: space-between; /* Текст ліворуч, кнопка — праворуч */
+  align-items: center;        /* Центруємо все по вертикалі */
+  box-sizing: border-box;
+}
+
+/* Ліва сторона: літачок + текст */
+.leftPart {
+  display: flex;
+  align-items: center;
+  gap: 25px;                  /* Відстань між літачком та текстом */
+}
+
+.postImage {
+  object-fit: contain;
+  opacity: 0.9;              /* Щоб золотий літачок виглядав соковито */
+}
+
+/* Блок із текстом */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;                   /* Відстань між рядками */
+  text-align: left;
+}
+
+.mainText {
+  font-family: sans-serif;    
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.subText {
+  font-family: sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Красива овальна кнопка (як на макеті) */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;                  /* Відстань від тексту до стрілочки */
+  background-color: #FAF8F4;  /* Світло-кремовий фон кнопки */
+  color: #000000;             /* Текст тепер теж чистого чорного кольору */
+  padding: 14px 40px;         /* Пропорції овалу */
+  border-radius: 100px;       /* Перетворює кнопку на ідеальну капсулу */
+  font-family: sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Стрілочка всередині кнопки */
+.ctaButton span {
+  font-size: 1.3rem;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+/* Інтерактивний ховер-ефект */
+.ctaButton:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* При наведенні стрілочка витончено рухається праворуч */
+.ctaButton:hover span {
+  transform: translateX(4px);
+}
+
+/* --- АДАПТИВНІСТЬ ДЛЯ ТЕЛЕФОНІВ --- */
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column;   /* На мобілках перебудовуємо в стовпчик */
+    gap: 25px;
+    text-align: center;
+  }
+  .leftPart {
+    flex-direction: column;   /* Літачок встане над текстом */
+    gap: 15px;
+  }
+  .textBlock {
+    text-align: center;
+  }
+  .mainText, .subText {
+    font-size: 1.1rem;
+  }
+}
+
 
 /* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛОК --- */
 @media (max-width: 992px) {

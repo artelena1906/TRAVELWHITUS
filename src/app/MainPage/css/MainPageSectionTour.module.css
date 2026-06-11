@@ -81,11 +81,12 @@
 .tourCard {
   display: flex;
   flex-direction: column; /* Элементы идут сверху вниз */
-  background: #F5F1EA;    /* Благородный кремовый фон как на макете */
+  background: #FAF8F4;    /* Благородный кремовый фон как на макете */
   border-radius: 20px;    /* Красивые мягкие скругления */
   overflow: hidden;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;            /* Занимает всю ширину ячейки сетки */
   box-sizing: border-box;
@@ -115,7 +116,7 @@
   position: absolute;
   top: 25px;
   right: 25px;
-  background: #F5F1EA;
+  background: #FAF8F4;
   color: black;
   padding: 15px 20px;
   border-radius: 12px;
@@ -136,9 +137,9 @@
 
 /* Название тура */
 .tourName {
-  font-size: 1.6rem;
-  font-weight: 700;
-  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: 'Cormorant Garamond', serif;
   color: #2c2c2c;
   margin: 10px 0 10px 0;
   line-height: 1.3;
@@ -167,8 +168,8 @@
 }
 
 .calendarIcon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   font-weight: 600;
   background: #F5F1EA;
   color: black;
@@ -197,8 +198,8 @@
 
 /* Круглая терракотовая кнопка-стрелка */
 .circleArrowButton {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   background-color: #9e3623; /* Твой терракотовый цвет */
   border-radius: 50%;
   display: flex;
@@ -209,8 +210,8 @@
 }
 
 .circleArrowButton svg {
-  width: 16px;
-  height: 16px;
+  width: 30px;
+  /* height: 16px; */
 }
 
 /* Интерактив при наведении на карточку: кнопка становится ярче */

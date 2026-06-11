@@ -45,18 +45,19 @@ export default function MainPageSectionBlog() {
     return <div>Завантаження...</div>;
   }
 
-  // Берём последние 10 постов
-  const latestPosts = blogs.blog.slice(0, 10);
+  // Берём последние 3 поста
+  const latestPosts = blogs.blog.slice(0, 3);
 
   return (
     <div className={styles.containerBlog}>
       <div className={styles.containerBlogTitle}>
         <h1>{blogs.title}</h1>
         <Link href="/PageBlog" className={styles.linkBlog}>
-          <button className={styles.buttonBlog}>Всі статті Блогу</button>
+           Всі статті Блогу
         </Link>
       </div>
-      <hr className={styles.hr} />
+      <div className={styles.container}>
+      {/* <hr className={styles.hr} /> */}
       {latestPosts.length === 0 ? (
         <div>Нет постов для отображения</div>
       ) : (
@@ -70,8 +71,8 @@ export default function MainPageSectionBlog() {
               <Image
                 src={post.urlphoto}
                 alt={post.title}
-                width={150}
-                height={150}
+                width={180}
+                height={200}
                 className={styles.postImage}
               />
               <div className={styles.postContent}>
@@ -82,6 +83,6 @@ export default function MainPageSectionBlog() {
           ))}
         </div>
       )}
-    </div>
+    </div></div>
   );
 }

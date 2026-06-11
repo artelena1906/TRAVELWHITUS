@@ -164,9 +164,9 @@ export default function MainPageSectionTour({ filters }: MainPageSectionTourProp
 
 return (
   <div className={styles.container}>
-    <span className={styles.titleOne}>Актуальні тури</span>
+    <span className={styles.titleOne}>Актуальні подорожі</span>
     <div className={styles.header}>
-      <h1 className={styles.title}>Куди їдемо далі?</h1>
+      <h1 className={styles.title}>Найближчі пригоди</h1>
       <Link href="/PageTours" className={styles.AllToursLink}>
         Переглянути всі тури
       </Link>

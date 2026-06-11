@@ -1,47 +1,72 @@
 /* MainPage/css/MainPageSectionBlog.module.css */
 .containerBlog {
   display: flex;
-  flex-direction: column;
-  /* padding: 20px; */
-  margin: 50px 20px 0 20px;
-  text-align: center;
-  /* background: rgba(237, 228, 211, 0.1) */
+  flex-direction: column; /* Элементы идут сверху вниз */
+  border-radius: 20px;    /* Красивые мягкие скругления */
+  overflow: hidden;
+  text-decoration: none;
+  border: rgb(221, 218, 218) 1px solid; 
+  box-shadow: 0 8px 20px rgba(0.4,0.4,0.4,0.4);
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+  width: 100%;            /* Занимает всю ширину ячейки сетки */
+  box-sizing: border-box;
 }
+
+.container {
+   display: flex;
+  flex-direction: column; /* Элементы идут сверху вниз */
+  text-align: center;
+  align-items: center;
+}
+
 
 .containerBlogTitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0;
+  padding: 15px 30px; /* Выравниваем по левому краю с заголовком */
 }
 
 .containerBlogTitle h1 {
-  margin-left: 20px;
-  font-size: 2.2rem;
-  white-space: nowrap;
-  color: #6c2d2c;
-  margin: 0;
-}
-
-.buttonBlog {
-  background: #6c2d2c;
-  color: #f1dcc9;
-  /* border: #6c2d2c 3px solid; */
-  padding: 5px 10px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 1rem;
   /* margin-left: 20px; */
-  transition: background 0.2s ease;
-}
-
-.buttonBlog:hover {
-  background: #9F4636; /* Тёплый оранжево-персиковый */
-  /* border: #9F4636 3px solid; */
+  font-size: 2.0rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  /* white-space: nowrap; */
+   color:#9e3623;
+  /* margin: 0; */
 }
 
 .linkBlog {
+  color: #9e3623;
+  display: inline-flex;
+  /* padding-right: 50px; */
+  font-size: 1.0rem;
+  font-family: 'Caveat', cursive;
   text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.linkBlog:hover {
+  opacity: 0.85; /* Эффект при наведении на всю ссылку */
+}
+
+/* Рисуем точную дизайнерскую стрелочку */
+.linkBlog::after {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%239e3623' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E");
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease; /* Плавность для анимации сдвига */
+}
+
+/* Красивый интерактив: при наведении стрелочка слегка сдвигается вправо */
+.linkBlog:hover::after {
+  transform: translateX(4px);
 }
 
 .hr {
@@ -52,11 +77,14 @@
 
 .postsContainer {
   display: flex;
-  overflow-x: auto; /* Горизонтальный скролл */
-  gap: 10px; /* Отступ между постами */
-  padding: 40px 0;
-  scrollbar-width: thin; /* Тонкий скролл для Firefox */
-  scrollbar-color: #9F4636 #f1dcc9; /* Цвет скролла */
+  /* overflow-x: auto;  */
+  gap: 25px; /* Отступ между постами */
+  text-align: center;
+  align-items: center;
+  padding-bottom: 30px;
+  /* padding: 40px 0; */
+  /* scrollbar-width: thin; 
+  scrollbar-color: #9F4636 #f1dcc9;  */
 }
 
 .postsContainer::-webkit-scrollbar {
@@ -78,12 +106,12 @@
 
 .postItem {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  min-width: 300px; /* Минимальная ширина поста */
-  max-width: 300px; /* Максимальная ширина поста */
-  background: #fff; /* Белый фон для карточки */
+  min-width: 200px; 
+  max-width: 200px; /* Максимальная ширина поста */
+  background: #FAF8F4;; /* Белый фон для карточки */
   border-radius: 12px;
-  padding: 10px;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -95,36 +123,39 @@
 }
 
 .postImage {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-right: 15px;
+  border-radius: 12px 12px 0 0; /* Скругляем только верхние углы */
+  /* margin-right: 15px; */
 }
 
 .postContent {
   flex: 1;
-  text-align: left;
+  text-align: center;
+   font-family: 'Cormorant Garamond', serif;
+  padding: 30px 0;
 }
 
 .postTitle {
   margin: 0;
   font-size: 1.2rem;
-  color: #171717;
+  color: black;
+   font-family: 'Cormorant Garamond', serif;
   line-height: 1.4;
 }
 
-.postDescription {
+/* .postDescription {
   margin: 5px 0 0;
   font-size: 0.9rem;
   color: #555;
   line-height: 1.5;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Ограничение на 3 строки */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+} */
 
 @media (max-width: 768px) {
   .containerBlogTitle {

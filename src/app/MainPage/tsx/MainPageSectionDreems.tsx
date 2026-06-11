@@ -45,18 +45,18 @@ export default function MainPageSectionDreems() {
     return <div>Завантаження...</div>;
   }
 
-  // Берём последние 10 постов
-  const latestPosts = blogs.blog.slice(0, 10);
+  // Берём последние 3 поста
+  const latestPosts = blogs.blog.slice(0, 3);
 
   return (
     <div className={styles.containerBlog}>
       <div className={styles.containerBlogTitle}>
         <h1>Мрії</h1>
         <Link href="/PageDreams" className={styles.linkBlog}>
-          <button className={styles.buttonBlog}>Більше мрій</button>
+          Більше мрій
         </Link>
       </div>
-      <hr className={styles.hr} />
+      <div className={styles.container}>
       {latestPosts.length === 0 ? (
         <div>Нет постов для отображения</div>
       ) : (
@@ -82,6 +82,7 @@ export default function MainPageSectionDreems() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }
