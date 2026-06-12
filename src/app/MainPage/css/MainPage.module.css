@@ -19,13 +19,6 @@
   align-items: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
    background: #F5F1EA;
-/* background: linear-gradient(
-  180deg,
-  #f4ebdb 0%,
-  #f4ebdb 10%,   
-  #ffffff 90%,   
-  #ffffff 100%
-); */
 }
 
 .mainContent.noPadding {

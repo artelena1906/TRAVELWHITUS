@@ -1,21 +1,16 @@
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
+/* Главный контейнер баннера — теперь СТРОГО 100% без левых отступов */
 .carouselContainer {
   position: relative;
   width: 100%;
-  height: 100vh; /* или любая нужная высота баннера */
+  height: 100vh; /* Занимает всю высоту экрана на десктопе */
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 10%; /* отступ слева для контента */
+  box-sizing: border-box;
 }
   
+/* Общая обертка для видеоплееров */
 .videoWrapper {
   position: absolute;
   top: 0;
@@ -25,6 +20,7 @@
   z-index: 1;
 }
 
+/* Затемняющий оверлей поверх видео, чтобы текст читался */
 .videoWrapper::after {
   content: '';
   position: absolute;
@@ -36,6 +32,7 @@
   z-index: 2;
 }
   
+/* Слайд с видео */
 .videoSlide {
   position: absolute;
   top: 0;
@@ -43,221 +40,148 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out; /* плавная смена видео */
+  transition: opacity 0.8s ease-in-out;
 }
   
 .videoSlide.active {
   opacity: 1;
 }
 
+/* Само видео */
 .video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
   
- .videoSlide:not(.active) {
-  transform: translateX(100%);
+.videoSlide:not(.active) {
+  opacity: 0; /* Убрали старый сдвиг translateX, теперь плавная смена через opacity */
 }
 
-/* .tourName {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.5);
-  width: 90%;
-  color: white;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  text-align: center;
-  opacity: 0;
-  z-index: 10;
-  animation: slideForward 2s ease forwards;
-  line-height: 1.2;
-}
-  
-  @keyframes slideForward {
-    0% {
-      transform: translate(-50%, -50%) scale(0.5);
-      opacity: 0;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(0.75);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-    }
-  } */
-
-
-  .overlayContent {
+/* Блок с текстом — теперь отступ живет здесь */
+.overlayContent {
   position: relative;
-  z-index: 3; /* выше, чем видео и затемнение */
+  z-index: 3; 
   color: #ffffff;
-  max-width: 600px;
-  font-family: sans-serif; /* укажите ваш шрифт */
+  max-width: 650px;
+  padding-left: 10%; /* На десктопе элегантно сдвигаем текст вправо */
+  padding-right: 20px;
+  box-sizing: border-box;
 }
 
 .subtitle {
-  color: #D68A47; /* оранжевый цвет из макета */
-  font-size: 1.8rem;
-   display: block;
-  /* margin-bottom: 5px; */
-font-family: 'Caveat', cursive;
-font-weight: 500;
+  color: #D68A47; 
+  font-size: 2.2rem;
+  display: block;
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 
 .description {
-  font-size: 1.2rem;
-  line-height: 1.4;
-  font-family: 'Manrope', cursive;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  font-family: 'Manrope', sans-serif;
   margin-bottom: 35px;
   opacity: 0.9;
 }
 
-/* Стиль для новой единственной кнопки */
+/* Кнопка "Обрати пригоду" */
 .ctaButton {
   display: inline-block;
-  background-color: #9e3623; /* терракотовый/красный цвет из макета */
+  background-color: #9e3623; 
   color: #ffffff;
-  padding: 15px 35px;
+  padding: 16px 40px;
   border-radius: 12px;
   text-decoration: none;
+  font-family: 'Manrope', sans-serif;
   font-weight: bold;
   font-size: 1.1rem;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .ctaButton:hover {
   background-color: #bd432d;
+  transform: translateY(-2px);
 }
 
-   .tourName {
-  position: absolute;
-   bottom: 60px;
-  left: 50%;
-  transform: none;
-  transition: all 0.6s ease;
-  width: 90%;
-  color: white;
-  font-size: clamp(1.2rem, 5vw, 3.0rem);
-  /* font-family: 'Inter', sans-serif; */
-  font-family: var(--font-montserrat), sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.4;
-  text-shadow: 
-  0 4px 15px rgba(0, 0, 0, 0.6), 
-  0 0 50px rgba(0, 0, 0, 0.4);   
-  text-align: center;
-  opacity: 0;
-  z-index: 10;
-  animation: slideForward 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-} 
 
-.videoSlide.active .tourName {
-  opacity: 1;
-  transform: translate(-50%, -50%);
-}
+/**************** АДАПТИВНОСТЬ (ПЛАНШЕТЫ И ТЕЛЕФОНЫ)  ****************/
 
-@keyframes slideForward {
-  0% {
-    transform: translate(-50%, -50%) scale(0.6);
-    opacity: 0;
-    filter: blur(15px); /* Текст появляется из расфокуса */
-  }
-  40% {
-    opacity: 0.3; /* Плавный вход */
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-  .dotsContainer {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 8px 14px;
-  border-radius: 999px;
-
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-
-  z-index: 20;
-}
-  
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-box-shadow: 0 0 8px rgba(255,255,255,0.3);
-  background: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-  
- .activeDot {
- background: #f4a261;
-  transform: scale(1.3);
-}
-
-.dot:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: scale(1.2);
-}
-
-  @media (max-width: 1024px) {
+/* ПЛАНШЕТНАЯ ВЕРСИЯ (до 1024px) */
+@media (max-width: 1024px) {
   .carouselContainer {
-    height: 70vh;
+    height: 75vh; /* Чуть уменьшаем высоту баннера, чтобы на планшете не было огромным */
   }
-  .tourName {
-    font-size: 2rem;
+
+  .overlayContent {
+    padding-left: 6%; /* Уменьшаем левый отступ, так как экран уже */
+    max-width: 550px;
+  }
+
+  .title {
+    font-size: 2.8rem; /* Уменьшаем заголовок */
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 1.05rem;
+    margin-bottom: 25px;
   }
 }
 
+/* МОБИЛЬНАЯ ВЕРСИЯ (до 768px и ниже) */
 @media (max-width: 768px) {
   .carouselContainer {
-    height: 60vh;
+    height: 85vh; /* На телефонах возвращаем высоту, чтобы вертикальное видео смотрелось круто */
+    justify-content: center; /* Центрируем контент */
+    align-items: center;
   }
-  .tourName {
-    font-size: 1.5rem;
-  }
-}
 
-@media (max-width: 480px) {
-  .carouselContainer {
-    height: 50vh;
+  .overlayContent {
+    padding-left: 20px; /* Убираем гигантские проценты, делаем аккуратные отступы по бокам */
+    padding-right: 20px;
+    text-align: center; /* На телефонах центрированный текст выглядит намного премиальнее */
+    max-width: 100%;
   }
-  .tourName {
-    font-size: 1.2rem;
-  }
-}
 
-@media (max-width: 430px) {
-  .carouselContainer {
-    height: 40vh;
+  .title {
+    font-size: 2.3rem; /* Компактный размер для смартфона */
+    line-height: 1.2;
+    margin-bottom: 20px;
   }
-  .tourName {
-    font-size: 1.0rem;
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+  }
+  
+  .description br {
+    display: none; /* Ломаем принудительные переносы строк <br/>, чтобы текст плавно ложился по экрану телефона */
+  }
+
+  .ctaButton {
+    width: 100%; /* Кнопка на всю ширину экрана на мобилке — по ней гораздо удобнее кликать пальцем */
+    max-width: 280px;
+    padding: 14px 20px;
+    font-size: 1rem;
   }
 }

@@ -53,7 +53,7 @@ export default function MainPageVideoTur() {
     return () => clearInterval(interval);
   }, [videos]);
 
-  // Принудительный запуск видео при смене слайда (лечит баг черного экрана в Safari и Chrome)
+  // Принудительный запуск видео при смене слайда 
   useEffect(() => {
     if (videoRefs.current[currentIndex]) {
       const activeVideo = videoRefs.current[currentIndex];
@@ -87,10 +87,10 @@ export default function MainPageVideoTur() {
             className={`${styles.videoSlide} ${index === currentIndex ? styles.active : ""}`}
           >
             <video 
-              ref={(el) => { if (el) videoRefs.current[index] = el; }} // сохраняем ссылку на плеер
+              ref={(el) => { if (el) videoRefs.current[index] = el; }} 
               autoPlay 
               loop 
-              muted // для HTML
+              muted 
               playsInline 
               className={styles.video}
               preload="auto"

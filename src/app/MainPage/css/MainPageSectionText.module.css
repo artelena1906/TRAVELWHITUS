@@ -18,6 +18,7 @@
     object-fit: cover;
     border-radius: 12px;
     box-sizing: border-box;
+   filter: brightness(0.92);     
 }
 
 .textSection{
