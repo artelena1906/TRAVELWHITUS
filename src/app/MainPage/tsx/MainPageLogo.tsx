@@ -96,11 +96,12 @@ export default function MainPageHeader() {
             <Image
               src="/img/Logo_new.png"
               alt="Логотип"
-              width={260}
-              height={80}
+              width={250}
+              height={100}
               className={styles.logo}
-            />
+            /> 
           </Link>
+         
         </div>
 
         {/* Меню навигации */}

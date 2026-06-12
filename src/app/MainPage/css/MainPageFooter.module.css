@@ -1,290 +1,172 @@
-/* MainPage/css/MainPageFooter.module.css */
-.container{
+/* Главный внешний контейнер (задает фон на всю ширину) */
+.container {
+  width: 100%;
+  background: #F5F1EA; /* Твой оригинальный цвет фона */
+  padding: 10px 0 40px 0;
+  box-sizing: border-box;
+}
+
+/* Ограничитель ширины по центру сайта */
+.wrapper {
+  max-width: 1400px; /* Немного расширили, так как логотип и текст теперь в один ряд */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
-  background: #6C2D2C;
-  height: auto;
-  margin: 30px 0 0 0;
+  align-items: flex-start; /* Выравнивание по верхней линии */
   box-sizing: border-box;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #F1dcc9;
 }
 
-/* Левая часть — логотип */
+/* Левая часть — теперь это флекс-ряд (логотип + текст) */
 .leftBlock {
+  flex: 1.8; /* Даем больше места для двух столбцов */
   display: flex;
-  align-items: flex-end;
+  flex-direction: row;
+  align-items: center; /* Центрируем текст по вертикали относительно логотипа */
+  gap: 20px; /* Расстояние между логотипом и текстом */
+  padding-right: 40px;
+  border-right: 1px solid rgba(158, 54, 35, 0.15); /* ВЕРТИКАЛЬНАЯ ЛИНИЯ 1 */
+  box-sizing: border-box;
 }
 
-/* Правая часть — соцсети */
-.rightBlock {
+.logoSide {
+  flex-shrink: 0;
+}
+
+.logo {
+  height: auto;
+  object-fit: contain;
+}
+
+.textSide {
+  display: flex;
+  align-items: center;
+}
+
+.footerText {
+  font-size: 1.0rem;
+  line-height: 1.5;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  color: #333333;
+  text-align: left;
+}
+
+/* Центральная часть — НАВІГАЦІЯ */
+.centerBlock {
+  flex: 1.4;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 0.5em;
-  padding: 20px 20px 20px 20px;
+  padding: 0 50px;
+  border-right: 1px solid rgba(158, 54, 35, 0.15); /* ВЕРТИКАЛЬНАЯ ЛИНИЯ 2 */
+  box-sizing: border-box;
+}
+
+.footerNavigation {
+  color: #9e3623;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Горизонтальный ряд для ссылок навигации */
+.menuLinksRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Чтобы ссылки красиво переносились, если экран чуть сузится */
+  gap: 24px; /* Отступы между Тури, Мрії, Блог... */
+}
+
+.menuLink {
+  font-size: 1.05rem;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.menuLink:hover {
+  color: #9e3623;
+  transform: translateY(-2px);
+}
+
+/* Правая часть — СОЦМЕРЕЖІ */
+.rightBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  box-sizing: border-box;
 }
 
 .rightBlock span {
-  margin-right: 50px;
-  color: #F1dcc9;
-  font-size: 20px;
-  /* margin: 5px 0; */
+  color: #9e3623;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-.centerBlock {
-  margin-left: 100px;
-  display: flex; 
-  /* justify-content: center; */
-}
-
-.centerBlock p{
-  color: #F1dcc9;
-  font-size: 20px;
-  text-decoration: none;
-  text-align: center;
-  padding: 40px;
-}
-
-
-.logoContainer {
-  position: absolute;  
-  bottom: 0;            
-  left: 0;                   
-}
-
-.logoImage {
-  margin-left: 20px;
-  max-width: 200px;
-  max-height: 200px;
-}
-
-.socialContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  margin-right: 30px;
-}
-
+/* Иконки в один ряд */
 .up {
   display: flex;
   flex-direction: row;
-  gap: 0.5em; 
-  margin-left: 30px;
-}
-
-.down {
-  display: flex;
-  flex-direction: row;
-  gap: 0.5em;
-    margin-left: 30px;
-}
-
-.card1 {
-  width: 50px;
-  height: 50px;
-  outline: none;
-  border: none;
-  background: white;
-  border-radius: 90px 5px 5px 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  display: flex;
+  gap: 25px;
   align-items: center;
-  justify-content: center;
 }
 
-.instagram {
-  margin: 0; /* Центрирование SVG */
-  fill: #cc39a4;
+.up a {
+  transition: transform 0.2s ease;
 }
 
-.card2 {
-  width: 50px;
-  height: 50px;
-  outline: none;
-  border: none;
-  background: white;
-  border-radius: 5px 90px 5px 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.up a:hover {
+  transform: scale(1.15);
 }
 
-.facebook {
-  margin: 0;
-  fill: #1877f2;
-}
-
-.card3 {
-  width: 50px;
-  height: 50px;
-  outline: none;
-  border: none;
-  background: white;
-  border-radius: 5px 5px 5px 90px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.whatsapp {
-  margin: 0;
-  fill: #00ff00;
-}
-
-.card4 {
-  width: 50px;
-  height: 50px;
-  outline: none;
-  border: none;
-  background: white;
-  border-radius: 5px 5px 90px 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.telegram {
-  margin: 0;
-  stroke: #0088cc; /* Синий Telegram */
-}
-
-.card1:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  background-color: #cc39a4;
-}
-
-.card1:hover .instagram {
-  fill: white;
-}
-
-.card2:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  background-color: #1877f2;
-}
-
-.card2:hover .facebook {
-  fill: white;
-}
-
-.card3:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  background-color: #00ff00;
-}
-
-.card3:hover .whatsapp {
-  fill: white;
-}
-
-.card4:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  background-color: #0d3b52; /* Синий Telegram */
-}
-
-.card4:hover .telegram {
-    fill: white; /* Белый самолётик при ховере */
-}
 
 /************** Адаптивность ************/
 
-@media (max-width: 1020px) {
-.centerBlock {
-  flex-direction: column;
-  margin: auto;
-}
-
-.centerBlock p{
-  font-size: 16px;
-  padding: 10px 0 0 0;
-  margin: 0;
-  /* margin-top: 3px; */
-}
-}
-
-@media (max-width: 650px) {
-.containerFooter {      
-   margin: 0;
-}
-
-  .logoContainer {
-    margin-bottom: 20px;
-  }
-
-  .logoImage {
-    max-width: 150px;
-    max-height: 150px;
-  }
-
-  .card1, .card2, .card3, .card4 {
-    width: 50px;
-    height: 50px;
-  }
-
-  .instagram, .facebook, .whatsapp, .telegram {
-    width: 28px;
-    height: 28px;
-  }
-
-  .centerBlock p{
-  font-size: 14px;
-  padding: 10px 0 0 0;
-  margin: 0;
-}
-}
-
-@media (max-width: 550px) {
-.logoImage {
-    max-width: 110px;
-    max-height: 110px;
-  }
-
-  .card1, .card2, .card3, .card4 {
-    width: 40px;
-    height: 40px;
-  }
-
-  .instagram, .facebook, .whatsapp, .telegram {
-    width: 22px;
-    height: 22px;
+@media (max-width: 1100px) {
+  .leftBlock {
+    flex-direction: column; /* Если экран планшета маловат, логотип и текст встанут друг под друга */
+    align-items: flex-start;
+    gap: 10px;
   }
 }
 
-@media (max-width: 480px) {
-.rightBlock {
-  padding: 10px 20px 20px 10px;  
-}
-
-  .logoImage {
-    max-width: 90px;
-    max-height: 90px;
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
   }
 
-  .card1, .card2, .card3, .card4 {
-    width: 30px;
-    height: 30px;
+  .leftBlock, .centerBlock, .rightBlock {
+    width: 100%;
+    padding: 0 0 30px 0;
+    border-right: none; /* Убираем вертикальные линии на мобилках */
+    border-bottom: 1px solid rgba(158, 54, 35, 0.15); /* Заменяем на горизонтальные */
+    align-items: center;
   }
 
-  .instagram, .facebook, .whatsapp, .telegram {
-    width: 15px;
-    height: 15px;
+  .leftBlock {
+    align-items: center;
   }
 
-.centerBlock p{
-  font-size: 14px;
-  padding: 5px 0;
-  margin: 0;
-}
+  .rightBlock {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .footerText {
+    text-align: center;
+  }
+
+  .menuLinksRow, .up {
+    justify-content: center;
+  }
 }
