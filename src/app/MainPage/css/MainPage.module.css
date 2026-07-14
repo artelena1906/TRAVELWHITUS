@@ -8,17 +8,18 @@
   overflow-x: clip;
 }
 
+/* Стили для хедера */
 .fixedHeader {
   position: fixed;   /* фиксируем к окну */
-  top: 0;            /* сверху */
-  left: 0;
-  width: 100%;       /* занимает всю ширину */
-  z-index: 1500;     /* поверх всего */
+  top: 0;  /* сверху */
+  left: 0;   
+  width: 100%;   /* занимает всю ширину */
+  z-index: 1500;   /* поверх всего */
   display: flex;
-  height: 80px;
+  height: 90px;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-   background: #F5F1EA;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #F5F1EA;
 }
 
 .mainContent.noPadding {
@@ -28,7 +29,6 @@
 
 .mainContent {
   flex-grow: 1; /* Контент занимает оставшееся пространство */
-   /* padding-top: 60px; */
 }
 
 
@@ -45,19 +45,16 @@
 
 .logoContainer {
   display: flex;
-  align-items: center; /* Центрируем картинку по вертикали */
+  /* align-items: center;  */
 height: 100%;
 }
 
-.logoContainer a {
+/* .logoContainer a {
   display: flex;
   align-items: center;
   height: 100%;
-}
+} */
 
-.logo {
-  height: 100%;                    /* Если покажется мало — поставь 70% или 75%! Это стандартный способ регулировки. */
-}
 
 /*******СТИЛИ ДЛЯ MainPageMenu****************/
 .headerContainerMenu {
@@ -213,6 +210,23 @@ height: 100%;
   margin-bottom: 5px; /* Отступ под изображением */
 }
 
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+.burger span {
+  width: 30px;
+  height: 3px;
+  background: #171717;
+  transition: 0.3s;
+}
+
 
 
 @keyframes slideIn {
@@ -250,6 +264,41 @@ height: 100%;
   padding-top: 0;
 }
 
+.burger {
+    display: flex;
+  }
+
+.headerContainerMenu {
+    display: none;
+    position: absolute;
+    top: 80px; /* Або висота твого хедера */
+    left: 0;
+    width: 100%;
+    background: #F5F1EA;
+    padding: 20px 0;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05); /* М'яка тінь замість жорсткої */
+    border-bottom: 2px solid #9F4636; /* Окреслюємо низ, щоб з'єднати з хедером */
+    z-index: 1000;
+  }
+
+ .headerContainerMenu.mobileOpen {
+    display: flex;
+    animation: fadeIn 0.3s ease; /* Додамо легку появу */
+  }
+
+.menu {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .dropdown {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    background: #ede9e0;
+  }
+
 .guestWarning {
   font-size: 0.8rem;
 }
@@ -262,16 +311,16 @@ height: 100%;
   margin: 5px 0 0 0;
 }
 
-  .menu {
-    /* flex-wrap: wrap; */
-    justify-content: center;
-      gap: 5px;
+ .menubtn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
   }
+}
 
-  .menubtn {
-    font-size: 0.9rem;
-    padding: 0.3rem;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
   .dropdown ul {
     height: 150px;
@@ -280,11 +329,6 @@ height: 100%;
   .logo {
   max-width: 50%;
 }
-
-/* .logoContainer {
-  text-align: left;
-  margin-left: 10vw;
-} */
 
 .fixedHeader {
   height: 60px; 
@@ -307,9 +351,8 @@ height: 100%;
 
   .userSection {
   gap: 4px;
-  /* margin-right: 3rem; */
 }
-}
+
 
 @media (max-width: 480px) {
 
