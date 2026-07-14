@@ -93,3 +93,35 @@
     padding-bottom: 25px;
   }
 }
+
+@media (max-width: 510px) {
+  .container {
+    gap: 15px; /* Отступы между карточками, когда они в столбик */
+  }
+
+  .advantageCard {
+    width: 100%;
+    padding: 0;
+  }
+
+  .title {
+  font-size: 1.1rem;
+}
+
+.description {
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+.iconWrapper {
+  width: 50px;
+  height: 50px;
+}
+
+  /* На мобилках убираем вертикальные линии справа */
+  .advantageCard:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(158, 54, 35, 0.15); /* Вместо них делаем легкую линию снизу */
+    padding-bottom: 25px;
+  }
+}
