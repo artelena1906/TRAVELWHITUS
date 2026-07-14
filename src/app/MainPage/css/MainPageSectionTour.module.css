@@ -253,3 +253,28 @@
   .tourName { font-size: 1.1rem; }
   .tourPrice { font-size: 1.2rem; }
 }
+
+@media (max-width: 510px) {
+  .titleOne{
+  font-size: 1.0rem;
+  margin-top: 0;
+}
+
+.title { font-size: 1.2rem; }
+
+.AllToursLink {
+  padding-right: 15px;
+  font-size: 0.6rem;
+  font-weight: 400;
+  gap: 5px;
+}
+
+.AllToursLink::after {
+  width: 20px;
+  height: 20px;
+
+}
+
+
+
+}
