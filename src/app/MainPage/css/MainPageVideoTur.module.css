@@ -147,14 +147,14 @@
 @media (max-width: 768px) {
   .carouselContainer {
     height: 85vh; /* На телефонах возвращаем высоту, чтобы вертикальное видео смотрелось круто */
-    justify-content: center; /* Центрируем контент */
-    align-items: center;
+    /* justify-content: center; 
+    align-items: center; */
   }
 
   .overlayContent {
     padding-left: 20px; /* Убираем гигантские проценты, делаем аккуратные отступы по бокам */
     padding-right: 20px;
-    text-align: center; /* На телефонах центрированный текст выглядит намного премиальнее */
+    /* text-align: center;  */
     max-width: 100%;
   }
 
@@ -174,9 +174,48 @@
     margin-bottom: 30px;
   }
   
-  .description br {
-    display: none; /* Ломаем принудительные переносы строк <br/>, чтобы текст плавно ложился по экрану телефона */
+  /* .description br {
+    display: none; 
+  } */
+
+  .ctaButton {
+    /* width: 100%;  */
+    max-width: 280px;
+    padding: 14px 20px;
+    font-size: 1rem;
   }
+}
+
+  @media (max-width: 512px) {
+  .carouselContainer {
+    justify-content: center; 
+    align-items: center;
+  }
+
+  .overlayContent {
+    padding-left: 20px; /* Убираем гигантские проценты, делаем аккуратные отступы по бокам */
+    padding-right: 20px;
+    text-align: center; /* На телефонах центрированный текст выглядит намного премиальнее */
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 1.6rem; /* Компактный размер для смартфона */
+    line-height: 1.0;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+  
+
 
   .ctaButton {
     width: 100%; /* Кнопка на всю ширину экрана на мобилке — по ней гораздо удобнее кликать пальцем */

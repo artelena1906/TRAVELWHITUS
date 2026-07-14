@@ -239,7 +239,7 @@ export default function MainPageHeader() {
     <header className={styles.fixedHeader}>
       <div className={styles.headerContainer}>
         <div className={styles.logoContainer}>
-          <Link href="/"><Image src="/img/Logo_new.png" alt="Logo" width={200} height={60} /></Link>
+          <Link href="/"><Image src="/img/Logo_new.png" alt="Logo" width={200} height={70} /></Link>
         </div>
 
         {/* Бургер */}
