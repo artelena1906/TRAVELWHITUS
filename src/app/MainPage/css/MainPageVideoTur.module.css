@@ -200,27 +200,25 @@
   }
 
   .title {
-    font-size: 1.6rem; /* Компактный размер для смартфона */
+    font-size: 1.4rem; /* Компактный размер для смартфона */
     line-height: 1.0;
     margin-bottom: 10px;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .description {
     font-size: 0.8rem;
     line-height: 1.2;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
   }
   
-
-
   .ctaButton {
     width: 100%; /* Кнопка на всю ширину экрана на мобилке — по ней гораздо удобнее кликать пальцем */
     max-width: 280px;
-    padding: 14px 20px;
-    font-size: 1rem;
+    padding: 12px 20px;
+    font-size: 0.8rem;
   }
 }
