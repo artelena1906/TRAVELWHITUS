@@ -256,11 +256,11 @@
 
 @media (max-width: 510px) {
   .titleOne{
-  font-size: 1.0rem;
+  font-size: 0.8rem;
   margin-top: 0;
 }
 
-.title { font-size: 1.2rem; }
+.title { font-size: 1.0rem; }
 
 .AllToursLink {
   padding-right: 15px;
