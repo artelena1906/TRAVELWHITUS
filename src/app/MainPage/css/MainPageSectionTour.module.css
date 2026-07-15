@@ -306,7 +306,7 @@ padding-left: 15px; /* Підганяємо під загальні відсту
 
 .tourCard {
   flex-direction: row; /* Элементы идут сверху вниз */
-  height: 120px;
+  height: 140px;
 }
 
 .tourMedia {
@@ -332,8 +332,8 @@ padding-left: 15px; /* Підганяємо під загальні відсту
   .tourName {
     font-size: 0.8rem;   /* Трохи менший розмір шрифту */
     margin: 0;
-    line-height: 1.2;
-    font-weight: 500;
+    line-height: 1.0;
+    font-weight: 700;
   }
 
   .tourBottomRow {
