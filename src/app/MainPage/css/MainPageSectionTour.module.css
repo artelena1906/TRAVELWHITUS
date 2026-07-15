@@ -316,8 +316,8 @@ padding-left: 15px; /* Підганяємо під загальні відсту
   }
 
   .tourDaysBadge {
-    padding: 5px 8px;    /* Зменшуємо бейдж, щоб він не був величезним */
-    font-size: 0.7rem;
+    padding: 4px 8px;    /* Зменшуємо бейдж, щоб він не був величезним */
+    font-size: 0.5rem;
     top: 10px;
     right: auto;
     left: 10px;
