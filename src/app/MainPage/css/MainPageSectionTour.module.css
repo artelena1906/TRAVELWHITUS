@@ -330,7 +330,7 @@ padding-left: 15px; /* Підганяємо під загальні відсту
   }
 
   .tourName {
-    font-size: 0,8rem;   /* Трохи менший розмір шрифту */
+    font-size: 0.8rem;   /* Трохи менший розмір шрифту */
     margin: 0;
     line-height: 1.2;
     font-weight: 500;
