@@ -125,8 +125,6 @@
 
   /* На мобилках убираем вертикальные линии справа */
   .advantageCard:not(:last-child) {
-    border-right: none;
-    border-bottom: 1px solid rgba(158, 54, 35, 0.15); /* Вместо них делаем легкую линию снизу */
     padding-bottom: 15px;
   }
 }

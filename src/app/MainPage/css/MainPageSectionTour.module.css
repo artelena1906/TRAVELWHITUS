@@ -242,7 +242,7 @@
   background: #9F4636; /* Активная точка становится терракотовой */
 }
 
-/* --- АДАПТИВНОСТЬ --- */
+/* ********************* АДАПТИВНОСТЬ *************** */
 @media (max-width: 768px) {
   .title { font-size: 28px; }
   .toursContainer {
@@ -250,13 +250,17 @@
     gap: 20px;
     padding: 0 15px;
   }
+
+    .titleOne{
+  font-size: 0.9rem;
+}
   .tourName { font-size: 1.1rem; }
   .tourPrice { font-size: 1.2rem; }
 }
 
 @media (max-width: 510px) {
   .titleOne{
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   margin-top: 0;
 }
 
