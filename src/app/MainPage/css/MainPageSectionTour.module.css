@@ -258,26 +258,123 @@
   .tourPrice { font-size: 1.2rem; }
 }
 
+
+
+/******************* 510 ****************************/
+
 @media (max-width: 510px) {
   .titleOne{
   font-size: 0.7rem;
   margin-top: 0;
 }
 
-.title { font-size: 1.0rem; }
+.title { 
+  font-size: 1.0rem; 
+padding-left: 15px; /* Підганяємо під загальні відступи */
+    margin-bottom: 5px;
+}
 
 .AllToursLink {
-  padding-right: 15px;
+  padding-right: 25px;
   font-size: 0.6rem;
   font-weight: 400;
   gap: 5px;
+  margin-top: 5px;
+  align-self: flex-end;
 }
 
 .AllToursLink::after {
   width: 20px;
   height: 20px;
-
 }
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Залишаємо заголовок зліва */
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 0 15px; 
+  }
+
+.toursContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  padding: 0 15px;
+}
+
+.tourCard {
+  flex-direction: row; /* Элементы идут сверху вниз */
+  height: 120px;
+}
+
+.tourMedia {
+    width: 50%;          /* Фото займає 50% ширини */
+    height: 100%;        /* На всю висоту картки */
+    flex-shrink: 0;      /* Забороняємо стискання фото */
+  }
+
+  .tourDaysBadge {
+    padding: 5px 8px;    /* Зменшуємо бейдж, щоб він не був величезним */
+    font-size: 0.7rem;
+    top: 10px;
+    right: auto;
+    left: 10px;
+    border-radius: 8px;
+  }
+
+  .tourInfo {
+    padding: 10px;       /* Менше відступів для тексту */
+    justify-content: space-between;
+  }
+
+  .tourName {
+    font-size: 1.0rem;   /* Трохи менший розмір шрифту */
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .tourBottomRow {
+    flex-direction: column; /* Якщо не вміщується, можна розбити, але спробуємо в рядок */
+    align-items: flex-end;
+    gap: 5px;
+  }
+
+  .tourDate {
+    font-size: 0.8rem;
+  }
+
+  .calendarIcon {
+    width: 20px;         /* Зменшуємо іконку */
+    height: 20px;
+  }
+
+  .tourPrice {
+    font-size: 1rem;
+    padding-right: 5px;
+  }
+
+  .circleArrowButton {
+    width: 35px;         /* Зменшуємо кнопку */
+    height: 35px;
+  }
+  
+  .circleArrowButton svg {
+    width: 18px;         /* Зменшуємо стрілочку */
+  }
+
+  .priceAndAction {
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.tourDateWrapper {
+    align-self: flex-start; /* Дату прижимаем влево */
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+  }
 
 
 

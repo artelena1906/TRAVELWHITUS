@@ -168,7 +168,7 @@ return (
     <div className={styles.header}>
       <h1 className={styles.title}>Найближчі пригоди</h1>
       <Link href="/PageTours" className={styles.AllToursLink}>
-        Всі тури
+        Переглянути всі тури
       </Link>
     </div>
     
