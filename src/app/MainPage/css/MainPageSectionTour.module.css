@@ -279,7 +279,7 @@ padding-left: 15px; /* Підганяємо під загальні відсту
   font-size: 0.6rem;
   font-weight: 400;
   gap: 5px;
-  margin-top: 5px;
+  margin-top: 15px;
   align-self: flex-end;
 }
 
@@ -310,7 +310,7 @@ padding-left: 15px; /* Підганяємо під загальні відсту
 }
 
 .tourMedia {
-    width: 50%;          /* Фото займає 50% ширини */
+    width: 40%;          /* Фото займає 50% ширини */
     height: 100%;        /* На всю висоту картки */
     flex-shrink: 0;      /* Забороняємо стискання фото */
   }
