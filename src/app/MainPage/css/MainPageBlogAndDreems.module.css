@@ -243,5 +243,10 @@ height: 50px;
   padding: 5px 15px;         /* Пропорції овалу */
   border-radius: 100px;       /* Перетворює кнопку на ідеальну капсулу */
   font-size: 1.0rem;
-}
+  margin-bottom: 10px;
+  }
+
+   .mainText, .subText {
+    font-size: 0.8rem;
+  }
 }
