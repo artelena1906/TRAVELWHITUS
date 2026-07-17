@@ -240,7 +240,7 @@ height: 50px;
 
   .ctaButton {
   gap: 8px;                  /* Відстань від тексту до стрілочки */
-  padding: 5px 15px;         /* Пропорції овалу */
+  padding: 5px 50px;         /* Пропорції овалу */
   border-radius: 100px;       /* Перетворює кнопку на ідеальну капсулу */
   font-size: 1.0rem;
   margin-bottom: 10px;
