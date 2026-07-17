@@ -149,7 +149,7 @@
     text-align: center;
   }
   .leftPart {
-    flex-direction: column;   /* Літачок встане над текстом */
+    /* flex-direction: column;    */
     gap: 15px;
   }
   .textBlock {
@@ -162,11 +162,67 @@
 
 
 /* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛОК --- */
-@media (max-width: 992px) {
+@media (max-width: 710px) {
   .container {
     flex-direction: column; /* На планшетах и телефонах блоки встанут друг под другом */
     gap: 50px;
     padding: 0 15px;
+  }
+
+  /* Головна чорна плашка на всю ширину екрану */
+.sectionBlack {
+  width: 100vw;               /* Розтягуємо строго від краю до краю екрану */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* Магія, яка вириває блок із батьківських паддінгів */
+  margin: 20px 0;
+  padding: 10px 0;            /* Внутрішні відступи зверху і знизу */
+  box-sizing: border-box;
+}
+
+  .sectionBlog {
+    flex: 0 0 100%;
+    padding-right: 0;
+    border-right: none;    /* Убираем вертикальную линию на мобилках */
+    border-bottom: 1px solid rgba(158, 54, 35, 0.15); /* Делаем вместо нее горизонтальную снизу */
+    padding-bottom: 40px;
+  }
+
+  .sectionDreams {
+    flex: 0 0 100%;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 510px) {
+
+.contentWrapper {
+  padding: 0 20px;
+  flex-direction: column;        /* Елементи йдуть зліва направо */
+  justify-content: space-between; /* Текст ліворуч, кнопка — праворуч */
+  align-items: center;        /* Центруємо все по вертикалі */
+  box-sizing: border-box;
+}
+
+  .container {
+    flex-direction: column; /* На планшетах и телефонах блоки встанут друг под другом */
+    gap: 50px;
+    padding: 0 15px;
+  }
+
+  .postImage {
+  object-fit: contain;
+  opacity: 0.9;              /* Щоб золотий літачок виглядав соковито */
+width: 50px; 
+height: 50px; 
+}
+
+  .leftPart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;          
   }
 
   .sectionBlog {
@@ -181,4 +237,11 @@
     flex: 0 0 100%;
     padding-left: 0;
   }
+
+  .ctaButton {
+  gap: 8px;                  /* Відстань від тексту до стрілочки */
+  padding: 5px 15px;         /* Пропорції овалу */
+  border-radius: 100px;       /* Перетворює кнопку на ідеальну капсулу */
+  font-size: 1.0rem;
+}
 }
