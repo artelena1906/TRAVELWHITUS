@@ -170,3 +170,52 @@
     justify-content: center;
   }
 }
+
+
+
+@media (max-width: 510px) {
+  .wrapper {
+    gap: 10px;
+  }
+
+  .leftBlock, .centerBlock, .rightBlock {
+    padding: 0 0 10px 0;
+  }
+
+  .leftBlock {
+    align-items: center;
+     gap: 0; 
+  }
+
+  .logo {
+    width: 200px;
+  height: 50px;
+  object-fit: contain;
+}
+
+  .rightBlock {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .footerText {
+    text-align: center;
+      font-size: 0.8rem;
+      line-height: 1.0;
+      font-weight: 600;
+    }
+
+  .menuLinksRow, .up {
+    justify-content: center;
+  }
+
+  .footerNavigation {
+  font-size: 1.0rem;
+  margin-bottom: 10px;
+}
+
+.menuLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+}
