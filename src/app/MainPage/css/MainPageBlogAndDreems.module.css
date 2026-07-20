@@ -11,35 +11,13 @@
 }
 
 /* Левая колонка — Блог */
-.sectionBlog {
+.sectionBlog, .sectionDreams {
   /* Занимает ровно половину контейнера с учетом отступа gap */
   flex: 0 0 calc(50% - 20px); 
   width: 100%;
   padding: 0 15px;     /* Внутренний отступ до вертикальной линии */
 }
 
-/* Правая колонка — Мрії */
-.sectionDreams {
-  /* Тоже занимает ровно половину */
-  flex: 0 0 calc(50% - 20px); 
-  width: 100%;
-  padding: 0 15px;    /* Внутренний отступ от вертикальной линии */
-  /* display: flex; */
-  /* flex-direction: column;
-  box-sizing: border-box; */
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start; /* Выравниваем секции по верхней линии заголовков */
-  width: 100%;
-  /* max-width: 1200px;        */
-  /* margin: 60px auto 0 auto;  */
-  padding: 0 30px;         
-  box-sizing: border-box;
-}
 
 /* Головна чорна плашка на всю ширину екрану */
 .sectionBlack {
@@ -197,17 +175,24 @@
 @media (max-width: 510px) {
 
 .contentWrapper {
-  padding: 0 20px;
+  /* padding: 0 20px; */
   flex-direction: column;        /* Елементи йдуть зліва направо */
-  justify-content: space-between; /* Текст ліворуч, кнопка — праворуч */
+  /* justify-content: space-between;  */
   align-items: center;        /* Центруємо все по вертикалі */
   box-sizing: border-box;
 }
 
+.sectionBlog, .sectionDreams {
+  /* Занимает ровно половину контейнера с учетом отступа gap */
+  flex: 0 0 100%; 
+  width: 100%;
+  /* padding: 10px 15px;     */
+}
+
   .container {
     flex-direction: column; /* На планшетах и телефонах блоки встанут друг под другом */
-    gap: 50px;
-    padding: 0 15px;
+    gap: 25px;
+    /* padding: 0 10px; */
   }
 
   .postImage {
@@ -223,19 +208,6 @@ height: 50px;
   justify-content: space-between;
   align-items: center;
   gap: 15px;          
-  }
-
-  .sectionBlog {
-    flex: 0 0 100%;
-    padding-right: 0;
-    border-right: none;    /* Убираем вертикальную линию на мобилках */
-    border-bottom: 1px solid rgba(158, 54, 35, 0.15); /* Делаем вместо нее горизонтальную снизу */
-    padding-bottom: 40px;
-  }
-
-  .sectionDreams {
-    flex: 0 0 100%;
-    padding-left: 0;
   }
 
   .ctaButton {
