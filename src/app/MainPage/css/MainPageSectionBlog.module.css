@@ -8,7 +8,7 @@
   border: rgb(221, 218, 218) 1px solid; 
   box-shadow: 0 8px 20px rgba(0.4,0.4,0.4,0.4);
   /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
-  width: 100%;            /* Занимает всю ширину ячейки сетки */
+  width: 100%;           
   box-sizing: border-box;
 }
 
@@ -147,17 +147,6 @@
   line-height: 1.4;
 }
 
-/* .postDescription {
-  margin: 5px 0 0;
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; 
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */
 
 @media (max-width: 768px) {
   .containerBlogTitle {
@@ -181,7 +170,7 @@
 
 @media (max-width: 510px) {
   .containerBlogTitle h1 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .buttonBlog {
@@ -192,6 +181,15 @@
 
   .container {
    display: none;
+}
+
+.containerBlogTitle {
+  padding: 5px 20px; /* Выравниваем по левому краю с заголовком */
+}
+
+.linkBlog {
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 }

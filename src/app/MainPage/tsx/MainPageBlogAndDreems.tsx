@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function MainPageBlogAndDreems() {
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.containerMain}>
 
         <div className={styles.sectionBlog}>
           <MainPageSectionBlog />

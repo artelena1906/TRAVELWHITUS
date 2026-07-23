@@ -1,4 +1,4 @@
-.container {
+.containerMain {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -141,7 +141,7 @@
 
 /* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛОК --- */
 @media (max-width: 710px) {
-  .container {
+  .containerMain {
     flex-direction: column; /* На планшетах и телефонах блоки встанут друг под другом */
     gap: 50px;
     padding: 0 15px;
@@ -186,10 +186,10 @@
   /* Занимает ровно половину контейнера с учетом отступа gap */
   flex: 0 0 100%; 
   width: 100%;
-  /* padding: 10px 15px;     */
+  padding: 0;
 }
 
-  .container {
+  .containerMain {
     flex-direction: column; /* На планшетах и телефонах блоки встанут друг под другом */
     gap: 25px;
     /* padding: 0 10px; */

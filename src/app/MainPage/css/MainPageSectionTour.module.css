@@ -271,7 +271,7 @@
 .title { 
   font-size: 1.0rem; 
 padding-left: 15px; /* Підганяємо під загальні відступи */
-    margin-bottom: 5px;
+    /* margin-bottom: 15px; */
 }
 
 .AllToursLink {
@@ -279,7 +279,8 @@ padding-left: 15px; /* Підганяємо під загальні відсту
   font-size: 0.6rem;
   font-weight: 400;
   gap: 5px;
-  margin-top: 15px;
+  margin-bottom: 10px;
+  /* margin-top: 15px; */
   align-self: flex-end;
 }
 
