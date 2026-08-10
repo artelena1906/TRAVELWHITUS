@@ -19,7 +19,7 @@ export default function MainPageMenu() {
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>([
     // { href: "/", text: "ГОЛОВНА" },
-    { href: "#", text: "Країни" },
+    { href: "/PageCountry", text: "Країни" },
     { href: "/PageTours", text: "Тури" },
     { href: "/PageDreams", text: "Мрії" },
     { href: "/PageBlog", text: "Блог" },
