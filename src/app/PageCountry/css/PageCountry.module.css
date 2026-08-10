@@ -6,7 +6,7 @@
 }
 
 .pagecountrycontainer h1{
-  font-size: clamp(2.0rem, 4vw, 3rem);
+  font-size: clamp(1,8rem, 4vw, 3rem);
   line-height: 2.0rem;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
