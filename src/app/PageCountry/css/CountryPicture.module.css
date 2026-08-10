@@ -1,0 +1,279 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.subTitle {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  color: #c89d62; /* Золотистый акцент бренда */
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* 60-колоночна сітка */
+.countryGrid {
+  display: grid;
+  grid-template-columns: repeat(60, 1fr);
+  gap: 10px;
+}
+
+/* Рядок 1 (2 блоки: 50% / 50%) */
+.row1_col1 { grid-column: span 30; } /* 50% */
+.row1_col2 { grid-column: span 30; } /* 50% */
+
+/* Рядок 2 (3 блоки: 33.3% / 33.3% / 33.3%) */
+.row2_col1 { grid-column: span 20; } /* 33.3% */
+.row2_col2 { grid-column: span 20; } /* 33.3% */
+.row2_col3 { grid-column: span 20; } /* 33.3% */
+
+/* Рядок 3 (3 блоки: 40% / 30% / 30%) */
+.row3_col1 { grid-column: span 24; } /* 40% */
+.row3_col2 { grid-column: span 18; } /* 30% */
+.row3_col3 { grid-column: span 18; } /* 30% */
+
+/* Рядок 4 (3 блоки: 30% / 35% / 35%) */
+.row4_col1 { grid-column: span 18; } /* 30% */
+.row4_col2 { grid-column: span 21; } /* 35% */
+.row4_col3 { grid-column: span 21; } /* 35% */
+
+/* Стиль самой карточки-картинки */
+.card {
+  position: relative;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16. 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.06); /* Плавный зум картинки при наведении */
+}
+
+/* Темный градиент поверх картинки, чтобы белый текст всегда читался */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Название страны и стрелочка внутри карточки */
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.countryName {
+  font-size: clamp(1.7rem, 2vw, 2.0rem);
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.arrowIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #D68A47;
+  background: #9e3623;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover .arrowIcon {
+  background: #D68A47;
+  border: 3px solid #9e3623;
+  /* color: #9e3623; */
+  transform: scale(1.1);
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@media (max-width: 120px) {
+
+  .container {
+    padding: 40px 16px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .container {
+    padding: 40px 16px;
+  }
+
+
+  /* ---------- Заголовок ---------- */
+
+  .header {
+    margin-bottom: 35px;
+  }
+
+  .title {
+    font-size: 2rem;
+    line-height: 1.15;
+    letter-spacing: 0;
+
+    text-transform: none;
+
+    margin-bottom: 14px;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+
+  /* ---------- Сетка ---------- */
+
+  .countryGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+
+  /*
+     Все карточки на мобильном
+     занимают 100%.
+  */
+
+  .row1_col1,
+  .row1_col2,
+  .row2_col1,
+  .row2_col2,
+  .row2_col3,
+  .row3_col1,
+  .row3_col2,
+  .row3_col3,
+  .row4_col1,
+  .row4_col2,
+  .row4_col3,
+  .lastRow_one,
+  .lastRow_two,
+  .lastRow_three {
+    grid-column: 1 / -1;
+  }
+
+
+  /* ---------- Карточка ---------- */
+
+  .card {
+    height: 220px;
+    border-radius: 12px;
+  }
+
+
+  .cardContent {
+    padding: 16px;
+  }
+
+
+  /* ---------- Стрелка ---------- */
+
+  .arrowIcon {
+    width: 36px;
+    height: 36px;
+
+    border-width: 2px;
+  }
+}
+
+
+/* =========================================================
+   МАЛЕНЬКИЙ МОБИЛЬНЫЙ
+   до 480 px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .container {
+    padding: 32px 14px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    height: 200px;
+  }
+
+  .cardContent {
+    padding: 14px;
+  }
+
+  .arrowIcon {
+    width: 34px;
+    height: 34px;
+  }
+}

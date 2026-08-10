@@ -1,5 +1,3 @@
-import React from "react";
-import Image from "next/image";
 import styles from "../css/WhyWithUs.module.css";
 
 const advantagesData = [

@@ -23,12 +23,12 @@ export default function MainPageBlogAndDreems() {
 <div className={styles.sectionBlack}>
   <div className={styles.contentWrapper}>
     
-    {/* ЛЕВАЯ ЧАСТЬ: Самолётик + Текст */}
+   
     <div className={styles.leftPart}>
       <Image
         src='/img/paper-plane.png'
         alt='fly'
-        width={90} /* Уменьшил базовый размер, чтобы он соответствовал пропорциям строки */
+        width={90} 
         height={100}
         className={styles.postImage}
       />
@@ -38,7 +38,6 @@ export default function MainPageBlogAndDreems() {
       </div>
     </div>
 
-    {/* ПРАВАЯ ЧАСТЬ: Кнопка-ссылка со стрелкой */}
     <Link href="/PageTours" className={styles.ctaButton}>
       Обрати тур <span>&rarr;</span>
     </Link>

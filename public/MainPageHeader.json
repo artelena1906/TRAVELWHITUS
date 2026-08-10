@@ -1488,6 +1488,26 @@
             "title": "Завжди динамічна захоплююча програма, а не сидимо в одному готелі",
             "urlimage": "/img/image2.png"
           }
+      ],
+      
+      "aboutus": [
+         {
+            "title": "24 країни",
+            "urlimage": "/img/image1.png"
+          },
+          {
+            "title": "1000+ локацій",
+            "urlimage": "/img/mandri.png"
+          },
+          {
+            "title": "100 000+ фотографій",
+            "urlimage": "/img/image2.png"
+          },
+          {
+            "title": "Безліч спогадів",
+            "urlimage": "/img/image2.png"
+          }
+
       ]
   }
 }

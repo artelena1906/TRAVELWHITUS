@@ -1,0 +1,157 @@
+.pagecountrycontainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 90px 0 50px 0;
+}
+
+.pagecountrycontainer h1{
+  font-size: clamp(2.0rem, 4vw, 3rem);
+  line-height: 2.0rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  margin: 0 0 0 clamp(10px, 5vw, 150px);
+}
+
+.pagecountrytext{
+    font-size: clamp(1.0rem, 3vw, 1.15rem);
+ line-height: clamp(1.2rem, 1.5vw, 1.5rem);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+   margin: clamp(10px, 1.5vw, 15px)
+        clamp(0px, 1vw, 0px)
+        clamp(10px, 1.5vw, 15px)
+        clamp(10px, 5vw, 150px);
+    opacity: 0.9;
+}
+
+.advantagesSection {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+   margin: 0 clamp(10px, 5vw, 150px);
+    padding: Clamp(5px, 5vw, 30px) 0;
+    width: 70%; 
+}
+
+.container {
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;
+}
+
+.advantageCard {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  gap: 5px;
+  min-width: 0;
+}
+
+/* Вертикальные линии между карточками */
+.advantageCard:not(:last-child) {
+  border-right: 1px solid rgba(158, 54, 35, 0.2); /* Тонкая линия терракотового цвета */
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.line {
+  border: none;
+  width: 100%;
+  border-top: 1px solid rgba(158, 54, 35, 0.2);
+  margin: 30px auto 0 auto; /* Центрируем её и делаем отступ сверху */
+  padding: 0 20px; /* Чтобы края не липли к экрану на планшетах */
+}
+
+.icon {
+  width: 60%;
+  height: auto;
+}
+
+.title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  color: #2c2c2c;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.description {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  /* line-height: 1.5; */
+  color: #555555;
+  margin: 0;
+}
+
+@media (max-width: 950px) {
+
+  .advantagesSection {
+    width: auto;
+  }
+
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 25px;
+  }
+
+  .advantageCard {
+    padding: 0 20px;
+  }
+
+  /* Убираем старые вертикальные линии */
+  .advantageCard {
+    border-right: none !important;
+  }
+
+  /* Горизонтальная линия между рядами */
+  .advantageCard:nth-child(-n + 2) {
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(158, 54, 35, 0.2);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .advantagesSection {
+    /* margin: 0 16px; */
+    width: auto;
+    padding: 0;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    padding: 0;
+    row-gap: 0;
+  }
+
+  .advantageCard {
+    padding: 15px 10px;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(158, 54, 35, 0.2);
+  }
+
+  .advantageCard:last-child {
+    border-bottom: none;
+  }
+
+  .iconWrapper {
+    width: 65px;
+    height: 65px;
+  }
+}

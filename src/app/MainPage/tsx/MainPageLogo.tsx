@@ -180,6 +180,100 @@
 
 
 
+// "use client";
+
+// import styles from "../css/MainPage.module.css";
+// import Image from "next/image";
+// import Link from "next/link";
+// import React, { useState, useEffect, useRef } from "react";
+
+// interface MenuItem {
+//   href: string;
+//   text: string;
+//   subItems?: { href: string; text: string; img?: string }[];
+// }
+
+// export default function MainPageHeader() {
+//   const [menuItems, setMenuItems] = useState<MenuItem[]>([
+//     { href: "/PageCountry", text: "Країни" },
+//     { href: "/PageTours", text: "Тури" },
+//     { href: "/PageDreams", text: "Мрії" },
+//     { href: "/PageBlog", text: "Блог" },
+//     { href: "/PageContacts", text: "Фото" },
+//     { href: "/PageLogin", text: "Відео" },
+//   ]);
+
+//   const [isDropdownOpen, setIsDropdownOpen] = useState<string | null>(null);
+//   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+//   const menuRef = useRef<HTMLDivElement>(null);
+
+//   useEffect(() => {
+//     fetch("/MainPageHeader.json")
+//       .then((res) => res.json())
+//       .then((data) => {
+//         const countries = data.bodyData.country.map((country: any) => ({
+//           href: `/PageCountryIndividual/${country.id}`,
+//           text: country.name,
+//           img: country.img,
+//         }));
+//         setMenuItems((prev) =>
+//           prev.map((item) => (item.text === "Країни" ? { ...item, subItems: countries } : item))
+//         );
+//       })
+//       .catch((err) => console.error(err));
+//   }, []);
+
+//   useEffect(() => {
+//     const handleClickOutside = (event: MouseEvent) => {
+//       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+//         setIsDropdownOpen(null);
+//         setIsMobileMenuOpen(false);
+//       }
+//     };
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => document.removeEventListener("mousedown", handleClickOutside);
+//   }, []);
+
+//   return (
+//     <header className={styles.fixedHeader}>
+//       <div className={styles.headerContainer}>
+//         <div className={styles.logoContainer}>
+//           <Link href="/"><Image src="/img/Logo_new.png" alt="Logo" width={200} height={70} /></Link>
+//         </div>
+
+//         {/* Бургер */}
+//         <button className={styles.burger} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+//           <span className={isMobileMenuOpen ? styles.active : ""}></span>
+//           <span className={isMobileMenuOpen ? styles.active : ""}></span>
+//           <span className={isMobileMenuOpen ? styles.active : ""}></span>
+//         </button>
+
+//         <div className={`${styles.headerContainerMenu} ${isMobileMenuOpen ? styles.mobileOpen : ""}`}>
+//           <nav className={styles.menu} ref={menuRef}>
+//             {menuItems.map((item, index) => (
+//               <div key={index} className={styles.menuItem}>
+//                 <Link href={item.href} className={styles.menubtn} onClick={(e) => item.subItems ? (e.preventDefault(), setIsDropdownOpen(prev => prev === item.text ? null : item.text)) : null}>
+//                   {item.text}
+//                 </Link>
+//                 {item.subItems && isDropdownOpen === item.text && (
+//                   <div className={styles.dropdown}>
+//                     {item.subItems.map((sub, i) => (
+//                       <Link key={i} href={sub.href} className={styles.subMenuLink} onClick={() => {setIsDropdownOpen(null); setIsMobileMenuOpen(false);}}>
+//                         {sub.text}
+//                       </Link>
+//                     ))}
+//                   </div>
+//                 )}
+//               </div>
+//             ))}
+//           </nav>
+//         </div>
+//       </div>
+//     </header>
+//   );
+// }
+
 "use client";
 
 import styles from "../css/MainPage.module.css";
@@ -190,12 +284,11 @@ import React, { useState, useEffect, useRef } from "react";
 interface MenuItem {
   href: string;
   text: string;
-  subItems?: { href: string; text: string; img?: string }[];
 }
 
 export default function MainPageHeader() {
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([
-    { href: "#", text: "Країни" },
+  const [menuItems] = useState<MenuItem[]>([
+    { href: "/PageCountry", text: "Країни" },
     { href: "/PageTours", text: "Тури" },
     { href: "/PageDreams", text: "Мрії" },
     { href: "/PageBlog", text: "Блог" },
@@ -203,68 +296,63 @@ export default function MainPageHeader() {
     { href: "/PageLogin", text: "Відео" },
   ]);
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState<string | null>(null);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch("/MainPageHeader.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const countries = data.bodyData.country.map((country: any) => ({
-          href: `/PageCountryIndividual/${country.id}`,
-          text: country.name,
-          img: country.img,
-        }));
-        setMenuItems((prev) =>
-          prev.map((item) => (item.text === "Країни" ? { ...item, subItems: countries } : item))
-        );
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
-  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(null);
         setIsMobileMenuOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   return (
     <header className={styles.fixedHeader}>
       <div className={styles.headerContainer}>
         <div className={styles.logoContainer}>
-          <Link href="/"><Image src="/img/Logo_new.png" alt="Logo" width={200} height={70} /></Link>
+          <Link href="/">
+            <Image
+              src="/img/Logo_new.png"
+              alt="Logo"
+              width={200}
+              height={70}
+            />
+          </Link>
         </div>
 
         {/* Бургер */}
-        <button className={styles.burger} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button
+          className={styles.burger}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
           <span className={isMobileMenuOpen ? styles.active : ""}></span>
           <span className={isMobileMenuOpen ? styles.active : ""}></span>
           <span className={isMobileMenuOpen ? styles.active : ""}></span>
         </button>
 
-        <div className={`${styles.headerContainerMenu} ${isMobileMenuOpen ? styles.mobileOpen : ""}`}>
-          <nav className={styles.menu} ref={menuRef}>
+        <div
+          className={`${styles.headerContainerMenu} ${
+            isMobileMenuOpen ? styles.mobileOpen : ""
+          }`}
+          ref={menuRef}
+        >
+          <nav className={styles.menu}>
             {menuItems.map((item, index) => (
               <div key={index} className={styles.menuItem}>
-                <Link href={item.href} className={styles.menubtn} onClick={(e) => item.subItems ? (e.preventDefault(), setIsDropdownOpen(prev => prev === item.text ? null : item.text)) : null}>
+                <Link
+                  href={item.href}
+                  className={styles.menubtn}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   {item.text}
                 </Link>
-                {item.subItems && isDropdownOpen === item.text && (
-                  <div className={styles.dropdown}>
-                    {item.subItems.map((sub, i) => (
-                      <Link key={i} href={sub.href} className={styles.subMenuLink} onClick={() => {setIsDropdownOpen(null); setIsMobileMenuOpen(false);}}>
-                        {sub.text}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
           </nav>

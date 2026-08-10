@@ -1,3 +1,4 @@
+/*
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../css/MainPage.module.css";
@@ -49,7 +50,7 @@ export default function MainPageMenu() {
         console.log("Сформированные страны:", countries);
         setMenuItems((prevItems) =>
           prevItems.map((item) =>
-            item.text === "КРАЇНИ" ? { ...item, subItems: countries } : item
+            item.text === "Країни" ? { ...item, subItems: countries } : item
           )
         );
       })
@@ -151,6 +152,56 @@ export default function MainPageMenu() {
           ) : null
         )}
 
+      </div>
+    </div>
+  );
+}*/
+
+
+"use client";
+
+import React, { useState } from "react";
+import styles from "../css/MainPage.module.css";
+import Link from "next/link";
+
+export default function MainPageMenu() {
+  interface MenuItem {
+    href: string;
+    text: string;
+  }
+
+  const [menuItems] = useState<MenuItem[]>([
+    { href: "/PageCountry", text: "Країни" },
+    { href: "/PageTours", text: "Тури" },
+    { href: "/PageDreams", text: "Мрії" },
+    { href: "/PageBlog", text: "Блог" },
+    { href: "/PageContacts", text: "Фото" },
+    { href: "/PageLogin", text: "Відео" },
+  ]);
+
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+  return (
+    <div className={styles.headerContainerMenu}>
+      <div className={styles.menuContainer}>
+        <nav className={styles.menu}>
+          {menuItems.map((item, index) => (
+            <div
+              key={index}
+              className={styles.menuItem}
+              onMouseEnter={() => setHoveredItem(item.text)}
+              onMouseLeave={() => setHoveredItem(null)}
+            >
+              <Link href={item.href} className={styles.menubtn}>
+                {item.text}
+              </Link>
+
+              {hoveredItem === item.text && (
+                <span className={styles.thinGoldLine}></span>
+              )}
+            </div>
+          ))}
+        </nav>
       </div>
     </div>
   );

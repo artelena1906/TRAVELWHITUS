@@ -7,7 +7,6 @@ export default function MainPageFooter() {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-
         {/* Левая часть — Логотип слева, Слоган справа */}
         <div className={styles.leftBlock}>
           <div className={styles.logoSide}>
@@ -32,6 +31,7 @@ export default function MainPageFooter() {
         <div className={styles.centerBlock}>
           <span className={styles.footerNavigation}>НАВІГАЦІЯ</span>
           <div className={styles.menuLinksRow}>
+            <Link href="../PageCountry" className={styles.menuLink}>Країни</Link>
             <Link href="../PageTours" className={styles.menuLink}>Тури</Link>
             <Link href="../PageDreams" className={styles.menuLink}>Мрії</Link>
             <Link href="../PageBlog" className={styles.menuLink}>Блог</Link>
