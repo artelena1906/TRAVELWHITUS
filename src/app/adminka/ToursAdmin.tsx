@@ -115,6 +115,7 @@ interface TourCardData {
   description?: string;
   counter?: number;
   days?: TourDay[];
+  tourLength?: string;
   activity?: boolean;
 }
 
@@ -186,6 +187,7 @@ export default function ToursList() {
     seats: tour.seats || "",
     urlimage: tour.urlimage || "",
     urlvideo: tour.urlvideo || "",
+    tourLength: tour.tourLength || "",
     continent: tour.continent || "",
     month: tour.month || "",
     typeID: tour.typeID || "",
