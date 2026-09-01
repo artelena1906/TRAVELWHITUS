@@ -63,7 +63,7 @@ margin: clamp(8rem, 4vw, 15rem) 0 0 clamp(0.5rem, 4vw, 5.5rem);
   font-weight: 500;
     font-family: 'Cormorant Garamond', serif;
   margin-top: clamp(1.5rem, 6vw, 15.0rem);
-  font-size: clamp(1.0rem, 3vw, 1.5rem);
+  font-size: clamp(0.8rem, 3vw, 1.5rem);
   padding: 0 clamp(0.5rem, 4vw, 5.5rem);
    z-index: 2;
 }
