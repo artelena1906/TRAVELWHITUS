@@ -173,7 +173,7 @@ margin-bottom: 15px;
   .containerschedule{  
   display: flex;
   color: rgb(114, 114, 114);
-  font-size: clamp(0.8rem, 1.8vw, 1.1rem);
+  font-size: clamp(1.0rem, 1.8vw, 1.1rem);
   margin-top: 1rem;
 }
 
