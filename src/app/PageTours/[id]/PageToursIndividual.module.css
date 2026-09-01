@@ -6,29 +6,77 @@
 
 .hero {
   min-height: 400px;
-  height: auto; 
+  height: auto;
   width: 100%;
+
   background-size: cover;
   background-position: center;
+
   display: flex;
   flex-direction: column;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Затемнение левой части фотографии */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(28, 23, 19, 0.82) 0%,
+    rgba(28, 23, 19, 0.65) 30%,
+    rgba(28, 23, 19, 0.28) 55%,
+    rgba(28, 23, 19, 0) 75%
+  );
+
+  z-index: 1;
+  pointer-events: none;
 }
 
 .heroTitle {
-  margin-top: clamp(1.5rem, 100vw, 15.5rem);
-  font-family: Unbounded, Arial, sans-serif;
-  font-weight: bold;
-  font-size: clamp(2.5rem, 10vw, 5.5rem);
+  margin: clamp(1.5rem, 100vw, 10.0rem) 0 0 clamp(0.5rem, 4vw, 5.5rem); 
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 0.95;
+  color: #fff;
+  z-index: 2;
+}
+
+.title {
+  margin-top: clamp(1.5rem, 1.2vw, 3rem);
+   font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
   padding: 0 clamp(0.5rem, 4vw, 5.5rem);
-  color: white;
+  color: #E8D8C5;
+  line-height: 1;
+  z-index: 2;
 }
 
 .details {
   color: white;
-  font-weight: bold;
-  margin-top: clamp(0.5rem, 2vw, 10.0rem);
-  font-size: clamp(1.5rem, 3vw, 2.8rem);
+  font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+  margin-top: clamp(1.5rem, 6vw, 15.0rem);
+  font-size: clamp(1.0rem, 3vw, 1.5rem);
   padding: 0 clamp(0.5rem, 4vw, 5.5rem);
+   z-index: 2;
+}
+
+.separator {
+  color: #C89D62;
+  font-size: clamp(1.5rem, 2vw, 2.4rem);
+  padding: 0 0.5em;
+}
+
+.price {
+  color: #F2D4B8;
+  font-weight: 700;
 }
 
 .details1 {
@@ -159,13 +207,6 @@ margin-bottom: 15px;
   color:#9f4636;
 }
 
-.separator {
-  border: none;          /* убираем стандартный стиль hr */
-  height: 2px;           /* толщина линии */
-  background: #9f4636;      /* цвет линии */
-  width: 100%;           /* на всю ширину контейнера */
-  margin: 20px 0;        /* отступы сверху и снизу */
-}
 
 .dayImage {
   width: 250px;          /* фиксированная ширина */
@@ -277,8 +318,10 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
 
   /* 4. Настройки контента снизу */
   .rightContainer {
+    /* width: 100%;
+    padding: 20px 15px;  */
     width: 100%;
-    padding: 20px 15px; /* Добавляем воздух тексту */
+  box-sizing: border-box;
   }
 
   .photos {
@@ -304,8 +347,17 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
   .blockDetails {
  
   grid-template-columns: 1fr; /* Две колонки одинаковой ширины */
+  margin-right: 0; /* убираем жесткий отступ справа */
   
 }
+  .countryText {
+    margin: 20px 0; /* убираем 10px по бокам */
+  }
+
+  .rightColumn {
+    margin-right: 0;
+  }
+
 
   .containerschedule {  
     display: flex;
@@ -329,9 +381,31 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
 }
   
 
-@media (max-width: 490px) {
+@media (max-width: 510px) {
 .leftContainer {
     top: 100px;
+  }
+
+  .dayImage {
+  width: 175px;          /* фиксированная ширина */
+  height: 125px;         /* фиксированная высота (4:3) */
+}
+
+.photos {
+    margin: 0;
+    justify-content: start; /* Фото по центру красивее на мобильных */
+  }
+
+   .countryText {
+    margin: 10px; /* убираем 10px по бокам */
+  }
+
+   .tourName {
+    margin: 10px 0;
+  }
+
+   .rightContainer {
+    padding: 10px 5px;
   }
 }
 
@@ -340,4 +414,6 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
     font-size: 0.9rem;
     padding: 0 0.2rem;
   }
+
+
 }

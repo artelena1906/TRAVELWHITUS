@@ -15,6 +15,7 @@ export interface FullTour {
   seats: string;
   activity: boolean;
   description: string;
+  tourLength: string;
   urlvideo?: string | null;
   counter: number;
   days: TourDay[];

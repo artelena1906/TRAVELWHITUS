@@ -68,6 +68,7 @@ export default function TourIndividual() {
             continent: data.continent || '',
             month: data.month || '',
             typeID: data.typeID || '',
+            tourLength: data.tourLength || '',
             activity: data.activity ?? true,
             counter: data.counter ?? 0,
             days,
@@ -89,65 +90,6 @@ export default function TourIndividual() {
   if (loading) return <p>Завантаження...</p>;
   if (!tour) return <p>Тур не знайдено</p>;
 
-//   return (
-//     <div className={styles.container}>
-//       {/* Hero Image */}
-//       {tour.urlimage && (
-//         <div
-//           className={styles.hero}
-//           style={{ backgroundImage: `url(${tour.urlimage})` }}
-//         >
-//           <div className={styles.heroTitle}>{tour.country}</div>
-//           <div className={styles.details}>
-//             {tour.date} | € {tour.price}
-//           </div>
-//           <div className={styles.details1}>{tour.seats}</div>
-//           <div className={styles.Button}>
-//             <button className={styles.bookButton}>Хочу у подорож</button>
-//           </div>
-//         </div>
-//       )}
-
-//       <div className={styles.description}>
-//         <div className={styles.leftContainer}>
-//           <nav className={styles.leftMenu}>
-//             <ul>
-//               <li>
-//                 <Link href="/" className={styles.breadcrumbLink}>
-//                   Про подорож
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/" className={styles.breadcrumbLink}>
-//                   Опис маршруту
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link href="/" className={styles.breadcrumbLink}>
-//                   Деталі
-//                 </Link>
-//               </li>
-//               {/* <li>
-//                 <Link href="/" className={styles.breadcrumbLink}>
-//                   Відгуки
-//                 </Link>
-//               </li> */}
-//             </ul>
-//           </nav>
-//         </div>
-
-//         <div className={styles.rightContainer}>
-//           <h2 className={styles.tourName}>{tour.name}</h2>
-//           <p className={styles.countryText}>{tour.countryDescription}</p>
-
-//           {/* Передаем тур в PageTourSchedule */}
-//           <PageTourSchedule tour={tour} />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 return (
     <div className={styles.container}>
       {/* 1. ID ДЛЯ СЕКЦИИ "ПРО ПОДОРОЖ" (ВЕРХ СТРАНИЦЫ) */}
@@ -158,10 +100,15 @@ return (
             style={{ backgroundImage: `url(${tour.urlimage})` }}
           >
             <div className={styles.heroTitle}>{tour.country}</div>
-            <div className={styles.details}>
-              {tour.date} | € {tour.price}
-            </div>
-            <div className={styles.details1}>{tour.seats}</div>
+            <div className={styles.title}>{tour.name}</div>
+           <div className={styles.details}>
+            <span>{tour.counter} днів</span>
+            <span className={styles.separator}>•</span>
+            <span>{tour.tourLength}</span>
+            <span className={styles.separator}>•</span>
+            <span className={styles.price}>€ {tour.price}</span>
+          </div>
+            {/* <div className={styles.details1}>{tour.seats}</div> */}
             <div className={styles.Button}>
               <button className={styles.bookButton}>Хочу у подорож</button>
             </div>
