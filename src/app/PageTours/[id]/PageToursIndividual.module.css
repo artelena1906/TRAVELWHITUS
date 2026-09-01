@@ -38,7 +38,7 @@
 }
 
 .heroTitle {
-  margin: clamp(1.5rem, 100vw, 10.0rem) 0 0 clamp(0.5rem, 4vw, 5.5rem); 
+margin: clamp(8rem, 4vw, 15rem) 0 0 clamp(0.5rem, 4vw, 5.5rem);
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
   font-size: clamp(2.5rem, 6vw, 5rem);
@@ -51,7 +51,7 @@
   margin-top: clamp(1.5rem, 1.2vw, 3rem);
    font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  font-size: clamp(1.2rem, 3vw, 2.5rem);
+  font-size: clamp(1.4rem, 3vw, 2.5rem);
   padding: 0 clamp(0.5rem, 4vw, 5.5rem);
   color: #E8D8C5;
   line-height: 1;
