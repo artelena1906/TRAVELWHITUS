@@ -386,6 +386,10 @@ box-shadow: 6px 6px 15px rgba(108, 45, 44, 0.2);
     top: 60px;
   }
 
+  .Button {
+  padding-top: 20px;
+}
+
   .dayImage {
   width: 175px;          /* фиксированная ширина */
   height: 125px;         /* фиксированная высота (4:3) */
