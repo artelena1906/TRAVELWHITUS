@@ -45,7 +45,6 @@ export default function AddTourForm({ onClose, onAdd }: AddTourFormProps) {
     urlvideo: null,   
     counter: 0,
     days: [],
-    tourLength: "",
   });
 
   const [days, setDays] = useState<TourDay[]>([]);
@@ -368,6 +367,7 @@ export default function AddTourForm({ onClose, onAdd, initialData }: AddTourForm
     urlimage: "",
     urlvideo: "",
     counter: 0,
+    tourLength: initialData?.tourLength || "",
     days: [],
   });
 
